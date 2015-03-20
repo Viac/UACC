@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Dumper"
+        android:id="@+id/cbDumper"
+        android:layout_marginTop="12dp"
+        android:layout_margin="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/engine"
+        android:id="@+id/tvTrackEngineCaption"
+        android:layout_marginLeft="8dp" />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgTrackEngine"
+        android:orientation="horizontal"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Gasoline"
+            android:id="@+id/rbTrackEngineGasoline"
+            android:checked="true"
+            android:layout_weight="0.5" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Diesel"
+            android:id="@+id/rbTrackEngineDiesel"
+            android:layout_weight="0.5" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Other"
+            android:id="@+id/rbTruckEngineOther" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/panTrackEngineAge"
+        android:baselineAligned="false"
+        android:layout_gravity="top"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/panGrossWeight"
+            android:layout_weight="0.5"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="top">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GrossWeight"
+                android:id="@+id/tvTrackGrossWeight" />
+
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rgTrackGrossWeight" >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/GwNotExceed5"
+                    android:id="@+id/rbTrackGrossWNotExceed5"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Gw5to20"
+                    android:id="@+id/rbTrackGrossW5To20" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/GwExceed20"
+                    android:id="@+id/rbTrackGrossWExceed20" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/panTrackAge"
+            android:layout_weight="0.5"
+            android:layout_gravity="top">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Age"
+                android:id="@+id/tvTrackAge" />
+
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rgTrackAge" >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/AgeNew"
+                    android:id="@+id/rbTrackAgeNew" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/UsedNoMore5Years"
+                    android:id="@+id/rbTrackAgeLE5"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/UsedMore5Years"
+                    android:id="@+id/rbTrackG5LE8" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/UsedMore8Years"
+                    android:id="@+id/rbTrackAgeG8" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/panTrackVolumePrice"
+        android:baselineAligned="false"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/panTrackVolume"
+            android:layout_weight="0.5"
+            android:layout_marginRight="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/volume_cm3"
+                android:id="@+id/tvTrackVolume"
+                android:layout_marginRight="6dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/edTrackVolume"
+                android:text="@string/DefaultVolumeTruck" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/panPrice"
+            android:weightSum="0.5"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/BasicPrice"
+                android:id="@+id/tvTruckBasicPrice"
+                android:layout_marginRight="6dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/edTrackBasicPrice"
+                android:text="@string/DefaultPrice" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

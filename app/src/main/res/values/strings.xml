@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UACC</string>
+    <string name="action_settings">Settings</string>
+
+    // Backward calculation UI
+    <string name="BackwardCalcHeader">Backward calculation</string>
+    <string name="BackwardCalcInfo">Here you can calculate max sell price on the vehicle, based on target final price in Ukraine</string>
+    <string name="BackwardCalcEditPrompt">Enter final price in Ukraine,(€):</string>
+    <string name="BackwardCalcPreferencesTemplate">Engine range: %1$d-%2$d, step %3$d cm³</string>
+
+    // Engine range preferences
+    <string name="erpTitle">Engine range preferences</string>
+    <string name="erpMessage">This settings will be applied only for current vehicle type</string>
+    <string name="erpApply">Apply</string>
+    <string name="erpMin">Min engine:</string>
+    <string name="erpMax">Max engine:</string>
+    <string name="erpStep">Step:</string>
+    <string name="erpWarningWrongRange">Please set max value greater than min value</string>
+    <string name="erpWarningWrongStep">Please define engine step value</string>
+
+    // Common GUI
+    <string name="cancel">Cancel</string>
+    <string name="Calculate">Get result</string>
+    <string name="Close">Close</string>
+    <string name="SwitchMode">Switch mode</string>
+    <string name="Preferences">Preferences</string>
+    <string name="Info">Information</string>
+
+    <string name="TableHeaderId"> # </string>
+    <string name="TableHeaderCaption">Payments</string>
+
+    <string name="Euro">€</string>
+
+    // Business logic
+    <string name="engine">Engine</string>
+    <string name="price">Price</string>
+    <string name="volume_cm3">Volume, cm³</string>
+    <string name="Payload">Payload</string>
+
+    // Error messages
+    <string name="errExciseListCorrupted">Excise list corrupted</string>
+    <string name="errLayoutNotAssigned">Can not create view: layout is not assigned</string>
+    <string name="errPriceCannotBeZero">Can not start calculation, price can not be 0</string>
+    <string name="errUnknownVehicleType">Unknown vehicle type</string>
+    <string name="errFinalPriceUndefined">Please define final price in Ukraine</string>
+    <string name="errCanNotRunCalculation">Can not run calculation</string>
+
+    // Asserts
+    <string name="assVehicleNotValid">Vehicle data not valid</string>
+    <string name="assExciseNotValid">Excise data not valid</string>
+
+    // Data types
+
+    // Engine types:
+    <string name="Gasoline">Gasoline</string>
+    <string name="Diesel">Diesel</string>
+    <string name="Electric">Electric</string>
+    <string name="Other">Other</string>
+    <string name="IceEngine">compression-ignition internal combustion piston engine (diesel or semi-diesel), or with spark-ignition internal combustion piston engine</string>
+
+    // Age categories:
+    <string name="Age">Age</string>
+    <string name="AgeNew">New</string>
+    <string name="UsedNoMore5Years">up to 5</string>
+    <string name="UsedMore5Years">more than 5</string>
+    <string name="UsedNoMore8Years">up to 8</string>
+    <string name="UsedMore8Years">more than 8</string>
+
+    // Vehicle type
+    <string name="Bus">Bus</string>
+    <string name="Car">Car</string>
+    <string name="Caravan">Caravan</string>
+    <string name="SpecialDesign">Special design</string>
+    <string name="Truck">Truck</string>
+    <string name="Dumper">Dumper</string>
+    <string name="Motorcycle">Motorcycle</string>
+
+    // Backward calculation motorcycle
+    <string name="FcMotorcycleRegularEngineDescription">Motorcycles (including mopeds) and cycles fitted with an auxiliary motor. Code: 8711 10 ~ 8711 50</string>
+    <string name="FcMotorcycleOtherEngineDescription">Code: 8711 90</string>
+
+    // Backward calculation bus
+    <string name="FcBusDieselEngineDescription">With compression-ignition internal combustion piston engine (diesel or semi-diesel). Code: 8702 10</string>
+    <string name="FcBusGasolineEngineDescription">With spark-ignition internal combustion piston engine. Code: 8702 90</string>
+
+    // Backward calculation car
+    <string name="FcCarGasolineEngineDescription">Motor cars and other motor vehicles principally designed for the transport of persons with spark-ignition internal combustion piston engine. Code: 8703 21 ~ 8703 24</string>
+    <string name="FcCarDieselEngineDescription">Motor cars and other motor vehicles principally designed for the transport of persons with compression-ignition internal combustion piston engine (diesel or semi-diesel) Code: 8703 33</string>
+    <string name="FcCarOtherEngineDescription">Other types, Code: 8703 90</string>
+    <string name="FcSpecialDesignCaption">Special design</string>
+    <string name="FcSpecialDesignDescription">Vehicles specially designed for travelling on snow; golf cars and similar vehicles. Code: 8703 10</string>
+    <string name="FcCaravanCaption">Motor caravans</string>
+    <string name="FcCaravanDescription">This group is a subgroup of regular car items</string>
+
+    // Backward calculation trucks
+    <string name="FcDumperIceDescription">Code: 8704 10 10</string>
+    <string name="FcDumperOtherDescription">Code: 8704 10 90</string>
+
+    <string name="FcTrack_8704_21_Description">Gross vehicle weight not exceeding 5 tonnes. Code: 8704 21</string>
+    <string name="FcTrack_8704_22_Description">Gross vehicle weight exceeding 5 tonnes but not exceeding 20 tonnes. Code: 8704 22</string>
+    <string name="FcTrack_8704_23_Description">Gross vehicle weight exceeding 20 tonnes. Code: 8704 23</string>
+
+    <string name="FcTrack_8704_31_Description">Gross vehicle weight not exceeding 5 tonnes. Code: 8704 31</string>
+    <string name="FcTrack_8704_32_Description">Gross vehicle weight exceeding 5 tonnes. Code: 8704 32</string>
+
+    // Forward calculator
+    <string name="BasicPrice">Basic price</string>
+    <string name="Impost">Impost</string>
+    // to have "10% of (1)" finally
+    <string name="ImpostDescription">%1$d%% of (1)</string>
+    <string name="VAT">VAT</string>
+    <string name="VATDescription">20% of (1 + 2 + 3)</string>
+    <string name="Excise">Excise</string>
+    <string name="ExciseDescription">ETC code: %1$s</string>
+    <string name="ProtectionImpost">Protection fee</string>
+    <string name="ProtectionImpostDescription">5% of (1 + 2 + 3 + 4)</string>
+    <string name="CustomDuties">Total custom duties</string>
+    <string name="TotalPrice">Total price</string>
+    <string name="Multiplier">Multiplier, percent</string>
+
+    // UI default values
+    <string name="DefaultVolumeTruck">5000</string>
+    <string name="DefaultVolumeCar">2000</string>
+    <string name="DefaultVolumeMotorcycle">500</string>
+    <string name="DefaultPrice">5000</string>
+
+    // Vehicle specific UIs
+    <string name="GrossWeight">Gross weight</string>
+    <string name="GwNotExceed5">up to 5 t</string>
+    <string name="Gw5to20">5~20 t</string>
+    <string name="GwExceed20">exceed 20 t</string>
+
+    <string name="Code_8704_10_10_10_Caption">Dumpers designed for off-highway use</string>
+    <string name="Code_8704_10_10_10">With compression-ignition internal combustion piston engine (diesel or semi-diesel), or with spark-ignition internal combustion piston engine, based on payload</string>
+    <string name="Code_8704_10_90_10">same, not based on payload</string>
+
+    <string name="Truck_GrossWeight_NotExceed5">Gross weight not exceed 5 tonnes</string>
+    <string name="Truck_GrossWeight_Exceed5">Gross weight exceed 5 tonnes</string>
+    <string name="Truck_GrossWeight_NotExceed20">Gross weight exceed 5 tonnes but not exceed 20 tonnes</string>
+    <string name="Truck_GrossWeight_Exceed20">Gross weight exceed 20 tonnes</string>
+
+
+    // UI warnings and hints
+    <string name="CaravanConflictsToSpecialDesign">Custom product list does not contain such combination, conflict removed</string>
+    <string name="TruckEngineTypeConflict">This type of engine could be assigned for off-road use dumber only</string>
+
+    // Age categories in table headers
+    <string name="AgeIsNew">new</string>
+    <string name="AgeIsNotExceed5">age &lt;= 5</string>
+    <string name="AgeIsNotExceed8">age &lt;= 8</string>
+    <string name="AgeIsExceed8">age &gt; 8</string>
+    <string name="title_activity_exception_handle">ExceptionHandleActivity</string>
+
+    // Exception handing
+    <string name="ApplicationError">Sorry, application error occurred</string>
+    <string name="ApplicationErrorExplanation">A technical error appeared during application run. Try to restart application. \n\nWe would be very grateful for you if you let us know about this problem so we can fix it.</string>
+    <string name="ApplicationErrorSendInfo">send bug report</string>
+    <string name="CloseApplication">Close application</string>
+    <string name="title_activity_send_exception">SendExceptionActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+
+</resources>

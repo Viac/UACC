@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UACC</string>
+    <string name="action_settings">Настройки</string>
+
+    // Backward calculation UI
+    <string name="BackwardCalcHeader">Обратный расчет</string>
+    <string name="BackwardCalcInfo">Вы можете оценить максимальную цену покупки ТС за рубежом, задав нужную конечную сумму растаможенного ТС в Украине</string>
+    <string name="BackwardCalcEditPrompt">Введите конечную стоимость растаможенного ТС в Украине,(€):</string>
+    <string name="BackwardCalcPreferencesTemplate">Диапазон объема двигаталей: %1$d-%2$d, с шагом %3$d см³</string>
+
+    // Engine range preferences
+    <string name="erpTitle">Настройки диапазона объема двигаталей</string>
+    <string name="erpMessage">Эти настройки будут применены только к текущему типу ТС</string>
+    <string name="erpApply">Применить</string>
+    <string name="erpMin">Мин. объем:</string>
+    <string name="erpMax">Макс. объем:</string>
+    <string name="erpStep">Шаг:</string>
+    <string name="erpWarningWrongRange">Пожалуйста, укажите максимальный объем больше минимального</string>
+    <string name="erpWarningWrongStep">Пожалуйста, укажите шаг</string>
+
+    // Common GUI
+    <string name="cancel">Отмена</string>
+    <string name="Calculate">Расчитать</string>
+    <string name="Close">Закрыть</string>
+    <string name="SwitchMode">Режим</string>
+    <string name="Preferences">Настройки</string>
+    <string name="Info">Информация</string>
+
+    <string name="TableHeaderId"> # </string>
+    <string name="TableHeaderCaption">Платежи</string>
+
+    <string name="Euro">€</string>
+
+    // Business logic
+    <string name="engine">Двигатель</string>
+    <string name="price">Цена</string>
+    <string name="volume_cm3">Объем, см³</string>
+    <string name="Payload">Грузоподъемность</string>
+
+    // Error messages
+    <string name="errExciseListCorrupted">Данные об акцизах повреждены</string>
+    <string name="errLayoutNotAssigned">Невозможно создать элемент: шаблон не назначен</string>
+    <string name="errPriceCannotBeZero">Цена не может быть 0</string>
+    <string name="errUnknownVehicleType">Неизвестный тип ТС</string>
+    <string name="errFinalPriceUndefined">Пожалуйста, укажите конечную стоимость ТС в Украине</string>
+    <string name="errCanNotRunCalculation">Невозможно произвести вычисления</string>
+
+    // Asserts
+    <string name="assVehicleNotValid">Ошибка в данных ТС</string>
+    <string name="assExciseNotValid">Ошибка в данных акциза</string>
+
+    // Data types
+
+    // Engine types:
+    <string name="Gasoline">Бензин</string>
+    <string name="Diesel">Дизель</string>
+    <string name="Electric">Электро</string>
+    <string name="Other">Другое</string>
+    <string name="IceEngine">Двигатель с зажиганием от сжатия (дизель или полудизель), или двигатель с искровым зажиганием</string>
+
+    // Age categories:
+    <string name="Age">Возраст</string>
+    <string name="AgeNew">Новый</string>
+    <string name="UsedNoMore5Years">не более 5 лет</string>
+    <string name="UsedMore5Years">более 5 лет</string>
+    <string name="UsedNoMore8Years">не более 8 лет</string>
+    <string name="UsedMore8Years">более 8 лет</string>
+
+    // Vehicle type
+    <string name="Bus">Автобус</string>
+    <string name="Car">Легковая</string>
+    <string name="Caravan">Кемпер</string>
+    <string name="SpecialDesign">Специальный дизайн</string>
+    <string name="Truck">Грузовик</string>
+    <string name="Dumper">Самосвал для использования на бездорожье</string>
+    <string name="Motorcycle">Мотоцикл</string>
+
+    // Backward calculation motorcycle
+    <string name="FcMotorcycleRegularEngineDescription">Мотоциклы (включая мопеды) и велосипеды с ДВС. Коды: 8711 10 ~ 8711 50</string>
+    <string name="FcMotorcycleOtherEngineDescription">Код: 8711 90</string>
+
+    // Backward calculation bus
+    <string name="FcBusDieselEngineDescription">Двигатель с зажиганием от сжатия (дизель или полудизель). Код: 8702 10</string>
+    <string name="FcBusGasolineEngineDescription">Двигатель с искровым зажиганием. Код: 8702 90</string>
+
+    // Backward calculation car
+    <string name="FcCarGasolineEngineDescription">Легковые автомобили с бензиновыми двигателями. Коды: 8703 21 ~ 8703 24</string>
+    <string name="FcCarDieselEngineDescription">Легковые автомобили с дизельными двигателями. Код: 8703 33</string>
+    <string name="FcCarOtherEngineDescription">Другие двигатели. Коды: 8703 90</string>
+    <string name="FcSpecialDesignCaption">Специальное назначение</string>
+    <string name="FcSpecialDesignDescription">Автомобили специально предназначенные для движения по снегу; гольф-кары и подобные. Код: 8703 10</string>
+    <string name="FcCaravanCaption">Кемперы</string>
+    <string name="FcCaravanDescription">Эта группа является подгруппой в категории "легковые автомобили"</string>
+
+    // Backward calculation trucks
+    <string name="FcDumperIceDescription">Код: 8704 10 10</string>
+    <string name="FcDumperOtherDescription">Код: 8704 10 90</string>
+
+    <string name="FcTrack_8704_21_Description">Полная масса не более 5 тонн. Код: 8704 21</string>
+    <string name="FcTrack_8704_22_Description">Полная масса от 5 до 20 тонн. Код: 8704 22</string>
+    <string name="FcTrack_8704_23_Description">Полная масса более 20 тонн. Код: 8704 23</string>
+
+    <string name="FcTrack_8704_31_Description">Полная масса не более 5 тонн. Код: 8704 31</string>
+    <string name="FcTrack_8704_32_Description">Полная масса более 5 тонн. Code: Код 32</string>
+
+    // Forward calculator
+    <string name="BasicPrice">Базовая цена</string>
+    <string name="Impost">Пошлина</string>
+    // to have "10% of (1)" finally
+    <string name="ImpostDescription">%1$d%% of (1)</string>
+    <string name="VAT">НДС</string>
+    <string name="VATDescription">20% of (1 + 2 + 3)</string>
+    <string name="Excise">Акциз</string>
+    <string name="ExciseDescription">Код по УКТ ВЭД: %1$s</string>
+    <string name="ProtectionImpost">Защитная пошлина</string>
+    <string name="ProtectionImpostDescription">5% of (1 + 2 + 3 + 4)</string>
+    <string name="CustomDuties">Всего таможенных платежей</string>
+    <string name="TotalPrice">Общая стоимость</string>
+    <string name="Multiplier">Увеличение стоимости, %%</string>
+
+    // UI default values
+    <string name="DefaultVolumeTruck">5000</string>
+    <string name="DefaultVolumeCar">2000</string>
+    <string name="DefaultVolumeMotorcycle">500</string>
+    <string name="DefaultPrice">5000</string>
+
+    // Vehicle specific UIs
+    <string name="GrossWeight">Полная масса</string>
+    <string name="GwNotExceed5">до 5 т</string>
+    <string name="Gw5to20">5–20 т</string>
+    <string name="GwExceed20">более 20 т</string>
+
+    <string name="Code_8704_10_10_10_Caption">Самосвалы, предназначенные для использования на бездорожье</string>
+    <string name="Code_8704_10_10_10">Двигатель с зажиганием от сжатия (дизель или полудизель) или двигатель с искровым зажиганием, расчет по грузоподъемности</string>
+    <string name="Code_8704_10_90_10">То же, расчет по полной массе</string>
+
+    <string name="Truck_GrossWeight_NotExceed5">Полная масса не более 5 тонн</string>
+    <string name="Truck_GrossWeight_Exceed5">Полная масса более 5 тонн</string>
+    <string name="Truck_GrossWeight_NotExceed20">Полная масса от 5 до 20 тонн</string>
+    <string name="Truck_GrossWeight_Exceed20">Полная масса более 20 тонн</string>
+
+
+    // UI warnings and hints
+    <string name="CaravanConflictsToSpecialDesign">В списке акцизов не может быть такой комбинации, конфликт устранен</string>
+    <string name="TruckEngineTypeConflict">Этот тип двигателя может быть назначен только самосвалам для бездорожья</string>
+
+    // Age categories in table headers
+    <string name="AgeIsNew">новые</string>
+    <string name="AgeIsNotExceed5">&lt;= 5 лет</string>
+    <string name="AgeIsNotExceed8">&lt;= 8 лет</string>
+    <string name="AgeIsExceed8">&gt; 8 лет</string>
+    <string name="title_activity_exception_handle">Обработка ошибок</string>
+
+    // Exception handing
+    <string name="ApplicationError">Извините, произошла ошибка</string>
+    <string name="ApplicationErrorExplanation">Во время выполнения программы произошла техническая ошибка. Презапустите приложение, пожалуйста.\n\nМы будем очень признательны, если вы отошлете сообщение об этой проблеме, чтобы мы могли исправить ее</string>
+    <string name="ApplicationErrorSendInfo">послать сообщение об ошибке</string>
+    <string name="CloseApplication">Закрыть приложение</string>
+    <string name="title_activity_send_exception">Обработка ошибок</string>
+
+    <string name="hello_world">--------</string>
+
+</resources>

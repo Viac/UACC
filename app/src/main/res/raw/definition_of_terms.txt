@@ -1,0 +1,25 @@
+* Backward calculator (aka Reverse calculator) -
+    function that basically answers on the question "I have certain money in Ukraine.
+    What is the max price for the vehicles that I can pay for?". Opposite - Forward calculator
+* Basic price (R.strings.BasicPrice) - price of vehicle sell.
+    Important: if local VAT could be compensated, that not affects on this application. Opposite: Total price
+* Code () - Code of instance in Product List. Primary list is "Product list UA"
+* Custom duties (R.strings.CustomDuties) - sum of all custom duties (fee, VAT, protection fees)
+    that payed with custom clearance
+* Dumper (R.strings.Dumper) Dumpers designed for off-highway use (Code 8704 10)
+* Forward calculator - function that basically answers on the question
+    "How much custom duties I have to pay for certain vehicle". Opposite - Backward calculator
+* Impost (toll, fee) - a tax or similar compulsory payment. In most of cases that mean 10% from basic price
+    Primary regulatory act (ukr): http://zakon4.rada.gov.ua/laws/show/584%D0%B1-18/print1421277143615421
+* Gross vehicle weight () - the maximum operating weight/mass of a vehicle as specified by the manufacturer
+    including the vehicle's chassis, body, engine, engine fluids, fuel, accessories, driver, passengers
+    and cargo but excluding that of any trailers
+* Payload (R.strings.Payload) - Payload is the carrying capacity of vehicle, usually measured in terms of weight (t)
+* Price multiplier (R.strings.Multiplier) - Percentage of total price to basic price
+* Product list EU -
+    http://exporthelp.europa.eu/thdapp/nomenclature/NomenclatureServlet?action=nomen&section=tariff&taricCode=8704000000&prodLine=80&limitLevel=10&simDate=20140411&languageId=en
+* Product list UA - http://zakon2.rada.gov.ua/laws/show/2755-17/print1385717155999441
+* Snow/Golf (R.strings.SnowGolf) -
+    Vehicles specially designed for travelling on snow; golf cars and similar vehicles (check the code 8703 10)
+* SpecialDesign - see Snow/Golf
+* Total price (R.strings.TotalPrice) - price in Ukraine with all custom duties. Opposite - basic price.

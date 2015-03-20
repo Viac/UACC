@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UACC</string>
+    <string name="action_settings">Налаштування</string>
+
+    // Backward calculation UI
+    <string name="BackwardCalcHeader">Зворотній розрахунок</string>
+    <string name="BackwardCalcInfo">Ви маєте можливість оцінити максимальну ціну купівлі ТЗ за кордоном, задавши кінцеву вартість розмитненого ТЗ в Україні</string>
+    <string name="BackwardCalcEditPrompt">Визначте кінцеву вартіть розмитненого ТЗ в Україні,(€):</string>
+    <string name="BackwardCalcPreferencesTemplate">Діапазон об’єму двигуна: %1$d-%2$d, з поступом %3$d см³</string>
+
+    // Engine range preferences
+    <string name="erpTitle">Налаштування діапазону об’єму двигуна</string>
+    <string name="erpMessage">Ці налаштування будуть застововані лише до активного типу ТЗ</string>
+    <string name="erpApply">Застосувати</string>
+    <string name="erpMin">Мін. об’єм:</string>
+    <string name="erpMax">Макс. об’єм:</string>
+    <string name="erpStep">Поступ:</string>
+    <string name="erpWarningWrongRange">Будь ласка, вкажіть максимальній об’єм більш ніж мінімальний</string>
+    <string name="erpWarningWrongStep">Будь ласта, вкажіть поступ</string>
+
+    // Common GUI
+    <string name="cancel">Відмінити</string>
+    <string name="Calculate">Розрахувати</string>
+    <string name="Close">Закрити</string>
+    <string name="SwitchMode">Змінити режим</string>
+    <string name="Preferences">Налаштування</string>
+    <string name="Info">Інформація</string>
+
+    <string name="TableHeaderId"> # </string>
+    <string name="TableHeaderCaption">Платежі</string>
+
+    <string name="Euro">€</string>
+
+    // Business logic
+    <string name="engine">Двигун</string>
+    <string name="price">Вартість</string>
+    <string name="volume_cm3">Об’єм, см³</string>
+    <string name="Payload">Вантажопідйомність</string>
+
+    // Error messages
+    <string name="errExciseListCorrupted">Данні про акцизи пошкоджено</string>
+    <string name="errLayoutNotAssigned">Неможливо створити елемент: шаблон не призначено</string>
+    <string name="errPriceCannotBeZero">Вартість не може дорівнювати 0</string>
+    <string name="errUnknownVehicleType">Невідомий тип ТЗ</string>
+    <string name="errFinalPriceUndefined">Будь ласка, вкажіть кінцеву вартіть ТЗ в Україні</string>
+    <string name="errCanNotRunCalculation">Невожливо розрахувати</string>
+
+    // Asserts
+    <string name="assVehicleNotValid">Помилка в даних ТЗ</string>
+    <string name="assExciseNotValid">Помилка в даних акцизу</string>
+
+    // Data types
+
+    // Engine types:
+    <string name="Gasoline">Бензин</string>
+    <string name="Diesel">Дизель</string>
+    <string name="Electric">Електро</string>
+    <string name="Other">Інше</string>
+    <string name="IceEngine">Двигун із запалюванням від стиснення (дизель або напівдизель) або з іскровим запалюванням</string>
+
+    // Age categories:
+    <string name="Age">Вік</string>
+    <string name="AgeNew">Новий</string>
+    <string name="UsedNoMore5Years">не більш 5 років</string>
+    <string name="UsedMore5Years">більше 5 років</string>
+    <string name="UsedNoMore8Years">не більш 8 років</string>
+    <string name="UsedMore8Years">більш 8 років</string>
+
+    // Vehicle type
+    <string name="Bus">Автобус</string>
+    <string name="Car">Легкова</string>
+    <string name="Caravan">Кемпер</string>
+    <string name="SpecialDesign">Спеціальный дизайн</string>
+    <string name="Truck">Вантажна</string>
+    <string name="Dumper">Самоскид, призначений для використання на бездоріжжі</string>
+    <string name="Motorcycle">Мотоцикл</string>
+
+    // Backward calculation motorcycle
+    <string name="FcMotorcycleRegularEngineDescription">Мотоцикли (включаючи мопеди) та велосипеди з двигуном внутрішнього згоряння. Коди: 8711 10 ~ 8711 50</string>
+    <string name="FcMotorcycleOtherEngineDescription">Код: 8711 90</string>
+
+    // Backward calculation bus
+    <string name="FcBusDieselEngineDescription">Двигуном із запалюванням вiд стиснення (дизель або напiвдизель). Код: 8702 10</string>
+    <string name="FcBusGasolineEngineDescription">Двигун з iскровим запалюванням. Код: 8702 90</string>
+
+    // Backward calculation car
+    <string name="FcCarGasolineEngineDescription">Автомобілі легкові з двигунами з іскровим запалюванням. Коди: 8703 21 ~ 8703 24</string>
+    <string name="FcCarDieselEngineDescription">Автомобілі легкові з дизельними або нарівдизелями. Код: 8703 33</string>
+    <string name="FcCarOtherEngineDescription">Інші типи, Код: 8703 90</string>
+    <string name="FcSpecialDesignCaption">ТЗ особливого призначення</string>
+    <string name="FcSpecialDesignDescription">транспортні засоби, спеціально призначені для пересування по снігу; спеціальні автомобілі для перевезення спортсменів на майданчики для гри в гольф та аналогічні транспортні засоби. Код: 8703 10</string>
+    <string name="FcCaravanCaption">ТЗ, обладнані для тимчасового проживання людей</string>
+    <string name="FcCaravanDescription">Ця група є підгрупою для легкових автомобілів</string>
+
+    // Backward calculation trucks
+    <string name="FcDumperIceDescription">Код: 8704 10 10</string>
+    <string name="FcDumperOtherDescription">Код: 8704 10 90</string>
+
+    <string name="FcTrack_8704_21_Description">Повна маса не більш 5 тон. Код: 8704 21</string>
+    <string name="FcTrack_8704_22_Description">Повна маса від 5 до 20 тон. Код: 8704 22</string>
+    <string name="FcTrack_8704_23_Description">Повна маса більш 20 тон. Код: 8704 23</string>
+
+    <string name="FcTrack_8704_31_Description">Повна маса не більш 5 тонн. Код: 8704 31</string>
+    <string name="FcTrack_8704_32_Description">Повна маса більш 5 тон. Code: Код 32</string>
+
+    // Forward calculator
+    <string name="BasicPrice">Базова вартіть</string>
+    <string name="Impost">Мито</string>
+    // to have "10% of (1)" finally
+    <string name="ImpostDescription">%1$d%% of (1)</string>
+    <string name="VAT">ПДВ</string>
+    <string name="VATDescription">20% of (1 + 2 + 3)</string>
+    <string name="Excise">Акциз</string>
+    <string name="ExciseDescription">Код згідно з УКТ ЗЕД: %1$s</string>
+    <string name="ProtectionImpost">Захисте мито</string>
+    <string name="ProtectionImpostDescription">5% of (1 + 2 + 3 + 4)</string>
+    <string name="CustomDuties">Всього таможених платежів</string>
+    <string name="TotalPrice">Загальна вартість</string>
+    <string name="Multiplier">Збільшення вартості, %%</string>
+
+    // UI default values
+    <string name="DefaultVolumeTruck">5000</string>
+    <string name="DefaultVolumeCar">2000</string>
+    <string name="DefaultVolumeMotorcycle">500</string>
+    <string name="DefaultPrice">5000</string>
+
+    // Vehicle specific UIs
+    <string name="GrossWeight">Повна маса</string>
+    <string name="GwNotExceed5">до 5 т</string>
+    <string name="Gw5to20">5–20 т</string>
+    <string name="GwExceed20">більш 20 т</string>
+
+    <string name="Code_8704_10_10_10_Caption">Самоскиди, призначені для використання на бездоріжжі</string>
+    <string name="Code_8704_10_10_10">З двигуном із запалюванням від стиснення (дизелем або напівдизелем) або з іскровим запалюванням, розрахунок за вантажопідйомністю</string>
+    <string name="Code_8704_10_90_10">Те саме, розрахунок за повною масою</string>
+
+    <string name="Truck_GrossWeight_NotExceed5">Повна маса не більш 5 тон</string>
+    <string name="Truck_GrossWeight_Exceed5">Повна маса більш 5 тон</string>
+    <string name="Truck_GrossWeight_NotExceed20">Повна маса від 5 до 20 тон</string>
+    <string name="Truck_GrossWeight_Exceed20">Повна маса більш 20 тон</string>
+
+
+    // UI warnings and hints
+    <string name="CaravanConflictsToSpecialDesign">Такої комбинації не існує в списку акцизів, конфлікт усунено</string>
+    <string name="TruckEngineTypeConflict">Цей тип двигуна застосовується лише до самоскидів для бездоріжжя</string>
+
+    // Age categories in table headers
+    <string name="AgeIsNew">нові</string>
+    <string name="AgeIsNotExceed5">&lt;= 5 років</string>
+    <string name="AgeIsNotExceed8">&lt;= 8 років</string>
+    <string name="AgeIsExceed8">&gt; 8 років</string>
+    <string name="title_activity_exception_handle">Обробка помилок</string>
+
+    // Exception handing
+    <string name="ApplicationError">Вибачте, виникла помилка</string>
+    <string name="ApplicationErrorExplanation">Під час роботи програми виникла технічна помилка. Перезапустіть її, будь ласка.\n\nМи будемо вкрай вдячні, якщо ви надішлете повідомлення про цю проблему, щоб ми могли виправити її</string>
+    <string name="ApplicationErrorSendInfo">надіслати повідомлення про помилку</string>
+    <string name="CloseApplication">Закрити програму</string>
+    <string name="title_activity_send_exception">Обробка помилок</string>
+
+    <string name="hello_world">--------</string>
+
+</resources>
