@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import ua.com.glady.uacc.R;
+import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.INotifyEvent;
 import ua.com.glady.uacc.tools.ToolsView;
 
@@ -95,21 +96,54 @@ public class BcPreferencesDialog extends DialogFragment  {
      */
     void applyChanges(){
         // UI to RAM
-        minEngineDefaultValue = ToolsView.getInt(view, R.id.edPrefMinEngine, minEngineDefaultValue);
-        maxEngineDefaultValue = ToolsView.getInt(view, R.id.edPrefMaxEngine, maxEngineDefaultValue);
-        stepEngineDefaultValue = ToolsView.getInt(view, R.id.edPrefStepEngine, stepEngineDefaultValue);
+
+        String msg;
+        int guiValue;
+
+        guiValue = ToolsView.getInt(view, R.id.edPrefMinEngine, Constants.UNDEFINED);
+        if (guiValue != Constants.UNDEFINED) {
+            if (guiValue > Constants.ENGINE_VOLUME_LIMIT) {
+                msg = getResources().getString(R.string.erpWarningEngineVolumeTooLarge);
+                Toast.makeText(view.getContext(), msg, Toast.LENGTH_LONG).show();
+                return;
+            }
+            minEngineDefaultValue = guiValue;
+        }
+
+        guiValue = ToolsView.getInt(view, R.id.edPrefMaxEngine, Constants.UNDEFINED);
+        if (guiValue != Constants.UNDEFINED) {
+            if (guiValue > Constants.ENGINE_VOLUME_LIMIT) {
+                msg = getResources().getString(R.string.erpWarningEngineVolumeTooLarge);
+                Toast.makeText(view.getContext(), msg, Toast.LENGTH_LONG).show();
+                return;
+            }
+            maxEngineDefaultValue = guiValue;
+        }
 
         // UI data sanity check
-        String msg;
         if (minEngineDefaultValue > maxEngineDefaultValue) {
             msg = getResources().getString(R.string.erpWarningWrongRange);
             Toast.makeText(view.getContext(), msg, Toast.LENGTH_LONG).show();
             return;
         }
-        if (stepEngineDefaultValue == 0) {
-            msg = getResources().getString(R.string.erpWarningWrongRange);
-            Toast.makeText(view.getContext(), msg, Toast.LENGTH_LONG).show();
-            return;
+
+        guiValue = ToolsView.getInt(view, R.id.edPrefStepEngine, Constants.UNDEFINED);
+        if (guiValue != Constants.UNDEFINED) {
+
+            if (guiValue == 0) {
+                msg = getResources().getString(R.string.erpWarningWrongRange);
+                Toast.makeText(view.getContext(), msg, Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            int itemsCount = (maxEngineDefaultValue - minEngineDefaultValue) / guiValue;
+            if (itemsCount > 100) {
+                msg = getResources().getString(R.string.erpWarningStepTooSmall);
+                Toast.makeText(view.getContext(), msg, Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            stepEngineDefaultValue = guiValue;
         }
 
         // informing caller that we did it

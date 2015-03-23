@@ -16,6 +16,8 @@ public class Constants {
     public static final int ENG_ELECTRIC = 2;
     public static final int ENG_OTHER = 3;
 
+    public static final int ENGINE_VOLUME_LIMIT = 20000;
+
     // Gross vehicle weight
     public static final int WEIGHT_5T = 5;
     public static final int WEIGHT_20T = 20;

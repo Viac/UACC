@@ -19,6 +19,8 @@
     <string name="erpStep">Step:</string>
     <string name="erpWarningWrongRange">Please set max value greater than min value</string>
     <string name="erpWarningWrongStep">Please define engine step value</string>
+    <string name="erpWarningEngineVolumeTooLarge">Engine volume too large, upper limit is 20000</string>
+    <string name="erpWarningStepTooSmall">Step too small for defined volume range. Max count of items is 100</string>
 
     // Common GUI
     <string name="cancel">Cancel</string>
@@ -38,6 +40,7 @@
     <string name="price">Price</string>
     <string name="volume_cm3">Volume, cm³</string>
     <string name="Payload">Payload</string>
+    <string name="BasicPriceEuro">Price, €</string>
 
     // Error messages
     <string name="errExciseListCorrupted">Excise list corrupted</string>
@@ -64,9 +67,9 @@
     <string name="Bus">Bus</string>
     <string name="Car">Car</string>
     <string name="Caravan">Caravan</string>
-    <string name="SpecialDesign">Special design</string>
+    <string name="SpecialDesign">Snowmobile, etc.</string>
     <string name="Truck">Truck</string>
-    <string name="Dumper">Dumper</string>
+    <string name="Dumper">Dumper intended for off-road usage</string>
     <string name="Motorcycle">Motorcycle</string>
 
     // Backward calculation motorcycle
@@ -104,7 +107,7 @@
     <string name="ImpostDescription">%1$d%% of (1)</string>
     <string name="Excise">Excise</string>
 
-    <string name="ProtectionImpost">Protection fee</string>
+    <string name="ProtectionImpost">Additional import impost</string>
     <string name="ProtectionImpostDescription">5% of (1)</string>
 
     <string name="ExciseDescription">ETC code: %1$s</string>
@@ -145,13 +148,11 @@
 
     // Age categories:
     <string name="Age">Age</string>
-
     <string name="AgeNew">New</string>
-    <string name="AgeNotExceed5">&lt;= 5 years</string>
+    <string name="AgeNotExceed5">&#8804; 5 years</string>
     <string name="Age5">= 5 years</string>
     <string name="AgeExceed5">&gt; 5 years</string>
-
-    <string name="AgeNotExceed8">&lt;= 8 years</string>
+    <string name="AgeNotExceed8">&#8804; 8 years</string>
     <string name="Age8">= 8 years</string>
     <string name="AgeExceed8">&gt; 8 years</string>
 

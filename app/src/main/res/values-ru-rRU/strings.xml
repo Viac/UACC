@@ -19,6 +19,8 @@
     <string name="erpStep">Шаг:</string>
     <string name="erpWarningWrongRange">Пожалуйста, укажите максимальный объем больше минимального</string>
     <string name="erpWarningWrongStep">Пожалуйста, укажите шаг</string>
+    <string name="erpWarningEngineVolumeTooLarge">Объем двигателя слишком большой, максимальное значение 20000</string>
+    <string name="erpWarningStepTooSmall">Шаг слишком мал для указанного диапазона. Максимальное количество может быть 100</string>
 
     // Common GUI
     <string name="cancel">Отмена</string>
@@ -38,6 +40,7 @@
     <string name="price">Цена</string>
     <string name="volume_cm3">Объем, см³</string>
     <string name="Payload">Грузоподъемность</string>
+    <string name="BasicPriceEuro">Стоимость, €</string>
 
     // Error messages
     <string name="errExciseListCorrupted">Данные об акцизах повреждены</string>
@@ -64,7 +67,7 @@
     <string name="Bus">Автобус</string>
     <string name="Car">Легковая</string>
     <string name="Caravan">Кемпер</string>
-    <string name="SpecialDesign">Специальный дизайн</string>
+    <string name="SpecialDesign">Снегоход и пр.</string>
     <string name="Truck">Грузовик</string>
     <string name="Dumper">Самосвал для использования на бездорожье</string>
     <string name="Motorcycle">Мотоцикл</string>
@@ -102,12 +105,12 @@
     <string name="Impost">Пошлина</string>
     // to have "10% of (1)" finally
     <string name="ImpostDescription">%1$d%% of (1)</string>
-    <string name="ProtectionImpost">Защитная пошлина</string>
-    <string name="ProtectionImpostDescription">5% of (1)</string>
+    <string name="ProtectionImpost">Дополнительный импортный сбор</string>
+    <string name="ProtectionImpostDescription">5% от (1)</string>
     <string name="Excise">Акциз</string>
     <string name="ExciseDescription">Код по УКТ ВЭД: %1$s</string>
     <string name="VAT">НДС</string>
-    <string name="VATDescription">20% of (1 + 2 + 3 + 4)</string>
+    <string name="VATDescription">20% от (1 + 2 + 3 + 4)</string>
     <string name="CustomDuties">Всего таможенных платежей</string>
     <string name="TotalPrice">Общая стоимость</string>
     <string name="Multiplier">Увеличение стоимости, %%</string>
@@ -140,11 +143,10 @@
 
     <string name="Age">Возраст</string>
     <string name="AgeNew">Новый</string>
-    <string name="AgeNotExceed5">&lt;= 5 лет</string>
+    <string name="AgeNotExceed5">&#8804; 5 лет</string>
     <string name="Age5">= 5 лет</string>
     <string name="AgeExceed5">&gt; 5 лет</string>
-
-    <string name="AgeNotExceed8">&lt;= 8 лет</string>
+    <string name="AgeNotExceed8">&#8804; 8 лет</string>
     <string name="Age8">= 8 лет</string>
     <string name="AgeExceed8">&gt; 8 лет</string>
 

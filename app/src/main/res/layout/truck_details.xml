@@ -3,14 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Dumper"
-        android:id="@+id/cbDumper"
-        android:layout_marginTop="12dp"
-        android:layout_margin="5dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -194,7 +186,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/BasicPrice"
+                android:text="@string/BasicPriceEuro"
                 android:id="@+id/tvTruckBasicPrice"
                 android:layout_marginRight="6dp" />
 
@@ -206,6 +198,15 @@
                 android:id="@+id/edTrackBasicPrice"
                 android:text="@string/DefaultPrice" />
         </LinearLayout>
+
     </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Dumper"
+        android:id="@+id/cbDumper"
+        android:layout_marginTop="12dp"
+        android:layout_margin="5dp" />
 
 </LinearLayout>

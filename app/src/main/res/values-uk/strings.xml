@@ -18,7 +18,9 @@
     <string name="erpMax">Макс. об’єм:</string>
     <string name="erpStep">Поступ:</string>
     <string name="erpWarningWrongRange">Будь ласка, вкажіть максимальній об’єм більш ніж мінімальний</string>
-    <string name="erpWarningWrongStep">Будь ласта, вкажіть поступ</string>
+    <string name="erpWarningWrongStep">Будь ласка, вкажіть поступ</string>
+    <string name="erpWarningEngineVolumeTooLarge">Об’єм двигуна завеликий, максимальне значення 20000</string>
+    <string name="erpWarningStepTooSmall">Поступ замалий для обраного діапазону об’єму двигуна. Максимальна кiлькiсть може бути 100</string>
 
     // Common GUI
     <string name="cancel">Відмінити</string>
@@ -38,6 +40,7 @@
     <string name="price">Вартість</string>
     <string name="volume_cm3">Об’єм, см³</string>
     <string name="Payload">Вантажопідйомність</string>
+    <string name="BasicPriceEuro">Вартість, €</string>
 
     // Error messages
     <string name="errExciseListCorrupted">Данні про акцизи пошкоджено</string>
@@ -64,7 +67,7 @@
     <string name="Bus">Автобус</string>
     <string name="Car">Легкова</string>
     <string name="Caravan">Кемпер</string>
-    <string name="SpecialDesign">Спеціальный дизайн</string>
+    <string name="SpecialDesign">Снiгохiд та iн.</string>
     <string name="Truck">Вантажна</string>
     <string name="Dumper">Самоскид, призначений для використання на бездоріжжі</string>
     <string name="Motorcycle">Мотоцикл</string>
@@ -101,13 +104,13 @@
     <string name="BasicPrice">Базова вартіть</string>
     <string name="Impost">Мито</string>
     // to have "10% of (1)" finally
-    <string name="ImpostDescription">%1$d%% of (1)</string>ssss
-    <string name="ProtectionImpost">Захисте мито</string>
-    <string name="ProtectionImpostDescription">5% of (1)</string>
+    <string name="ImpostDescription">%1$d%% of (1)</string>
+    <string name="ProtectionImpost">Додатковий імпортний збір</string>
+    <string name="ProtectionImpostDescription">5% вiд (1)</string>
     <string name="Excise">Акциз</string>
     <string name="ExciseDescription">Код згідно з УКТ ЗЕД: %1$s</string>
     <string name="VAT">ПДВ</string>
-    <string name="VATDescription">20% of (1 + 2 + 3 + 4)</string>
+    <string name="VATDescription">20% вiд (1 + 2 + 3 + 4)</string>
     <string name="CustomDuties">Всього таможених платежів</string>
     <string name="TotalPrice">Загальна вартість</string>
     <string name="Multiplier">Збільшення вартості, %%</string>
@@ -141,11 +144,11 @@
     // Age categories in table headers
     <string name="Age">Вік</string>
     <string name="AgeNew">Новий</string>
-    <string name="AgeNotExceed5">&lt;= 5 років</string>
+    <string name="AgeNotExceed5">&#8804; 5 років</string>
     <string name="Age5">= 5 років</string>
     <string name="AgeExceed5">&gt; 5 років</string>
 
-    <string name="AgeNotExceed8">&lt;= 8 років</string>
+    <string name="AgeNotExceed8">&#8804; 8 років</string>
     <string name="Age8">= 8 років</string>
     <string name="AgeExceed8">&gt; 8 років</string>
 
