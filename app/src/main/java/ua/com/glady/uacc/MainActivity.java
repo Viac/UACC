@@ -12,6 +12,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import ua.com.glady.uacc.model.vehicle.Motorcycle;
 import ua.com.glady.uacc.model.vehicle.Truck;
 import ua.com.glady.uacc.tools.ToolsView;
 
+import static android.widget.RelativeLayout.LayoutParams;
 import static ua.com.glady.uacc.tools.ToolsRes.getRawResAsString;
 
 /**
@@ -335,18 +337,27 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         else
             result = getBackwardCalcResult();
 
-        // Known bug in WebView: it doesn't reduce height after reload of content
-        // So if previous page was long enough - it will left some empty space on the bottom
-        // after reload
+        // There is a very well-known bug in WebView: it doesn't reduce height
+        // if content was reloaded. So if previous page was long enough - it will left some
+        // empty space on the bottom  after reload
         // This wasn't fixed in 4.4.4, and the problem is well known and described (see SO,
         // https://code.google.com/p/android/issues/detail?id=18726 ) and so on
-        // All the way was tested here, and all of them made unacceptable side-effects
-        // So this bug considered as the "less of evil"
+        // Few methods were tested here and one only made good result - webView destroyed
+        // before show and created on new content. In this case everything worked fine on
+        // smart and tablet with acceptable performance
+        LinearLayout panMainBase = (LinearLayout) this.findViewById(R.id.panMainBase);
+        panMainBase.removeView(webResult);
 
-        webResult.loadData(result, "text/html; charset=UTF-8", null);
+        webResult = new WebView(this);
         webResult.setVisibility(View.VISIBLE);
+        webResult.loadData(result, "text/html; charset=UTF-8", null);
         webResult.reload();
 
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+
+        lp.setMargins(4, 12, 4, 0);
+        panMainBase.addView(webResult, lp);
     }
 
     /**

@@ -72,11 +72,11 @@ public class ForwardCalc {
         template = resources.getString(R.string.ExciseDescription);
         add(resources.getString(R.string.Excise), String.format(template, etc), exciseValue);
 
-        int vat = (int) Math.round((basicPrice + impost + exciseValue) * Constants.VAT_BASE);
-        add(resources.getString(R.string.VAT), resources.getString(R.string.VATDescription), vat);
-
-        int protectionFee = (int) Math.round((basicPrice + impost + exciseValue + vat) * Constants.TEMPORARY_PROTECTION_FEE_BASE);
+        int protectionFee = (int) Math.round(basicPrice * Constants.TEMPORARY_PROTECTION_FEE_BASE);
         add(resources.getString(R.string.ProtectionImpost), resources.getString(R.string.ProtectionImpostDescription), protectionFee);
+
+        int vat = (int) Math.round((basicPrice + impost + exciseValue + protectionFee) * Constants.VAT_BASE);
+        add(resources.getString(R.string.VAT), resources.getString(R.string.VATDescription), vat);
     }
 
     /**

@@ -101,13 +101,13 @@
     <string name="BasicPrice">Базова вартіть</string>
     <string name="Impost">Мито</string>
     // to have "10% of (1)" finally
-    <string name="ImpostDescription">%1$d%% of (1)</string>
-    <string name="VAT">ПДВ</string>
-    <string name="VATDescription">20% of (1 + 2 + 3)</string>
+    <string name="ImpostDescription">%1$d%% of (1)</string>ssss
+    <string name="ProtectionImpost">Захисте мито</string>
+    <string name="ProtectionImpostDescription">5% of (1)</string>
     <string name="Excise">Акциз</string>
     <string name="ExciseDescription">Код згідно з УКТ ЗЕД: %1$s</string>
-    <string name="ProtectionImpost">Захисте мито</string>
-    <string name="ProtectionImpostDescription">5% of (1 + 2 + 3 + 4)</string>
+    <string name="VAT">ПДВ</string>
+    <string name="VATDescription">20% of (1 + 2 + 3 + 4)</string>
     <string name="CustomDuties">Всього таможених платежів</string>
     <string name="TotalPrice">Загальна вартість</string>
     <string name="Multiplier">Збільшення вартості, %%</string>

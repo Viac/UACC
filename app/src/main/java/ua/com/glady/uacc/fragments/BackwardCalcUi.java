@@ -16,7 +16,7 @@ import ua.com.glady.uacc.model.INotifyEvent;
 import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.tools.ToolsView;
 
-import static ua.com.glady.uacc.R.layout.reverse_details;
+import static ua.com.glady.uacc.R.layout.backward_calc;
 
 /**
  * This frame used to get data to run reverse calculator (in fact - final price)
@@ -42,7 +42,7 @@ public class BackwardCalcUi extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        view = inflater.inflate(reverse_details, container, false);
+        view = inflater.inflate(backward_calc, container, false);
 
         SharedPreferences sPref = getActivity().getPreferences(Context.MODE_PRIVATE);
 

@@ -102,12 +102,12 @@
     <string name="Impost">Пошлина</string>
     // to have "10% of (1)" finally
     <string name="ImpostDescription">%1$d%% of (1)</string>
-    <string name="VAT">НДС</string>
-    <string name="VATDescription">20% of (1 + 2 + 3)</string>
+    <string name="ProtectionImpost">Защитная пошлина</string>
+    <string name="ProtectionImpostDescription">5% of (1)</string>
     <string name="Excise">Акциз</string>
     <string name="ExciseDescription">Код по УКТ ВЭД: %1$s</string>
-    <string name="ProtectionImpost">Защитная пошлина</string>
-    <string name="ProtectionImpostDescription">5% of (1 + 2 + 3 + 4)</string>
+    <string name="VAT">НДС</string>
+    <string name="VATDescription">20% of (1 + 2 + 3 + 4)</string>
     <string name="CustomDuties">Всего таможенных платежей</string>
     <string name="TotalPrice">Общая стоимость</string>
     <string name="Multiplier">Увеличение стоимости, %%</string>

@@ -102,12 +102,16 @@
     <string name="Impost">Impost</string>
     // to have "10% of (1)" finally
     <string name="ImpostDescription">%1$d%% of (1)</string>
-    <string name="VAT">VAT</string>
-    <string name="VATDescription">20% of (1 + 2 + 3)</string>
     <string name="Excise">Excise</string>
-    <string name="ExciseDescription">ETC code: %1$s</string>
+
     <string name="ProtectionImpost">Protection fee</string>
-    <string name="ProtectionImpostDescription">5% of (1 + 2 + 3 + 4)</string>
+    <string name="ProtectionImpostDescription">5% of (1)</string>
+
+    <string name="ExciseDescription">ETC code: %1$s</string>
+
+    <string name="VAT">VAT</string>
+    <string name="VATDescription">20% of (1 + 2 + 3 + 4)</string>
+
     <string name="CustomDuties">Total custom duties</string>
     <string name="TotalPrice">Total price</string>
     <string name="Multiplier">Multiplier, percent</string>
