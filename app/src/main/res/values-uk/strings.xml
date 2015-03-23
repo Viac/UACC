@@ -60,14 +60,6 @@
     <string name="Other">Інше</string>
     <string name="IceEngine">Двигун із запалюванням від стиснення (дизель або напівдизель) або з іскровим запалюванням</string>
 
-    // Age categories:
-    <string name="Age">Вік</string>
-    <string name="AgeNew">Новий</string>
-    <string name="UsedNoMore5Years">не більш 5 років</string>
-    <string name="UsedMore5Years">більше 5 років</string>
-    <string name="UsedNoMore8Years">не більш 8 років</string>
-    <string name="UsedMore8Years">більш 8 років</string>
-
     // Vehicle type
     <string name="Bus">Автобус</string>
     <string name="Car">Легкова</string>
@@ -147,10 +139,16 @@
     <string name="TruckEngineTypeConflict">Цей тип двигуна застосовується лише до самоскидів для бездоріжжя</string>
 
     // Age categories in table headers
-    <string name="AgeIsNew">нові</string>
-    <string name="AgeIsNotExceed5">&lt;= 5 років</string>
-    <string name="AgeIsNotExceed8">&lt;= 8 років</string>
-    <string name="AgeIsExceed8">&gt; 8 років</string>
+    <string name="Age">Вік</string>
+    <string name="AgeNew">Новий</string>
+    <string name="AgeNotExceed5">&lt;= 5 років</string>
+    <string name="Age5">= 5 років</string>
+    <string name="AgeExceed5">&gt; 5 років</string>
+
+    <string name="AgeNotExceed8">&lt;= 8 років</string>
+    <string name="Age8">= 8 років</string>
+    <string name="AgeExceed8">&gt; 8 років</string>
+
     <string name="title_activity_exception_handle">Обробка помилок</string>
 
     // Exception handing

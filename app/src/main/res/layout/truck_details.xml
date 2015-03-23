@@ -129,20 +129,20 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/UsedNoMore5Years"
+                    android:text="@string/AgeNotExceed5"
                     android:id="@+id/rbTrackAgeLE5"
                     android:checked="true" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/UsedMore5Years"
+                    android:text="@string/AgeExceed5"
                     android:id="@+id/rbTrackG5LE8" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/UsedMore8Years"
+                    android:text="@string/AgeExceed8"
                     android:id="@+id/rbTrackAgeG8" />
             </RadioGroup>
 

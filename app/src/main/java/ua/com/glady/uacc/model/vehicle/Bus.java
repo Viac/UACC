@@ -8,6 +8,7 @@ import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.model.calculators.ForwardCalc;
 import ua.com.glady.uacc.model.ExcisesRegistry;
+import ua.com.glady.uacc.model.types.Age;
 
 import static ua.com.glady.uacc.tools.ConditionsChecker.*;
 
@@ -72,9 +73,8 @@ public class Bus extends AVehicle {
 
     @Override
     public void makeBcOutput(int finalPrice) {
-        int[] ageCategories = new int[]{Constants.AGE_0_YEARS,
-                Constants.AGE_8_YEARS - 1,
-                Constants.AGE_8_YEARS + 1};
+        int[] ageCategories = new int[]{Age.AGE_0_YEARS, Age.AGE_NOT_EXCEED_8_YEARS,
+                Age.AGE_EXCEED_8_YEARS};
 
         backwardCalc.clear();
 
@@ -117,6 +117,7 @@ public class Bus extends AVehicle {
         // By default it's 10%
         double result = 0.1;
 
+        // but for high-volume diesels it's 20%
         if (this.engine.isDiesel() && (engine.getVolume() > 5000))
             result = 0.2;
 

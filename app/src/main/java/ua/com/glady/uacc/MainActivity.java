@@ -343,7 +343,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // All the way was tested here, and all of them made unacceptable side-effects
         // So this bug considered as the "less of evil"
 
-        // webResult.loadData(result, "text/html", "charset=UTF-8");
         webResult.loadData(result, "text/html; charset=UTF-8", null);
         webResult.setVisibility(View.VISIBLE);
         webResult.reload();

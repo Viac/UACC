@@ -125,16 +125,6 @@ public abstract class AVehicle {
         return backwardCalc.getHtml(htmlTemplate);
     }
 
-    private String ageToString(int age){
-        if (age == Constants.AGE_0_YEARS)
-            return resources.getString(R.string.AgeIsNew);
-        if (age <= Constants.AGE_5_YEARS)
-            return resources.getString(R.string.AgeIsNotExceed5);
-        if (age <= Constants.AGE_8_YEARS)
-            return resources.getString(R.string.AgeIsNotExceed8);
-        return resources.getString(R.string.AgeIsExceed8);
-    }
-
     /**
      * Adds single Backward calculation output to the backward calculator
      * @param header output header
@@ -153,7 +143,8 @@ public abstract class AVehicle {
 
         if (ageCategories.length != 0) {
             for (int age : ageCategories) {
-                table.setCell(0, col, resources.getString(R.string.price) + ",</br>" + ageToString(age));
+                table.setCell(0, col, resources.getString(R.string.price) + ",</br>" +
+                        Age.getStringValue(age, resources));
                 col++;
             }
         }

@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
+import ua.com.glady.uacc.model.types.Age;
 import ua.com.glady.uacc.model.vehicle.AVehicle;
 import ua.com.glady.uacc.model.vehicle.Car;
 import ua.com.glady.uacc.tools.ToolsView;
@@ -54,11 +55,11 @@ public class CarDetailsUI extends ABaseFragmentUI implements View.OnClickListene
 
         int age = Constants.UNDEFINED;
         if (ToolsView.isChecked(view, R.id.rbCarNew))
-            age = Constants.AGE_0_YEARS;
+            age = Age.AGE_0_YEARS;
         if (ToolsView.isChecked(view, R.id.rbCarLE5))
-            age = Constants.AGE_5_YEARS - 1;
+            age = Age.AGE_NOT_EXCEED_5_YEARS;
         if (ToolsView.isChecked(view, R.id.rbCarG5))
-            age = Constants.AGE_5_YEARS + 1;
+            age = Age.AGE_EXCEED_5_YEARS;
         result.setAge(age);
 
         // defining price

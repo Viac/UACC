@@ -60,14 +60,6 @@
     <string name="Other">Другое</string>
     <string name="IceEngine">Двигатель с зажиганием от сжатия (дизель или полудизель), или двигатель с искровым зажиганием</string>
 
-    // Age categories:
-    <string name="Age">Возраст</string>
-    <string name="AgeNew">Новый</string>
-    <string name="UsedNoMore5Years">не более 5 лет</string>
-    <string name="UsedMore5Years">более 5 лет</string>
-    <string name="UsedNoMore8Years">не более 8 лет</string>
-    <string name="UsedMore8Years">более 8 лет</string>
-
     // Vehicle type
     <string name="Bus">Автобус</string>
     <string name="Car">Легковая</string>
@@ -146,14 +138,18 @@
     <string name="CaravanConflictsToSpecialDesign">В списке акцизов не может быть такой комбинации, конфликт устранен</string>
     <string name="TruckEngineTypeConflict">Этот тип двигателя может быть назначен только самосвалам для бездорожья</string>
 
-    // Age categories in table headers
-    <string name="AgeIsNew">новые</string>
-    <string name="AgeIsNotExceed5">&lt;= 5 лет</string>
-    <string name="AgeIsNotExceed8">&lt;= 8 лет</string>
-    <string name="AgeIsExceed8">&gt; 8 лет</string>
-    <string name="title_activity_exception_handle">Обработка ошибок</string>
+    <string name="Age">Возраст</string>
+    <string name="AgeNew">Новый</string>
+    <string name="AgeNotExceed5">&lt;= 5 лет</string>
+    <string name="Age5">= 5 лет</string>
+    <string name="AgeExceed5">&gt; 5 лет</string>
 
-    // Exception handing
+    <string name="AgeNotExceed8">&lt;= 8 лет</string>
+    <string name="Age8">= 8 лет</string>
+    <string name="AgeExceed8">&gt; 8 лет</string>
+
+    // Exception handing\
+    <string name="title_activity_exception_handle">Обработка ошибок</string>
     <string name="ApplicationError">Извините, произошла ошибка</string>
     <string name="ApplicationErrorExplanation">Во время выполнения программы произошла техническая ошибка. Презапустите приложение, пожалуйста.\n\nМы будем очень признательны, если вы отошлете сообщение об этой проблеме, чтобы мы могли исправить ее</string>
     <string name="ApplicationErrorSendInfo">послать сообщение об ошибке</string>

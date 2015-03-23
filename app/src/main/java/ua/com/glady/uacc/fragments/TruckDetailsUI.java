@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import ua.com.glady.uacc.R;
 import static ua.com.glady.uacc.model.Constants.*;
+
+import ua.com.glady.uacc.model.types.Age;
 import ua.com.glady.uacc.model.vehicle.AVehicle;
 import ua.com.glady.uacc.model.vehicle.Truck;
 import ua.com.glady.uacc.tools.ToolsView;
@@ -48,15 +50,14 @@ public class TruckDetailsUI extends ABaseFragmentUI implements View.OnClickListe
 
         int age = UNDEFINED;
         if (ToolsView.isChecked(view, R.id.rbTrackAgeNew))
-            age =  AGE_0_YEARS;
+            age = Age.AGE_0_YEARS;
         if (ToolsView.isChecked(view, R.id.rbTrackAgeLE5))
-            age =  AGE_5_YEARS - 1;
+            age = Age.AGE_NOT_EXCEED_5_YEARS;
         if (ToolsView.isChecked(view, R.id.rbTrackG5LE8))
-            age =  AGE_5_YEARS + 1;
+            age = Age.AGE_EXCEED_5_YEARS;
         if (ToolsView.isChecked(view, R.id.rbTrackAgeG8))
-            age =  AGE_8_YEARS + 1;
+            age = Age.AGE_EXCEED_8_YEARS;
         result.setAge(age);
-
 
         if (isChecked(view, R.id.rbTrackGrossWNotExceed5))
             result.setGrossWeight(WEIGHT_5T - 1);

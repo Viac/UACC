@@ -2,6 +2,7 @@ package ua.com.glady.uacc.fragments;
 
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
+import ua.com.glady.uacc.model.types.Age;
 import ua.com.glady.uacc.model.vehicle.AVehicle;
 import ua.com.glady.uacc.model.vehicle.Bus;
 import ua.com.glady.uacc.tools.ToolsView;
@@ -29,11 +30,11 @@ public class BusDetailsUI extends ABaseFragmentUI {
 
         int age = Constants.UNDEFINED;
         if (ToolsView.isChecked(view, R.id.rbBusNew))
-            age =  Constants.AGE_0_YEARS;
+            age =  Age.AGE_0_YEARS;
         if (ToolsView.isChecked(view, R.id.rbBusLE8))
-            age =  Constants.AGE_8_YEARS - 1;
+            age =  Age.AGE_NOT_EXCEED_8_YEARS;
         if (ToolsView.isChecked(view, R.id.rbBusG8))
-            age =  Constants.AGE_8_YEARS + 1;
+            age =  Age.AGE_EXCEED_8_YEARS;
         result.setAge(age);
 
         result.setBasicPrice(getInt(view, R.id.edBusPrice, Constants.UNDEFINED));

@@ -9,6 +9,7 @@ import ua.com.glady.uacc.model.calculators.BcOutput;
 import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.model.calculators.ForwardCalc;
 import ua.com.glady.uacc.model.ExcisesRegistry;
+import ua.com.glady.uacc.model.types.Age;
 import ua.com.glady.uacc.tools.StringTable;
 
 import static ua.com.glady.uacc.tools.ConditionsChecker.*;
@@ -154,9 +155,8 @@ public class Car extends AVehicle {
 
     @Override
     public void makeBcOutput(int finalPrice) {
-        int[] ageCategories = new int[]{Constants.AGE_0_YEARS,
-                Constants.AGE_5_YEARS - 1,
-                Constants.AGE_5_YEARS + 1};
+        int[] ageCategories = new int[]{Age.AGE_0_YEARS,
+                Age.AGE_NOT_EXCEED_5_YEARS, Age.AGE_EXCEED_5_YEARS};
 
         backwardCalc.clear();
 

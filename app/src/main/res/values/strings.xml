@@ -60,14 +60,6 @@
     <string name="Other">Other</string>
     <string name="IceEngine">compression-ignition internal combustion piston engine (diesel or semi-diesel), or with spark-ignition internal combustion piston engine</string>
 
-    // Age categories:
-    <string name="Age">Age</string>
-    <string name="AgeNew">New</string>
-    <string name="UsedNoMore5Years">up to 5</string>
-    <string name="UsedMore5Years">more than 5</string>
-    <string name="UsedNoMore8Years">up to 8</string>
-    <string name="UsedMore8Years">more than 8</string>
-
     // Vehicle type
     <string name="Bus">Bus</string>
     <string name="Car">Car</string>
@@ -146,14 +138,21 @@
     <string name="CaravanConflictsToSpecialDesign">Custom product list does not contain such combination, conflict removed</string>
     <string name="TruckEngineTypeConflict">This type of engine could be assigned for off-road use dumber only</string>
 
-    // Age categories in table headers
-    <string name="AgeIsNew">new</string>
-    <string name="AgeIsNotExceed5">age &lt;= 5</string>
-    <string name="AgeIsNotExceed8">age &lt;= 8</string>
-    <string name="AgeIsExceed8">age &gt; 8</string>
-    <string name="title_activity_exception_handle">ExceptionHandleActivity</string>
+
+    // Age categories:
+    <string name="Age">Age</string>
+
+    <string name="AgeNew">New</string>
+    <string name="AgeNotExceed5">&lt;= 5 years</string>
+    <string name="Age5">= 5 years</string>
+    <string name="AgeExceed5">&gt; 5 years</string>
+
+    <string name="AgeNotExceed8">&lt;= 8 years</string>
+    <string name="Age8">= 8 years</string>
+    <string name="AgeExceed8">&gt; 8 years</string>
 
     // Exception handing
+    <string name="title_activity_exception_handle">ExceptionHandleActivity</string>
     <string name="ApplicationError">Sorry, application error occurred</string>
     <string name="ApplicationErrorExplanation">A technical error appeared during application run. Try to restart application. \n\nWe would be very grateful for you if you let us know about this problem so we can fix it.</string>
     <string name="ApplicationErrorSendInfo">send bug report</string>

@@ -75,14 +75,14 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/UsedNoMore8Years"
+                    android:text="@string/AgeNotExceed8"
                     android:id="@+id/rbBusLE8"
                     android:checked="true" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/UsedMore8Years"
+                    android:text="@string/AgeExceed8"
                     android:id="@+id/rbBusG8" />
             </RadioGroup>
         </LinearLayout>

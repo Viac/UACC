@@ -8,6 +8,7 @@ import static ua.com.glady.uacc.model.Constants.*;
 import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.model.calculators.ForwardCalc;
 import ua.com.glady.uacc.model.ExcisesRegistry;
+import ua.com.glady.uacc.model.types.Age;
 
 import static ua.com.glady.uacc.tools.ConditionsChecker.*;
 
@@ -147,10 +148,8 @@ public class Truck extends AVehicle {
 
     @Override
     public void makeBcOutput(int finalPrice) {
-        int[] ageCategories = new int[]{AGE_0_YEARS,
-                AGE_5_YEARS - 1,
-                AGE_5_YEARS + 1,
-                AGE_8_YEARS + 1};
+        int[] ageCategories = new int[]{Age.AGE_0_YEARS,
+                Age.AGE_NOT_EXCEED_5_YEARS, Age.AGE_EXCEED_5_YEARS, Age.AGE_EXCEED_8_YEARS};
 
         backwardCalc.clear();
         boolean storedDumperState = this.isDumper;

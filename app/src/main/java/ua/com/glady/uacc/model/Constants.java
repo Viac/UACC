@@ -16,11 +16,6 @@ public class Constants {
     public static final int ENG_ELECTRIC = 2;
     public static final int ENG_OTHER = 3;
 
-    // Age categories
-    public static final int AGE_0_YEARS = 0;
-    public static final int AGE_5_YEARS = 60;
-    public static final int AGE_8_YEARS = 96;
-
     // Gross vehicle weight
     public static final int WEIGHT_5T = 5;
     public static final int WEIGHT_20T = 20;
