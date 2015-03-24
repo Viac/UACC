@@ -62,9 +62,8 @@ public class BackwardCalc {
      * @return basic price
      */
     public int getCalculatedBasicPriceWithProtectionFee(int finalPrice, double impost, int excise) {
-        double tempFeeM = Constants.TEMPORARY_PROTECTION_FEE_BASE + 1;
         double vatM = Constants.VAT_BASE + 1;
-        double result = (finalPrice / vatM - excise) / (1 + tempFeeM + impost);
+        double result = (finalPrice / vatM - excise) / (1 + Constants.TEMPORARY_PROTECTION_FEE_BASE + impost);
         return (int) Math.round(result);
     }
 
