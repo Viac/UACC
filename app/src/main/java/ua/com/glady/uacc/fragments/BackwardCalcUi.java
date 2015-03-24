@@ -4,9 +4,11 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.INotifyEvent;
 import ua.com.glady.uacc.model.calculators.BcPreferences;
+import ua.com.glady.uacc.tools.InputFilterMinMax;
 import ua.com.glady.uacc.tools.ToolsView;
 
 import static ua.com.glady.uacc.R.layout.backward_calc;
@@ -43,6 +46,11 @@ public class BackwardCalcUi extends Fragment implements View.OnClickListener {
         super.onCreateView(inflater, container, savedInstanceState);
 
         view = inflater.inflate(backward_calc, container, false);
+
+        // Set up limits for price
+        EditText ed = (EditText) view.findViewById(R.id.edReversePrice);
+        ed.setFilters(new InputFilter[]{ new InputFilterMinMax(
+                Constants.PRICE_MIN_BOUND, Constants.PRICE_MAX_BOUND)});
 
         SharedPreferences sPref = getActivity().getPreferences(Context.MODE_PRIVATE);
 

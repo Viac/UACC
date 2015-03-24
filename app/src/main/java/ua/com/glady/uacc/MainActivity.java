@@ -156,12 +156,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         scroll.requestFocus();
 
         webResult = (WebView) findViewById(R.id.webResult);
-        WebSettings settings = webResult.getSettings();
-        // to correct display of special chars (EURO, cubed, so on)
-        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        settings.setAppCacheEnabled(false);
-        settings.setDefaultTextEncodingName("utf-8");
-        settings.setDefaultFontSize(14);
 
         switchBaseFragment();
     }
@@ -352,6 +346,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         webResult.setVisibility(View.VISIBLE);
         webResult.loadData(result, "text/html; charset=UTF-8", null);
         webResult.reload();
+
+        WebSettings settings = webResult.getSettings();
+        // to correct display of special chars (EURO, cubed, so on)
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        settings.setAppCacheEnabled(false);
+        settings.setDefaultTextEncodingName("utf-8");
+        settings.setDefaultFontSize(14);
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));

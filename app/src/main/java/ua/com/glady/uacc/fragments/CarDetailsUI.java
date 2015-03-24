@@ -32,6 +32,13 @@ public class CarDetailsUI extends ABaseFragmentUI implements View.OnClickListene
     }
 
     @Override
+    protected void prepareView(){
+        super.prepareView();
+        setMinMaxLimit(R.id.edCarPrice, Constants.PRICE_MIN_BOUND, Constants.PRICE_MAX_BOUND);
+        setMinMaxLimit(R.id.edCarVolume, Constants.ENGINE_MIN_BOUND, Constants.ENGINE_MAX_BOUND);
+    }
+
+    @Override
     public AVehicle getVehicle() {
         Car result = new Car(sPref, res, excisesRegistry);
 

@@ -41,4 +41,11 @@ public class BusDetailsUI extends ABaseFragmentUI {
 
         return result;
     }
+
+    @Override
+    protected void prepareView(){
+        super.prepareView();
+        setMinMaxLimit(R.id.edBusPrice, Constants.PRICE_MIN_BOUND, Constants.PRICE_MAX_BOUND);
+        setMinMaxLimit(R.id.edBusVolume, Constants.ENGINE_MIN_BOUND, Constants.ENGINE_MAX_BOUND);
+    }
 }

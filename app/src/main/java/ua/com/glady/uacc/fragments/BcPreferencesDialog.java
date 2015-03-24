@@ -102,7 +102,7 @@ public class BcPreferencesDialog extends DialogFragment  {
 
         guiValue = ToolsView.getInt(view, R.id.edPrefMinEngine, Constants.UNDEFINED);
         if (guiValue != Constants.UNDEFINED) {
-            if (guiValue > Constants.ENGINE_VOLUME_LIMIT) {
+            if (guiValue > Constants.ENGINE_MAX_BOUND) {
                 msg = getResources().getString(R.string.erpWarningEngineVolumeTooLarge);
                 Toast.makeText(view.getContext(), msg, Toast.LENGTH_LONG).show();
                 return;
@@ -112,7 +112,7 @@ public class BcPreferencesDialog extends DialogFragment  {
 
         guiValue = ToolsView.getInt(view, R.id.edPrefMaxEngine, Constants.UNDEFINED);
         if (guiValue != Constants.UNDEFINED) {
-            if (guiValue > Constants.ENGINE_VOLUME_LIMIT) {
+            if (guiValue > Constants.ENGINE_MAX_BOUND) {
                 msg = getResources().getString(R.string.erpWarningEngineVolumeTooLarge);
                 Toast.makeText(view.getContext(), msg, Toast.LENGTH_LONG).show();
                 return;

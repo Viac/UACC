@@ -9,6 +9,7 @@ import android.widget.Toast;
 import ua.com.glady.uacc.R;
 import static ua.com.glady.uacc.model.Constants.*;
 
+import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.types.Age;
 import ua.com.glady.uacc.model.vehicle.AVehicle;
 import ua.com.glady.uacc.model.vehicle.Truck;
@@ -29,6 +30,13 @@ public class TruckDetailsUI extends ABaseFragmentUI implements View.OnClickListe
         super.onStart();
         RadioButton rbEngineOther = (RadioButton) view.findViewById(R.id.rbTruckEngineOther);
         rbEngineOther.setOnClickListener(this);
+    }
+
+    @Override
+    protected void prepareView(){
+        super.prepareView();
+        setMinMaxLimit(R.id.edTrackBasicPrice, Constants.PRICE_MIN_BOUND, Constants.PRICE_MAX_BOUND);
+        setMinMaxLimit(R.id.edTrackVolume, Constants.ENGINE_MIN_BOUND, Constants.ENGINE_MAX_BOUND);
     }
 
     @Override

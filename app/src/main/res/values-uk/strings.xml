@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">UACC</string>
+    <string name="app_name">Митниця.UA</string>
     <string name="action_settings">Налаштування</string>
 
     // Backward calculation UI

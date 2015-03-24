@@ -32,4 +32,11 @@ public class BikeDetailsUI extends ABaseFragmentUI {
 
         return result;
     }
+
+    @Override
+    protected void prepareView(){
+        super.prepareView();
+        setMinMaxLimit(R.id.edBikePrice, Constants.PRICE_MIN_BOUND, Constants.PRICE_MAX_BOUND);
+        setMinMaxLimit(R.id.edBikeVolume, Constants.ENGINE_MIN_BOUND, Constants.ENGINE_MAX_BOUND);
+    }
 }

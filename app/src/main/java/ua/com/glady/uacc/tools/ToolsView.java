@@ -3,6 +3,8 @@ package ua.com.glady.uacc.tools;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.MailTo;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -53,6 +55,15 @@ public class ToolsView {
             return defaultValue;
     }
 
+    public static Intent newEmailIntent(Context context, String address, String subject, String body, String cc) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] { address });
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_CC, cc);
+        intent.setType("message/rfc822");
+        return intent;
+    }
 
     /**
      * Shows popup html viewer
@@ -60,7 +71,7 @@ public class ToolsView {
      * @param title title of the popup
      * @param html content of the web view
      */
-    public static void showPopupWebView(Context context, String title, String html){
+    public static void showPopupWebView(final Context context, String title, String html){
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
         alert.setTitle(title);
 
@@ -69,7 +80,16 @@ public class ToolsView {
         wv.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+                if(url.startsWith("mailto:")){
+                    MailTo mt = MailTo.parse(url);
+                    Intent i = newEmailIntent(context, mt.getTo(), mt.getSubject(), mt.getBody(), mt.getCc());
+                    context.startActivity(i);
+                    view.reload();
+                    return true;
+                }
+                else{
+                    view.loadUrl(url);
+                }
                 return true;
             }
         });
