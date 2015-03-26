@@ -92,7 +92,7 @@
                 android:layout_gravity="center_vertical">
 
                 <Button
-                    android:layout_width="140dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Calculate"
                     android:id="@+id/btCalculate"
@@ -101,10 +101,11 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     style="@style/button_text"
-                    android:background="@drawable/blue_button" />
+                    android:background="@drawable/blue_button"
+                    android:minWidth="150dp" />
 
                 <Button
-                    android:layout_width="140dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/SwitchMode"
                     android:id="@+id/btSwitchMode"
@@ -112,7 +113,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     style="@style/button_text"
-                    android:background="@drawable/blue_button" />
+                    android:background="@drawable/blue_button"
+                    android:minWidth="150dp" />
             </LinearLayout>
 
             <WebView

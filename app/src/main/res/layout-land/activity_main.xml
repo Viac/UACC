@@ -100,7 +100,8 @@
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="12dp"
                         style="@style/button_text"
-                        android:background="@drawable/blue_button" />
+                        android:background="@drawable/blue_button"
+                        android:minWidth="150dp" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -111,7 +112,8 @@
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="12dp"
                         style="@style/button_text"
-                        android:background="@drawable/blue_button" />
+                        android:background="@drawable/blue_button"
+                        android:minWidth="150dp" />
                 </LinearLayout>
 
                 <WebView

@@ -24,7 +24,7 @@
 
     // Common GUI
     <string name="cancel">Отмена</string>
-    <string name="Calculate">Расчитать</string>
+    <string name="Calculate">Рассчитать</string>
     <string name="Close">Закрыть</string>
     <string name="SwitchMode">Режим</string>
     <string name="Preferences">Настройки</string>

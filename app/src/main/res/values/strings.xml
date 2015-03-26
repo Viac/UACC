@@ -24,7 +24,7 @@
 
     // Common GUI
     <string name="cancel">Cancel</string>
-    <string name="Calculate">Get result</string>
+    <string name="Calculate">Calculate</string>
     <string name="Close">Close</string>
     <string name="SwitchMode">Switch mode</string>
     <string name="Preferences">Preferences</string>
