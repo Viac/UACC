@@ -1,7 +1,7 @@
 package ua.com.glady.uacc;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
@@ -9,24 +9,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 
-import ua.com.glady.uacc.fragments.ABaseFragmentUI;
-import ua.com.glady.uacc.fragments.BackwardCalcUi;
-import ua.com.glady.uacc.fragments.BikeDetailsUI;
-import ua.com.glady.uacc.fragments.BusDetailsUI;
-import ua.com.glady.uacc.fragments.CarDetailsUI;
-import ua.com.glady.uacc.fragments.TruckDetailsUI;
-import ua.com.glady.uacc.model.Constants;
-import ua.com.glady.uacc.model.calculators.BcPreferences;
+import ua.com.glady.uacc.guis.BackwardCalcUi;
+import ua.com.glady.uacc.guis.BusDataUi;
+import ua.com.glady.uacc.guis.CarDataUi;
+import ua.com.glady.uacc.guis.MotorcycleDataUi;
+import ua.com.glady.uacc.guis.PreferencesDialog;
+import ua.com.glady.uacc.guis.TruckDataUi;
+import ua.com.glady.uacc.guis.VehicleDataUi;
+import ua.com.glady.uacc.main_menu.IMenuItemSelectedListener;
+import ua.com.glady.uacc.main_menu.MainMenu;
 import ua.com.glady.uacc.model.ExcisesRegistry;
+import ua.com.glady.uacc.model.INotifyEvent;
+import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.model.vehicle.AVehicle;
 import ua.com.glady.uacc.model.vehicle.Bus;
 import ua.com.glady.uacc.model.vehicle.Car;
@@ -38,45 +42,34 @@ import static android.widget.RelativeLayout.LayoutParams;
 import static ua.com.glady.uacc.tools.ToolsRes.getRawResAsString;
 
 /**
- * Whole application runs on single activity. Some fragments used to provide additional
- * inputs.
+ * Primary application activity
  *
  * Created by Slava on 19.03.2015.
  */
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
-    // UIs with forward calculation details, all of them is subclasses for aBaseFragmentUI
-    private CarDetailsUI carDetailsUI;
-    private BusDetailsUI busDetailsUI;
-    private TruckDetailsUI truckDetailsUI;
-    private BikeDetailsUI motorcycleDetailsUI;
+    private class VehiclePage{
+        String caption;
+        String description;
+        VehicleDataUi dataUI;
+    }
 
-    // Object instanced with concrete subclass
-    private ABaseFragmentUI aBaseFragmentUI;
+    private VehiclePage[] vehiclePages;
 
-    private ImageButton btCar;
-    private ImageButton btBus;
-    private ImageButton btTruck;
-    private ImageButton btMotorcycle;
+    // Active vehicle UI mode (constant above)
+    private int activePageIndex;
 
     private BackwardCalcUi backwardCalcUi;
 
-    // Used to provide icon IDs for the buttons
-    private final int[][] buttons = {
-            {R.id.btCar, R.id.btBus, R.id.btTruck, R.id.btMotorcycle},
-            {R.drawable.car_gray, R.drawable.bus_gray, R.drawable.truck_gray, R.drawable.motorcycle_gray},
-            {R.drawable.car_yellow, R.drawable.bus_yellow, R.drawable.truck_yellow, R.drawable.motorcycle_yellow},
-            {R.drawable.car_blue, R.drawable.bus_blue, R.drawable.truck_blue, R.drawable.motorcycle_blue}};
-
     private WebView webResult;
+    private ViewGroup panVehicleData;
 
-    // index of currently activated vehicle
-    private int activeIndex;
     // defines mode
     private boolean isForwardCalculation;
 
     private SharedPreferences sPref;
     private Resources res;
+
     // singleton object
     private ExcisesRegistry excisesRegistry;
 
@@ -103,28 +96,23 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
-    /**
-     * Extracted method, all details UIs used own bundles to get layout.
-     * @param destination concrete instance of ABaseFragmentUI
-     * @param layoutId resource id
-     */
-    void assignFragmentLayoutId(ABaseFragmentUI destination, int layoutId){
-        Bundle args = new Bundle();
-        args.putInt(Constants.LAYOUT_ID_TAG, layoutId);
-        destination.setArguments(args);
+    private VehicleType getCurrentVehicleType(){
+        return VehicleType.values()[activePageIndex];
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         setContentView(R.layout.activity_main);
 
-        activeIndex = 0;
+        // be default we show cars
+        activePageIndex = 0;
+
         isForwardCalculation = true;
 
         if (savedInstanceState != null) {
-            activeIndex = savedInstanceState.getInt(STATE_ACTIVE_INDEX, 0);
+            activePageIndex = savedInstanceState.getInt(STATE_ACTIVE_INDEX, 0);
             isForwardCalculation = savedInstanceState.getBoolean(STATE_FORWARD_MODE, true);
         }
 
@@ -133,128 +121,112 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         res = this.getResources();
         createExcises();
 
-        btCar = (ImageButton) findViewById(R.id.btCar);
-        btBus = (ImageButton) findViewById(R.id.btBus);
-        btTruck = (ImageButton) findViewById(R.id.btTruck);
-        btMotorcycle = (ImageButton) findViewById(R.id.btMotorcycle);
+        backwardCalcUi = new BackwardCalcUi(this, getCurrentVehicleType());
 
-        carDetailsUI = new CarDetailsUI();
-        assignFragmentLayoutId(carDetailsUI, R.layout.car_details);
-
-        busDetailsUI = new BusDetailsUI();
-        assignFragmentLayoutId(busDetailsUI, R.layout.bus_details);
-
-        truckDetailsUI = new TruckDetailsUI();
-        assignFragmentLayoutId(truckDetailsUI, R.layout.truck_details);
-
-        motorcycleDetailsUI = new BikeDetailsUI();
-        assignFragmentLayoutId(motorcycleDetailsUI, R.layout.bike_details);
-
-        backwardCalcUi = new BackwardCalcUi();
+        initializeVehiclePages();
 
         ScrollView scroll = (ScrollView) findViewById(R.id.scrollView);
         scroll.requestFocus();
 
         webResult = (WebView) findViewById(R.id.webResult);
+        panVehicleData = (ViewGroup) findViewById(R.id.panVehicleData);
 
-        switchBaseFragment();
+        updateView();
     }
 
     /**
-     * Makes all buttons style 'inactive'
+     * In this activity we 'emulate' regular tab UI, since some of the data on the screen is
+     * not so clearly different as tab assumed.
+     *
+     * So here we initialize these pages
      */
-    private void clearButtonsHighlight(){
-        btCar.setBackgroundResource(R.drawable.car_gray);
-        btBus.setBackgroundResource(R.drawable.bus_gray);
-        btTruck.setBackgroundResource(R.drawable.truck_gray);
-        btMotorcycle.setBackgroundResource(R.drawable.motorcycle_gray);
+    private void initializeVehiclePages() {
+
+        vehiclePages = new VehiclePage[4];
+
+        // Initializing cars
+        VehiclePage pageCar = new VehiclePage();
+        pageCar.caption = getString(R.string.Car);
+        pageCar.description = getString(R.string.CarDescription);
+        pageCar.dataUI =  new CarDataUi(this, excisesRegistry);
+        vehiclePages[0] = pageCar;
+
+        // Initializing buses
+        VehiclePage pageBus = new VehiclePage();
+        pageBus.caption = getString(R.string.Bus);
+        pageBus.description = getString(R.string.BusDescription);
+        pageBus.dataUI =  new BusDataUi(this, excisesRegistry);
+        vehiclePages[1] = pageBus;
+
+        // Initializing trucks
+        VehiclePage pageTruck = new VehiclePage();
+        pageTruck.caption = getString(R.string.Truck);
+        pageTruck.description = getString(R.string.TruckDescription);
+        pageTruck.dataUI =  new TruckDataUi(this, excisesRegistry);
+        vehiclePages[2] = pageTruck;
+
+        // Initializing motorcycles
+        VehiclePage pageMotorcycle = new VehiclePage();
+        pageMotorcycle.caption = getString(R.string.Motorcycle);
+        pageMotorcycle.description = getString(R.string.MotorcycleDescription);
+        pageMotorcycle.dataUI =  new MotorcycleDataUi(this, excisesRegistry);
+        vehiclePages[3] = pageMotorcycle;
     }
+
 
     /**
      * Invalidates main UI to set up active vehicle details
      */
     private void updateView(){
-        clearButtonsHighlight();
-        ImageButton activeButton = (ImageButton) findViewById(buttons[0][activeIndex]);
-        if (isForwardCalculation)
-            activeButton.setBackgroundResource(buttons[2][activeIndex]);
-        else
-            activeButton.setBackgroundResource(buttons[3][activeIndex]);
+
+        TextView tvVehicleType = (TextView) this.findViewById(R.id.tvVehicleType);
+        tvVehicleType.setText(vehiclePages[activePageIndex].caption);
+
+        TextView tvVehicleTypeDescription = (TextView) this.findViewById(R.id.tvVehicleTypeDescription);
+        tvVehicleTypeDescription.setText(vehiclePages[activePageIndex].description);
+
         showActiveFragment();
-        webResult.setVisibility(View.INVISIBLE);
+
+        webResult.setVisibility(View.GONE);
 
         ScrollView scroll = (ScrollView) findViewById(R.id.scrollView);
         scroll.scrollTo(0, 0);
+
+        if (!this.isForwardCalculation)
+            updateBcPreferences();
     }
 
     /**
      * Switches UI to active vehicle type
      */
     private void showActiveFragment() {
-        FragmentManager fm = this.getFragmentManager();
-        FragmentTransaction ftr = fm.beginTransaction();
+
+        panVehicleData.removeAllViews();
 
         if (this.isForwardCalculation) {
-            switchBaseFragment();
-            ftr.replace(R.id.lDetails, aBaseFragmentUI);
+            panVehicleData.addView(vehiclePages[activePageIndex].dataUI);
         } else {
-            BcPreferences bcPreferences = getActiveVehicle().getBcPreferences();
-            if (!backwardCalcUi.isVisible()) {
-                Bundle args = new Bundle();
-                args.putInt("minVolume", bcPreferences.minVolume);
-                args.putInt("maxVolume", bcPreferences.maxVolume);
-                args.putInt("stepVolume", bcPreferences.stepVolume);
-                args.putString("minVolumeKey", bcPreferences.minVolumeKey);
-                args.putString("maxVolumeKey", bcPreferences.maxVolumeKey);
-                args.putString("stepVolumeKey", bcPreferences.stepVolumeKey);
-                backwardCalcUi.setArguments(args);
-                ftr.replace(R.id.lDetails, backwardCalcUi);
-            }
-            else {
-                backwardCalcUi.setBcPreferences(bcPreferences);
-                backwardCalcUi.invalidatePreferencesInfo();
-            }
+            panVehicleData.addView(this.backwardCalcUi);
+            backwardCalcUi.setVehicleType(VehicleType.values()[activePageIndex]);
         }
-        ftr.commit();
     }
 
-    /**
-     * Assigns baseFragment object depending on current active index
-     */
-    private void switchBaseFragment() {
-        switch (activeIndex) {
-            case 0:
-                aBaseFragmentUI = carDetailsUI;
-                break;
-            case 1:
-                aBaseFragmentUI = busDetailsUI;
-                break;
-            case 2:
-                aBaseFragmentUI = truckDetailsUI;
-                break;
-            case 3:
-                aBaseFragmentUI = motorcycleDetailsUI;
-                break;
-            default:
-                throw new IllegalArgumentException(getString(R.string.errLayoutNotAssigned));
-        }
-    }
 
     /**
      * @return concrete Vehicle object (subtype depends on active UI)
      */
     private AVehicle getActiveVehicle() {
         if (isForwardCalculation)
-            return aBaseFragmentUI.getVehicle();
-        else switch (activeIndex) {
+            return vehiclePages[activePageIndex].dataUI.getVehicle();
+        else switch (activePageIndex) {
             case 0:
-                return new Car(sPref, res, excisesRegistry);
+                return new Car(this, excisesRegistry);
             case 1:
-                return new Bus(sPref, res, excisesRegistry);
+                return new Bus(this, excisesRegistry);
             case 2:
-                return new Truck(sPref, res, excisesRegistry);
+                return new Truck(this, excisesRegistry);
             case 3:
-                return new Motorcycle(sPref, res, excisesRegistry);
+                return new Motorcycle(this, excisesRegistry);
             default:
                 throw new IllegalArgumentException(getString(R.string.errLayoutNotAssigned));
         }
@@ -297,6 +269,41 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+    private void updateBcPreferences(){
+        backwardCalcUi.updatePreferencesText();
+    }
+
+    private void showPreferences(){
+        PreferencesDialog preferences = new PreferencesDialog(this, getCurrentVehicleType());
+        preferences.setOnSave(new INotifyEvent() {
+            @Override
+            public void onEvent() {
+                updateBcPreferences();
+            }
+        });
+        preferences.show();
+    }
+
+    IMenuItemSelectedListener onMenuItemSelected = new IMenuItemSelectedListener(){
+
+        @Override
+        public void menuItemSelected(int position) {
+
+            if ((position >= 0) && (position <= 3)){
+                activePageIndex = position;
+                updateView();
+            }
+
+            if (position == 4) {
+                showPreferences();
+            }
+
+            if (position == 5) {
+                showHelp();
+            }
+        }
+    };
+
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btCalculate){
@@ -304,20 +311,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             return;
         }
         if (v.getId() == R.id.btSwitchMode){
-            // Duplicates touch on certain button to switch calculation mode
-            // between forward and backward calculation
-            onClick(findViewById(buttons[0][activeIndex]));
+            isForwardCalculation = !isForwardCalculation;
+            updateView();
             return;
         }
-        for (int i = 0; i < buttons[0].length; i++){
-            if (v.getId() == buttons[0][i]){
-                if (activeIndex == i)
-                    isForwardCalculation = !isForwardCalculation;
-                else
-                    activeIndex = i;
-            }
+        if ((v.getId() == R.id.btVehicleType) || (v.getId() == R.id.llVehicleTitle) ||
+                (v.getId() == R.id.tvVehicleType) || (v.getId() == R.id.tvVehicleTypeDescription)){
+            MainMenu menu = new MainMenu();
+            menu.show(this, onMenuItemSelected);
         }
-        updateView();
+
     }
 
     /**
@@ -339,8 +342,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // Few methods were tested here and one only made good result - webView destroyed
         // before show and created on new content. In this case everything worked fine on
         // smart and tablet with acceptable performance
-        LinearLayout panMainBase = (LinearLayout) this.findViewById(R.id.panMainBase);
-        panMainBase.removeView(webResult);
+        LinearLayout panScroll = (LinearLayout) this.findViewById(R.id.panScroll);
+        panScroll.removeView(webResult);
 
         webResult = new WebView(this);
         webResult.setVisibility(View.VISIBLE);
@@ -358,7 +361,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         lp.setMargins(4, 12, 4, 0);
-        panMainBase.addView(webResult, lp);
+        panScroll.addView(webResult, lp);
     }
 
     /**
@@ -391,7 +394,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save the user's current game state
-        savedInstanceState.putInt(STATE_ACTIVE_INDEX, activeIndex);
+        savedInstanceState.putInt(STATE_ACTIVE_INDEX, activePageIndex);
         savedInstanceState.putBoolean(STATE_FORWARD_MODE, isForwardCalculation);
 
         // Always call the superclass so it can save the view hierarchy state

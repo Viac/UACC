@@ -8,15 +8,17 @@
     <string name="BackwardCalcHeader">Backward calculation</string>
     <string name="BackwardCalcInfo">Here you can calculate max sell price on the vehicle, based on target final price in Ukraine</string>
     <string name="BackwardCalcEditPrompt">Enter final price in Ukraine,(€):</string>
-    <string name="BackwardCalcPreferencesTemplate">Engine range: %1$d-%2$d, step %3$d cm³</string>
+    <string name="BackwardCalcPreferencesTemplate">Engine range:\n%1$d-%2$d cm³, step %3$d cm³</string>
+    <string name="ChangeIt">Change it</string>
 
     // Engine range preferences
     <string name="erpTitle">Engine range preferences</string>
     <string name="erpMessage">This settings will be applied only for current vehicle type</string>
     <string name="erpApply">Apply</string>
-    <string name="erpMin">Min engine:</string>
-    <string name="erpMax">Max engine:</string>
-    <string name="erpStep">Step:</string>
+    <string name="erpMin">Min engine</string>
+    <string name="erpMax">Max engine</string>
+    <string name="erpStep">Step</string>
+    <string name="erpDefault">Default</string>
     <string name="erpWarningWrongRange">Please set max value greater than min value</string>
     <string name="erpWarningWrongStep">Please define engine step value</string>
     <string name="erpWarningEngineVolumeTooLarge">Engine volume too large, upper limit is 20000</string>
@@ -57,6 +59,7 @@
     // Data types
 
     // Engine types:
+    <string name="VehicleType">Type</string>
     <string name="Gasoline">Gasoline</string>
     <string name="Diesel">Diesel</string>
     <string name="Electric">Electric</string>
@@ -67,10 +70,21 @@
     <string name="Bus">Bus</string>
     <string name="Car">Car</string>
     <string name="Caravan">Caravan</string>
-    <string name="SpecialDesign">Snowmobile, etc.</string>
+    <string name="SpecialPurposeLine1">This vehicle has a special design</string>
+    <string name="SpecialPurposeLine2">(Caravan / snowmobile / golf car / etc.)</string>
+    <string name="SpecialPurposeSnowGolf">Snowmobile, Golf car or etc.</string>
+    <string name="SpecialPurposeCaravan">Caravan</string>
+    <string name="SpecialPurposePrompt">Select vehicle purpose</string>
+    <string name="Clear">Clear</string>
     <string name="Truck">Truck</string>
     <string name="Dumper">Dumper intended for off-road usage</string>
     <string name="Motorcycle">Motorcycle</string>
+
+    // Vehicle type description
+    <string name="BusDescription">BusDescription</string>
+    <string name="CarDescription">CarDescription</string>
+    <string name="TruckDescription">TruckDescription</string>
+    <string name="MotorcycleDescription">MotorcycleDescription</string>
 
     // Backward calculation motorcycle
     <string name="FcMotorcycleRegularEngineDescription">Motorcycles (including mopeds) and cycles fitted with an auxiliary motor. Code: 8711 10 ~ 8711 50</string>
@@ -165,5 +179,9 @@
     <string name="title_activity_send_exception">SendExceptionActivity</string>
 
     <string name="hello_world">Hello world!</string>
+
+    <string name="TextStubShort">Some short text</string>
+    <string name="TextStubMedium">Some long text: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="TextStubLong">Some long text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tortor in lorem dictum auctor quis a enim.</string>
 
 </resources>

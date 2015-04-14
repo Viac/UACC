@@ -1,5 +1,6 @@
 package ua.com.glady.uacc.model.types;
 
+import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
 
 /**
@@ -14,6 +15,10 @@ public class Engine {
     }
 
     private int type = Constants.UNDEFINED;
+
+    public int getType() {
+        return type;
+    }
 
     public int getVolume() {
         return volume;
@@ -43,6 +48,20 @@ public class Engine {
 
     public boolean isOther(){
         return (type == Constants.ENG_OTHER);
+    }
+
+    public static int getNameResId(int type){
+        switch (type) {
+            case Constants.ENG_GASOLINE:
+                return R.string.Gasoline;
+            case Constants.ENG_DIESEL:
+                return R.string.Diesel;
+            case Constants.ENG_ELECTRIC:
+                return R.string.Electric;
+            case Constants.ENG_OTHER:
+                return R.string.Other;
+        }
+        return -1;
     }
 
 }

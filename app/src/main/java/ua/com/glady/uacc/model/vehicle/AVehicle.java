@@ -1,16 +1,16 @@
 package ua.com.glady.uacc.model.vehicle;
 
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.content.Context;
 
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.calculators.BackwardCalc;
 import ua.com.glady.uacc.model.calculators.BcOutput;
-import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.model.ExcisesRegistry;
+import ua.com.glady.uacc.model.calculators.UaccPreferences;
 import ua.com.glady.uacc.model.types.Age;
 import ua.com.glady.uacc.model.types.Engine;
+import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.tools.StringTable;
 
 import static ua.com.glady.uacc.tools.ToolsStr.getMoneyStr;
@@ -25,16 +25,14 @@ import static ua.com.glady.uacc.tools.ToolsStr.getMoneyStr;
 public abstract class AVehicle {
 
     // Required external resources
+    Context context;
 
-    // Provides localized texts
-    final Resources resources;
-    // Stores backward calculation preferences (own for each subclass)
-    final SharedPreferences sharedPreferences;
     // Stores excises base registry
     final ExcisesRegistry excisesRegistry;
 
-
     // Own object fields
+
+    protected VehicleType vehicleType;
 
     // See definition of terms
     int basicPrice;
@@ -45,30 +43,20 @@ public abstract class AVehicle {
 
     // Calculators and preferences (See definition of terms)
     final BackwardCalc backwardCalc;
-    BcPreferences bcPreferences;
 
     /**
      * Abstract class constructor.
-     * @param sharedPreferences - need to read data for subclasses preferences
-     * @param resources - source of localized strings
+     * @param context - to get localized text and preferences
      * @param excisesRegistry - excises directory
      */
-    AVehicle(SharedPreferences sharedPreferences, Resources resources,
-             ExcisesRegistry excisesRegistry) {
-        this.sharedPreferences = sharedPreferences;
-        this.resources = resources;
+    AVehicle(Context context, ExcisesRegistry excisesRegistry) {
+        this.context = context;
         this.excisesRegistry = excisesRegistry;
 
         engine = new Engine();
         age = new Age();
 
         backwardCalc = new BackwardCalc();
-        // Each subclass has own preferences
-        initializeBcPreferences();
-    }
-
-    public BcPreferences getBcPreferences() {
-        return bcPreferences;
     }
 
     public void setBasicPrice(int basicPrice) {
@@ -86,8 +74,6 @@ public abstract class AVehicle {
     public Engine getEngine() {
         return engine;
     }
-
-    protected abstract void initializeBcPreferences();
 
     public abstract void makeBcOutput(int finalPrice);
 
@@ -125,6 +111,11 @@ public abstract class AVehicle {
         return backwardCalc.getHtml(htmlTemplate);
     }
 
+    protected final UaccPreferences.VehiclePreferences getVehiclePreferences(){
+        UaccPreferences preferences = new UaccPreferences(context, this.vehicleType);
+        return preferences.getVehiclePreferences();
+    }
+
     /**
      * Adds single Backward calculation output to the backward calculator
      * @param header output header
@@ -138,24 +129,25 @@ public abstract class AVehicle {
         StringTable table = out.getTable();
 
         // Headers
-        table.setCell(0, 0, resources.getString(R.string.volume_cm3));
+        table.setCell(0, 0, context.getString(R.string.volume_cm3));
         int col = 1;
 
         if (ageCategories.length != 0) {
             for (int age : ageCategories) {
-                table.setCell(0, col, resources.getString(R.string.price) + ",</br>" +
-                        Age.getStringValue(age, resources));
+                table.setCell(0, col, context.getString(R.string.price) + ",</br>" +
+                        Age.getStringValue(age, context.getResources()));
                 col++;
             }
         }
         else {
-            table.setCell(0, col, resources.getString(R.string.price));
+            table.setCell(0, col, context.getString(R.string.price));
         }
 
         // data, cols count depends on ageCategories array which has own value in each subclass
         int row = 1;
 
-        for (int volume = bcPreferences.minVolume; volume <= bcPreferences.maxVolume; volume += bcPreferences.stepVolume) {
+        UaccPreferences.VehiclePreferences preferences = getVehiclePreferences();
+        for (int volume = preferences.lowVolume; volume <= preferences.highVolume; volume += preferences.stepVolume) {
             engine.setVolume(volume);
             table.setCell(row, 0, String.valueOf(volume));
             col = 1;

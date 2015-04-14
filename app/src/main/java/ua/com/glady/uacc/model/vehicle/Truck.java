@@ -1,14 +1,13 @@
 package ua.com.glady.uacc.model.vehicle;
 
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.content.Context;
 
 import ua.com.glady.uacc.R;
 import static ua.com.glady.uacc.model.Constants.*;
-import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.model.calculators.ForwardCalc;
 import ua.com.glady.uacc.model.ExcisesRegistry;
 import ua.com.glady.uacc.model.types.Age;
+import ua.com.glady.uacc.model.types.VehicleType;
 
 import static ua.com.glady.uacc.tools.ConditionsChecker.*;
 
@@ -25,15 +24,9 @@ public class Truck extends AVehicle {
     // Defines gross weight, tonnes (see terms definition)
     private int grossWeight;
 
-    /**
-     * Abstract class constructor.
-     *
-     * @param sharedPreferences - need to read data for subclasses preferences
-     * @param resources         - source of localized strings
-     * @param excisesRegistry           - excises directory
-     */
-    public Truck(SharedPreferences sharedPreferences, Resources resources, ExcisesRegistry excisesRegistry) {
-        super(sharedPreferences, resources, excisesRegistry);
+    public Truck(Context context, ExcisesRegistry excisesRegistry) {
+        super(context, excisesRegistry);
+        vehicleType = VehicleType.Truck;
         isDumper = false;
         grossWeight = UNDEFINED;
     }
@@ -159,41 +152,35 @@ public class Truck extends AVehicle {
 
         engine.setType(ENG_DIESEL);
         this.grossWeight = WEIGHT_5T - 1;
-        addBcOutput(resources.getString(R.string.Truck) + ", " + resources.getString(R.string.Diesel),
-                resources.getString(R.string.Truck_GrossWeight_NotExceed5),
+        addBcOutput(context.getString(R.string.Truck) + ", " + context.getString(R.string.Diesel),
+                context.getString(R.string.Truck_GrossWeight_NotExceed5),
                 ageCategories, finalPrice);
 
         this.grossWeight = WEIGHT_5T + 1;
-        addBcOutput("", resources.getString(R.string.Truck_GrossWeight_NotExceed20), ageCategories, finalPrice);
+        addBcOutput("", context.getString(R.string.Truck_GrossWeight_NotExceed20), ageCategories, finalPrice);
 
         this.grossWeight = WEIGHT_20T + 1;
-        addBcOutput("", resources.getString(R.string.Truck_GrossWeight_Exceed20), ageCategories, finalPrice);
+        addBcOutput("", context.getString(R.string.Truck_GrossWeight_Exceed20), ageCategories, finalPrice);
 
 
         engine.setType(ENG_GASOLINE);
         this.grossWeight = WEIGHT_5T - 1;
-        addBcOutput(resources.getString(R.string.Truck) + ", " + resources.getString(R.string.Gasoline),
-                resources.getString(R.string.Truck_GrossWeight_NotExceed5),
+        addBcOutput(context.getString(R.string.Truck) + ", " + context.getString(R.string.Gasoline),
+                context.getString(R.string.Truck_GrossWeight_NotExceed5),
                 ageCategories, finalPrice);
 
         this.grossWeight = WEIGHT_5T + 1;
-        addBcOutput("", resources.getString(R.string.Truck_GrossWeight_Exceed5), ageCategories, finalPrice);
+        addBcOutput("", context.getString(R.string.Truck_GrossWeight_Exceed5), ageCategories, finalPrice);
 
         // Both diesel and gasoline engined uses same excise, so we don't need to add both
         this.isDumper = true;
         engine.setType(ENG_GASOLINE);
-        addBcOutput(resources.getString(R.string.Code_8704_10_10_10_Caption),
-                resources.getString(R.string.Code_8704_10_10_10),
+        addBcOutput(context.getString(R.string.Code_8704_10_10_10_Caption),
+                context.getString(R.string.Code_8704_10_10_10),
                 ageCategories, finalPrice);
 
         this.isDumper = storedDumperState;
         this.grossWeight = storedGrossWeight;
-    }
-
-    @Override
-    public void initializeBcPreferences() {
-        bcPreferences = new BcPreferences(sharedPreferences, 2500, 8500, 250,
-                "RcTruckLowVolume", "RcTruckHighVolume", "RcTruckStepVolume");
     }
 
     @Override
@@ -205,8 +192,8 @@ public class Truck extends AVehicle {
     @Override
     public String getForwardCalcHtml(String htmlTemplate) {
         ForwardCalc fc = new ForwardCalc();
-        fc.calculate(basicPrice, getExcise(), getImpost(), getEtc(), resources);
-        return fc.getHtml(resources, htmlTemplate, basicPrice);
+        fc.calculate(basicPrice, getExcise(), getImpost(), getEtc(), context.getResources());
+        return fc.getHtml(context.getResources(), htmlTemplate, basicPrice);
     }
 
     /**

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="aqua_red">#DB073D</color>
+    <color name="aqua_white">#EDE5F4</color>
+    <color name="aqua_light">#8EC7D2</color>
+    <color name="aqua_medium">#0D6986</color>
+    <color name="aqua_dark">#07485B</color>
+    <color name="aqua_gray">#999999</color>
+</resources>

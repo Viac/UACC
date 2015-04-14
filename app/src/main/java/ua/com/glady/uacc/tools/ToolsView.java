@@ -10,6 +10,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Checkable;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import ua.com.glady.uacc.R;
 
@@ -102,6 +103,21 @@ public class ToolsView {
             }
         });
         alert.show();
+    }
+
+    /**
+     * Creates line-separator on given liner layout
+     * @param dest where to add separator
+     */
+    public static void addSeparatorLine(Context context, LinearLayout dest,
+                                 int width, int color,
+                                 int marginLeft, int marginTop, int marginRight, int marginBottom) {
+        View v = new View(context);
+        LinearLayout.LayoutParams separatorLp =
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, width);
+        separatorLp.setMargins(marginLeft, marginTop, marginRight, marginBottom);
+        v.setBackgroundColor(color);
+        dest.addView(v, separatorLp);
     }
 
 }

@@ -8,15 +8,16 @@
     <string name="BackwardCalcHeader">Зворотній розрахунок</string>
     <string name="BackwardCalcInfo">Ви маєте можливість оцінити максимальну ціну купівлі ТЗ за кордоном, задавши кінцеву вартість розмитненого ТЗ в Україні</string>
     <string name="BackwardCalcEditPrompt">Визначте кінцеву вартіть розмитненого ТЗ в Україні,(€):</string>
-    <string name="BackwardCalcPreferencesTemplate">Діапазон об’єму двигуна: %1$d-%2$d, з поступом %3$d см³</string>
+    <string name="BackwardCalcPreferencesTemplate">Діапазон об’єму двигуна:\n%1$d-%2$d см³, з поступом %3$d см³</string>
 
     // Engine range preferences
     <string name="erpTitle">Налаштування діапазону об’єму двигуна</string>
     <string name="erpMessage">Ці налаштування будуть застововані лише до активного типу ТЗ</string>
     <string name="erpApply">Застосувати</string>
-    <string name="erpMin">Мін. об’єм:</string>
-    <string name="erpMax">Макс. об’єм:</string>
+    <string name="erpMin">Мінiмальний об’єм:</string>
+    <string name="erpMax">Максимальний об’єм:</string>
     <string name="erpStep">Поступ:</string>
+    <string name="erpDefault">Типове значення</string>
     <string name="erpWarningWrongRange">Будь ласка, вкажіть максимальній об’єм більш ніж мінімальний</string>
     <string name="erpWarningWrongStep">Будь ласка, вкажіть поступ</string>
     <string name="erpWarningEngineVolumeTooLarge">Об’єм двигуна завеликий, максимальне значення 20000</string>

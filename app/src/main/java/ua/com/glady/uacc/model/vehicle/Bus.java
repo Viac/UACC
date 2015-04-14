@@ -1,14 +1,13 @@
 package ua.com.glady.uacc.model.vehicle;
 
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.content.Context;
 
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
-import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.model.calculators.ForwardCalc;
 import ua.com.glady.uacc.model.ExcisesRegistry;
 import ua.com.glady.uacc.model.types.Age;
+import ua.com.glady.uacc.model.types.VehicleType;
 
 import static ua.com.glady.uacc.tools.ConditionsChecker.*;
 
@@ -19,15 +18,9 @@ import static ua.com.glady.uacc.tools.ConditionsChecker.*;
  */
 public class Bus extends AVehicle {
 
-    /**
-     * Abstract class constructor.
-     *
-     * @param sharedPreferences - need to read data for subclasses preferences
-     * @param resources         - source of localized strings
-     * @param excisesRegistry           - excises directory
-     */
-    public Bus(SharedPreferences sharedPreferences, Resources resources, ExcisesRegistry excisesRegistry) {
-        super(sharedPreferences, resources, excisesRegistry);
+    public Bus(Context context, ExcisesRegistry excisesRegistry) {
+        super(context, excisesRegistry);
+        vehicleType = VehicleType.Bus;
     }
 
     /**
@@ -79,20 +72,14 @@ public class Bus extends AVehicle {
         backwardCalc.clear();
 
         this.engine.setType(Constants.ENG_DIESEL);
-        addBcOutput(resources.getString(R.string.Diesel),
-                resources.getString(R.string.FcBusDieselEngineDescription),
+        addBcOutput(context.getString(R.string.Diesel),
+                context.getString(R.string.FcBusDieselEngineDescription),
                 ageCategories, finalPrice);
 
         this.engine.setType(Constants.ENG_GASOLINE);
-        addBcOutput(resources.getString(R.string.Gasoline),
-                resources.getString(R.string.FcBusGasolineEngineDescription),
+        addBcOutput(context.getString(R.string.Gasoline),
+                context.getString(R.string.FcBusGasolineEngineDescription),
                 ageCategories, finalPrice);
-    }
-
-    @Override
-    public void initializeBcPreferences() {
-        bcPreferences = new BcPreferences(sharedPreferences, 1500, 5500, 250,
-                "RcBusLowVolume", "RcBusHighVolume", "RcBusStepVolume");
     }
 
     @Override
@@ -105,8 +92,8 @@ public class Bus extends AVehicle {
     @Override
     public String getForwardCalcHtml(String htmlTemplate) {
         ForwardCalc fc = new ForwardCalc();
-        fc.calculate(basicPrice, getExcise(), getImpostBase(), getEtc(), resources);
-        return fc.getHtml(resources, htmlTemplate, basicPrice);
+        fc.calculate(basicPrice, getExcise(), getImpostBase(), getEtc(), context.getResources());
+        return fc.getHtml(context.getResources(), htmlTemplate, basicPrice);
     }
 
     /**

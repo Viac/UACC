@@ -2,131 +2,135 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/background">
+    android:background="@color/aqua_white">
 
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_margin="0dp">
+        android:id="@+id/panMainPanel">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/panMainBase">
+            android:background="@color/aqua_red"
+            android:padding="8dp"
+            android:id="@+id/panVehicleTypeMenu">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btVehicleType"
+                android:background="@android:drawable/ic_dialog_dialer"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:contentDescription="@string/VehicleType"
+                android:clickable="true"
+                android:onClick="onClick" />
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/panButtons"
-                android:baselineAligned="false"
-                android:gravity="center_horizontal"
-                android:background="#ff004d40">
+                android:clickable="true"
+                android:onClick="onClick"
+                android:id="@+id/llVehicleTitle"
+                android:focusableInTouchMode="false">
 
-                <ImageButton
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btCar"
-                    android:background="@drawable/car_gray"
-                    android:contentDescription="@string/Car"
-                    android:onClick="onClick"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/TextStubShort"
+                    android:id="@+id/tvVehicleType"
+                    android:textColor="@color/aqua_white"
+                    android:clickable="true"
+                    android:onClick="onClick" />
 
-                <ImageButton
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btBus"
-                    android:background="@drawable/bus_gray"
-                    android:contentDescription="@string/Bus"
-                    android:onClick="onClick"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btTruck"
-                    android:background="@drawable/truck_gray"
-                    android:contentDescription="@string/Truck"
-                    android:onClick="onClick"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btMotorcycle"
-                    android:background="@drawable/motorcycle_gray"
-                    android:contentDescription="@string/Motorcycle"
-                    android:onClick="onClick"
-                    android:scaleType="fitXY"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp" />
-
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/TextStubMedium"
+                    android:id="@+id/tvVehicleTypeDescription"
+                    android:textSize="12sp"
+                    android:textColor="@color/aqua_white"
+                    android:clickable="true"
+                    android:onClick="onClick" />
             </LinearLayout>
-
-            <!-- Yes, it's a place to put fragment inside. So it's ok to have empty body -->
-            <!--suppress CheckTagEmptyBody -->
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/lDetails"
-                android:background="@drawable/blue_button"
-                android:layout_margin="5dp"/>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/panRunButtons"
-                android:layout_marginTop="5dp"
-                style="@style/Base.Widget.AppCompat.Toolbar.Button.Navigation"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_vertical">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Calculate"
-                    android:id="@+id/btCalculate"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="onClick"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    style="@style/button_text"
-                    android:background="@drawable/blue_button"
-                    android:minWidth="150dp" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/SwitchMode"
-                    android:id="@+id/btSwitchMode"
-                    android:onClick="onClick"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    style="@style/button_text"
-                    android:background="@drawable/blue_button"
-                    android:minWidth="150dp" />
-            </LinearLayout>
-
-            <WebView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/webResult"
-                android:layout_marginTop="12dp"
-                android:background="#ffceffef"
-                android:layout_marginRight="4dp"
-                android:layout_marginLeft="4dp" />
 
         </LinearLayout>
-    </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/panScroll">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/panVehicleData"
+                    android:background="@color/aqua_white"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/panButtons"
+                    android:layout_marginTop="8dp">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/SwitchMode"
+                        android:id="@+id/btSwitchMode"
+                        android:background="@color/aqua_red"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/aqua_white"
+                        android:maxWidth="200dp"
+                        android:clickable="true"
+                        android:onClick="onClick" />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Calculate"
+                        android:id="@+id/btCalculate"
+                        android:background="@color/aqua_red"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/aqua_white"
+                        android:maxWidth="200dp"
+                        android:clickable="true"
+                        android:onClick="onClick" />
+
+                </LinearLayout>
+
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/webResult"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -8,15 +8,16 @@
     <string name="BackwardCalcHeader">Обратный расчет</string>
     <string name="BackwardCalcInfo">Вы можете оценить максимальную цену покупки ТС за рубежом, задав нужную конечную сумму растаможенного ТС в Украине</string>
     <string name="BackwardCalcEditPrompt">Введите конечную стоимость растаможенного ТС в Украине,(€):</string>
-    <string name="BackwardCalcPreferencesTemplate">Диапазон объема двигаталей: %1$d-%2$d, с шагом %3$d см³</string>
+    <string name="BackwardCalcPreferencesTemplate">Диапазон объема двигаталей:\n%1$d-%2$d см³, с шагом %3$d см³</string>
 
     // Engine range preferences
     <string name="erpTitle">Настройки диапазона объема двигаталей</string>
     <string name="erpMessage">Эти настройки будут применены только к текущему типу ТС</string>
     <string name="erpApply">Применить</string>
-    <string name="erpMin">Мин. объем:</string>
-    <string name="erpMax">Макс. объем:</string>
-    <string name="erpStep">Шаг:</string>
+    <string name="erpMin">Минимальный объем</string>
+    <string name="erpMax">Максимальный объем</string>
+    <string name="erpStep">Шаг</string>
+    <string name="erpDefault">Значение по умолчанию</string>
     <string name="erpWarningWrongRange">Пожалуйста, укажите максимальный объем больше минимального</string>
     <string name="erpWarningWrongStep">Пожалуйста, укажите шаг</string>
     <string name="erpWarningEngineVolumeTooLarge">Объем двигателя слишком большой, максимальное значение 20000</string>

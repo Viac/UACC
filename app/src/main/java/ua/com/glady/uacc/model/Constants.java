@@ -21,6 +21,8 @@ public class Constants {
     public static final int ENGINE_MIN_BOUND = 0;
     public static final int ENGINE_MAX_BOUND = 20000;
 
+    public static final int DEFAULT_PRICE = 5000;
+
     // Gross vehicle weight
     public static final int WEIGHT_5T = 5;
     public static final int WEIGHT_20T = 20;

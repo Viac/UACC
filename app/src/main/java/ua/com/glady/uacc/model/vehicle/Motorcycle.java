@@ -1,14 +1,13 @@
 package ua.com.glady.uacc.model.vehicle;
 
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.content.Context;
 
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.calculators.BcOutput;
-import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.model.calculators.ForwardCalc;
 import ua.com.glady.uacc.model.ExcisesRegistry;
+import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.tools.StringTable;
 
 import static ua.com.glady.uacc.tools.ConditionsChecker.*;
@@ -20,15 +19,9 @@ import static ua.com.glady.uacc.tools.ConditionsChecker.*;
  */
 public class Motorcycle extends AVehicle {
 
-    /**
-     * Abstract class constructor.
-     *
-     * @param sharedPreferences - need to read data for subclasses preferences
-     * @param resources         - source of localized strings
-     * @param excisesRegistry           - excises directory
-     */
-    public Motorcycle(SharedPreferences sharedPreferences, Resources resources, ExcisesRegistry excisesRegistry) {
-        super(sharedPreferences, resources, excisesRegistry);
+    public Motorcycle(Context context, ExcisesRegistry excisesRegistry) {
+        super(context, excisesRegistry);
+        vehicleType = VehicleType.Motorcycle;
     }
 
     /**
@@ -64,8 +57,8 @@ public class Motorcycle extends AVehicle {
         backwardCalc.clear();
 
         this.engine.setType(Constants.ENG_GASOLINE);
-        addBcOutput(resources.getString(R.string.Gasoline),
-                resources.getString(R.string.FcMotorcycleRegularEngineDescription),
+        addBcOutput(context.getString(R.string.Gasoline),
+                context.getString(R.string.FcMotorcycleRegularEngineDescription),
                 ageCategories, finalPrice);
 
         this.engine.setType(Constants.ENG_OTHER);
@@ -78,24 +71,18 @@ public class Motorcycle extends AVehicle {
      */
     private void addBcOutputOther(int finalPrice) {
         BcOutput out = new BcOutput(
-                resources.getString(R.string.Other),
-                resources.getString(R.string.FcMotorcycleOtherEngineDescription)
+                context.getString(R.string.Other),
+                context.getString(R.string.FcMotorcycleOtherEngineDescription)
         );
         StringTable table = out.getTable();
 
-        table.setCell(0, 0, resources.getString(R.string.engine));
-        table.setCell(0, 1, resources.getString(R.string.price));
+        table.setCell(0, 0, context.getString(R.string.engine));
+        table.setCell(0, 1, context.getString(R.string.price));
 
-        table.setCell(0, 0, resources.getString(R.string.Other));
+        table.setCell(0, 0, context.getString(R.string.Other));
         table.setCell(0, 1, getCalculatedBasicPriceStr(finalPrice));
 
         backwardCalc.addBcOutput(out);
-    }
-
-    @Override
-    public void initializeBcPreferences() {
-        bcPreferences = new BcPreferences(sharedPreferences, 50, 550, 50,
-                "RcBikeLowVolume", "RcBikeHighVolume", "RcBikeStepVolume");
     }
 
     @Override
@@ -107,8 +94,8 @@ public class Motorcycle extends AVehicle {
     @Override
     public String getForwardCalcHtml(String htmlTemplate) {
         ForwardCalc fc = new ForwardCalc();
-        fc.calculate(basicPrice, getExcise(), getImpost(), getEtc(), resources);
-        return fc.getHtml(resources, htmlTemplate, basicPrice);
+        fc.calculate(basicPrice, getExcise(), getImpost(), getEtc(), context.getResources());
+        return fc.getHtml(context.getResources(), htmlTemplate, basicPrice);
     }
 
     /**

@@ -1,15 +1,15 @@
 package ua.com.glady.uacc.model.vehicle;
 
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.content.Context;
 
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.calculators.BcOutput;
-import ua.com.glady.uacc.model.calculators.BcPreferences;
 import ua.com.glady.uacc.model.calculators.ForwardCalc;
 import ua.com.glady.uacc.model.ExcisesRegistry;
+import ua.com.glady.uacc.model.calculators.UaccPreferences;
 import ua.com.glady.uacc.model.types.Age;
+import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.tools.StringTable;
 
 import static ua.com.glady.uacc.tools.ConditionsChecker.*;
@@ -26,15 +26,9 @@ public class Car extends AVehicle {
     // defines is this car is a motor caravan
     private boolean isCaravan;
 
-    /**
-     * Abstract class constructor.
-     *
-     * @param sharedPreferences - need to read data for subclasses preferences
-     * @param resources         - source of localized strings
-     * @param excisesRegistry   - excises directory
-     */
-    public Car(SharedPreferences sharedPreferences, Resources resources, ExcisesRegistry excisesRegistry) {
-        super(sharedPreferences, resources, excisesRegistry);
+    public Car(Context context, ExcisesRegistry excisesRegistry) {
+        super(context, excisesRegistry);
+        vehicleType = VehicleType.Car;
         isSpecialDesign = false;
         isCaravan = false;
     }
@@ -161,13 +155,13 @@ public class Car extends AVehicle {
         backwardCalc.clear();
 
         engine.setType(Constants.ENG_GASOLINE);
-        addBcOutput(resources.getString(R.string.Gasoline),
-                resources.getString(R.string.FcCarGasolineEngineDescription),
+        addBcOutput(context.getString(R.string.Gasoline),
+                context.getString(R.string.FcCarGasolineEngineDescription),
                 ageCategories, finalPrice);
 
         engine.setType(Constants.ENG_DIESEL);
-        addBcOutput(resources.getString(R.string.Diesel),
-                resources.getString(R.string.FcCarDieselEngineDescription),
+        addBcOutput(context.getString(R.string.Diesel),
+                context.getString(R.string.FcCarDieselEngineDescription),
                 ageCategories, finalPrice);
 
         addBcOutputForSpecialDesign(finalPrice);
@@ -184,23 +178,25 @@ public class Car extends AVehicle {
         this.isCaravan = true;
 
         BcOutput out = new BcOutput(
-                resources.getString(R.string.FcCaravanCaption),
-                resources.getString(R.string.FcCaravanDescription)
+                context.getString(R.string.FcCaravanCaption),
+                context.getString(R.string.FcCaravanDescription)
         );
         StringTable table = out.getTable();
 
         // Headers
-        table.setCell(0, 0, resources.getString(R.string.volume_cm3));
+        table.setCell(0, 0, context.getString(R.string.volume_cm3));
 
         // Price for gasoline engine
-        table.setCell(0, 1, resources.getString(R.string.price) + "</br>" + resources.getString(R.string.Gasoline));
+        table.setCell(0, 1, context.getString(R.string.price) + "</br>" + context.getString(R.string.Gasoline));
 
         // Price for diesel engine
-        table.setCell(0, 2, resources.getString(R.string.price) + "</br>" + resources.getString(R.string.Diesel));
+        table.setCell(0, 2, context.getString(R.string.price) + "</br>" + context.getString(R.string.Diesel));
 
         // Data
         int row = 1;
-        for (int volume = bcPreferences.minVolume; volume <= bcPreferences.maxVolume; volume += bcPreferences.stepVolume) {
+        UaccPreferences.VehiclePreferences preferences = getVehiclePreferences();
+
+        for (int volume = preferences.lowVolume; volume <= preferences.highVolume; volume += preferences.stepVolume) {
             engine.setVolume(volume);
             table.setCell(row, 0, String.valueOf(volume));
             engine.setType(Constants.ENG_GASOLINE);
@@ -220,30 +216,25 @@ public class Car extends AVehicle {
      */
     private void addBcOutputForSpecialDesign(int finalPrice) {
         BcOutput out = new BcOutput(
-                resources.getString(R.string.Other),
-                resources.getString(R.string.FcCarOtherEngineDescription)
+                context.getString(R.string.Other),
+                context.getString(R.string.FcCarOtherEngineDescription)
         );
         StringTable table = out.getTable();
 
-        table.setCell(0, 0, resources.getString(R.string.engine));
-        table.setCell(0, 1, resources.getString(R.string.price));
+        table.setCell(0, 0, context.getString(R.string.engine));
+        table.setCell(0, 1, context.getString(R.string.price));
 
-        table.setCell(1, 0, resources.getString(R.string.Electric));
+        table.setCell(1, 0, context.getString(R.string.Electric));
         engine.setType(Constants.ENG_ELECTRIC);
         table.setCell(1, 1, getCalculatedBasicPriceStr(finalPrice));
 
-        table.setCell(2, 0, resources.getString(R.string.Other));
+        table.setCell(2, 0, context.getString(R.string.Other));
         engine.setType(Constants.ENG_OTHER);
         table.setCell(2, 1, getCalculatedBasicPriceStr(finalPrice));
 
         backwardCalc.addBcOutput(out);
     }
 
-    @Override
-    public void initializeBcPreferences() {
-        bcPreferences = new BcPreferences(sharedPreferences, 800, 4200, 100,
-                "RcCarLowVolume", "RcCarHighVolume", "RcCarStepVolume");
-    }
 
     @Override
     public int getCalculatedBasicPrice(int finalPrice) {
@@ -254,8 +245,8 @@ public class Car extends AVehicle {
     @Override
     public String getForwardCalcHtml(String htmlTemplate) {
         ForwardCalc fc = new ForwardCalc();
-        fc.calculate(basicPrice, getExcise(), getImpost(), getEtc(), resources);
-        return fc.getHtml(resources, htmlTemplate, basicPrice);
+        fc.calculate(basicPrice, getExcise(), getImpost(), getEtc(), context.getResources());
+        return fc.getHtml(context.getResources(), htmlTemplate, basicPrice);
     }
 
     /**
