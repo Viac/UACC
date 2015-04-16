@@ -1,8 +1,5 @@
 package ua.com.glady.uacc;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -67,7 +64,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     // defines mode
     private boolean isForwardCalculation;
 
-    private SharedPreferences sPref;
     private Resources res;
 
     // singleton object
@@ -117,7 +113,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
 
         // Remember that onCreate called on orientation switch as well.
-        sPref = this.getPreferences(MODE_PRIVATE);
         res = this.getResources();
         createExcises();
 
@@ -182,8 +177,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         TextView tvVehicleType = (TextView) this.findViewById(R.id.tvVehicleType);
         tvVehicleType.setText(vehiclePages[activePageIndex].caption);
 
-        TextView tvVehicleTypeDescription = (TextView) this.findViewById(R.id.tvVehicleTypeDescription);
-        tvVehicleTypeDescription.setText(vehiclePages[activePageIndex].description);
+        TextView tvCalculationDescription = (TextView) this.findViewById(R.id.tvCalculationDescription);
+        if (this.isForwardCalculation)
+            tvCalculationDescription.setText(R.string.ForwardCalcTitle);
+        else
+            tvCalculationDescription.setText(R.string.BackwardCalcTitle);
 
         showActiveFragment();
 
@@ -273,17 +271,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         backwardCalcUi.updatePreferencesText();
     }
 
-    private void showPreferences(){
-        PreferencesDialog preferences = new PreferencesDialog(this, getCurrentVehicleType());
-        preferences.setOnSave(new INotifyEvent() {
-            @Override
-            public void onEvent() {
-                updateBcPreferences();
-            }
-        });
-        preferences.show();
-    }
-
     IMenuItemSelectedListener onMenuItemSelected = new IMenuItemSelectedListener(){
 
         @Override
@@ -295,10 +282,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             }
 
             if (position == 4) {
-                showPreferences();
-            }
-
-            if (position == 5) {
                 showHelp();
             }
         }
@@ -316,11 +299,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             return;
         }
         if ((v.getId() == R.id.btVehicleType) || (v.getId() == R.id.llVehicleTitle) ||
-                (v.getId() == R.id.tvVehicleType) || (v.getId() == R.id.tvVehicleTypeDescription)){
+                (v.getId() == R.id.tvVehicleType) || (v.getId() == R.id.tvCalculationDescription)){
             MainMenu menu = new MainMenu();
             menu.show(this, onMenuItemSelected);
         }
-
     }
 
     /**

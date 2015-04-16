@@ -1,17 +1,12 @@
 package ua.com.glady.uacc.guis;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import ua.com.glady.uacc.R;
@@ -38,7 +33,6 @@ public class PreferencesDialog {
     NumberEdit edLow;
     NumberEdit edHigh;
     NumberEdit edStep;
-    NumberEdit edDefault;
 
     UaccPreferences uaccPreferences;
     UaccPreferences.VehiclePreferences vp;
@@ -61,28 +55,30 @@ public class PreferencesDialog {
         builder.setTitle(R.string.erpTitle);
         builder.setMessage(R.string.erpMessage);
 
-        LinearLayout ll = CustomControlsBuilder.createVerticalLayout(context, 16, 0, 16, 0);
+        ScrollView scroll = new ScrollView(context);
+        scroll.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+
+        LinearLayout ll = CustomControlsBuilder.createVerticalLayout(context, 16, 16, 16, 16);
+        ll.setPadding(16, 0, 16, 0);
+        scroll.addView(ll);
 
         edLow = CustomControlsBuilder.createNumberEdit(context, context.getString(R.string.erpMin), vp.lowVolume, 0, Constants.ENGINE_MAX_BOUND);
         edLow.setEditAppearance(R.style.flat_list_item);
         ll.addView(edLow);
-        ToolsView.addSeparatorLine(context, ll, 2, context.getResources().getColor(R.color.aqua_gray), 0, 16, 0, 8);
+        ToolsView.addSeparatorLine(context, ll, 2, context.getResources().getColor(R.color.aqua_gray), 0, 0, 0, 8);
 
         edHigh = CustomControlsBuilder.createNumberEdit(context, context.getString(R.string.erpMax), vp.highVolume, 0, Constants.ENGINE_MAX_BOUND);
         edHigh.setEditAppearance(R.style.flat_list_item);
         ll.addView(edHigh);
-        ToolsView.addSeparatorLine(context, ll, 2, context.getResources().getColor(R.color.aqua_gray), 0, 8, 0, 8);
+        ToolsView.addSeparatorLine(context, ll, 2, context.getResources().getColor(R.color.aqua_gray), 0, 0, 0, 0);
 
         edStep = CustomControlsBuilder.createNumberEdit(context, context.getString(R.string.erpStep), vp.stepVolume, 1, 1000);
         edStep.setEditAppearance(R.style.flat_list_item);
         ll.addView(edStep);
-        ToolsView.addSeparatorLine(context, ll, 2, context.getResources().getColor(R.color.aqua_gray), 0, 8, 0, 8);
+        ToolsView.addSeparatorLine(context, ll, 2, context.getResources().getColor(R.color.aqua_gray), 0, 0, 0, 0);
 
-        edDefault = CustomControlsBuilder.createNumberEdit(context, context.getString(R.string.erpDefault), vp.defaultVolume, 0, Constants.ENGINE_MAX_BOUND);
-        edDefault.setEditAppearance(R.style.flat_list_item);
-        ll.addView(edDefault);
-
-        builder.setView(ll);
+        builder.setView(scroll);
 
         builder.setPositiveButton(R.string.erpApply, new DialogInterface.OnClickListener() {
             @Override
@@ -108,13 +104,9 @@ public class PreferencesDialog {
     void applyChanges() {
 
         // UI to RAM
-
-        String msg;
-
         int low = edLow.getValue();
         int high = edHigh.getValue();
         int step = edStep.getValue();
-        int defaultValue = edDefault.getValue();
 
         // UI data sanity check
         if (low > high) {
@@ -128,7 +120,7 @@ public class PreferencesDialog {
             return;
         }
 
-        uaccPreferences.setVehiclePreferences(low, high, step, defaultValue);
+        uaccPreferences.setVehiclePreferences(low, high, step);
 
         // informing caller that we did it
         if (onSave != null)

@@ -66,6 +66,7 @@ public class MenuAdapter extends BaseAdapter implements View.OnClickListener {
             tvText.setVisibility(View.GONE);
         }
         else {
+            tvText.setVisibility(View.VISIBLE);
             tvText.setText(item.text);
             tvText.setTag(position);
             tvText.setOnClickListener(this);
@@ -76,6 +77,13 @@ public class MenuAdapter extends BaseAdapter implements View.OnClickListener {
             img.setImageResource(item.image);
             img.setTag(position);
             img.setOnClickListener(this);
+            if (position > 3) {
+                img.setScaleX(0.6f);
+                img.setScaleY(0.6f);
+            } else {
+                img.setScaleX(1f);
+                img.setScaleY(1f);
+            }
         }
 
         view.setTag(position);

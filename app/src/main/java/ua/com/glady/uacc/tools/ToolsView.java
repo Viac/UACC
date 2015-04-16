@@ -56,7 +56,7 @@ public class ToolsView {
             return defaultValue;
     }
 
-    public static Intent newEmailIntent(Context context, String address, String subject, String body, String cc) {
+    public static Intent newEmailIntent(String address, String subject, String body, String cc) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, new String[] { address });
         intent.putExtra(Intent.EXTRA_TEXT, body);
@@ -83,7 +83,7 @@ public class ToolsView {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if(url.startsWith("mailto:")){
                     MailTo mt = MailTo.parse(url);
-                    Intent i = newEmailIntent(context, mt.getTo(), mt.getSubject(), mt.getBody(), mt.getCc());
+                    Intent i = newEmailIntent(mt.getTo(), mt.getSubject(), mt.getBody(), mt.getCc());
                     context.startActivity(i);
                     view.reload();
                     return true;
@@ -110,11 +110,11 @@ public class ToolsView {
      * @param dest where to add separator
      */
     public static void addSeparatorLine(Context context, LinearLayout dest,
-                                 int width, int color,
+                                 int size, int color,
                                  int marginLeft, int marginTop, int marginRight, int marginBottom) {
         View v = new View(context);
         LinearLayout.LayoutParams separatorLp =
-                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, width);
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, size);
         separatorLp.setMargins(marginLeft, marginTop, marginRight, marginBottom);
         v.setBackgroundColor(color);
         dest.addView(v, separatorLp);

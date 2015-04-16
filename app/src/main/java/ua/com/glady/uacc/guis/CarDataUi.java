@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
@@ -109,6 +108,7 @@ public class CarDataUi extends VehicleDataUi {
         cbIsSpecialDesign = new CheckBox(context);
         cbIsSpecialDesign.setScaleX(0.75f);
         cbIsSpecialDesign.setScaleY(0.75f);
+
         resetSpecialDesignCombo();
         cbIsSpecialDesign.setOnClickListener(onSpecialDesignClick);
 

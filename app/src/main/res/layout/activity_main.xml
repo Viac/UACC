@@ -18,25 +18,26 @@
             android:padding="8dp"
             android:id="@+id/panVehicleTypeMenu">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/btVehicleType"
-                android:background="@android:drawable/ic_dialog_dialer"
+                android:src="@drawable/ic_action_menu"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="8dp"
-                android:contentDescription="@string/VehicleType"
                 android:clickable="true"
-                android:onClick="onClick" />
+                android:onClick="onClick"
+                android:contentDescription="@string/SwitchMode"
+                android:layout_marginRight="8dp" />
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:onClick="onClick"
                 android:id="@+id/llVehicleTitle"
-                android:focusableInTouchMode="false">
+                android:focusableInTouchMode="false"
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -53,12 +54,22 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/TextStubMedium"
-                    android:id="@+id/tvVehicleTypeDescription"
+                    android:id="@+id/tvCalculationDescription"
                     android:textSize="12sp"
                     android:textColor="@color/aqua_white"
                     android:clickable="true"
                     android:onClick="onClick" />
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/btSwitchMode"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:contentDescription="@string/SwitchMode"
+                android:src="@drawable/ic_action_mode" />
 
         </LinearLayout>
 
@@ -84,42 +95,20 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"></LinearLayout>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
+                <Button
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/panButtons"
-                    android:layout_marginTop="8dp">
-
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/SwitchMode"
-                        android:id="@+id/btSwitchMode"
-                        android:background="@color/aqua_red"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
-                        android:textColor="@color/aqua_white"
-                        android:maxWidth="200dp"
-                        android:clickable="true"
-                        android:onClick="onClick" />
-
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Calculate"
-                        android:id="@+id/btCalculate"
-                        android:background="@color/aqua_red"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
-                        android:textColor="@color/aqua_white"
-                        android:maxWidth="200dp"
-                        android:clickable="true"
-                        android:onClick="onClick" />
-
-                </LinearLayout>
+                    android:text="@string/Calculate"
+                    android:id="@+id/btCalculate"
+                    android:background="@color/aqua_red"
+                    android:textColor="@color/aqua_white"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    />
 
                 <WebView
                     android:layout_width="match_parent"

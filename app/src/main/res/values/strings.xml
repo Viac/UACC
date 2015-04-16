@@ -4,12 +4,14 @@
     <string name="app_name">Customs.UA</string>
     <string name="action_settings">Settings</string>
 
+    <string name="ForwardCalcTitle">Calculation based on vehicle</string>
+    <string name="BackwardCalcTitle">Calculation based on target price</string>
+
     // Backward calculation UI
     <string name="BackwardCalcHeader">Backward calculation</string>
     <string name="BackwardCalcInfo">Here you can calculate max sell price on the vehicle, based on target final price in Ukraine</string>
     <string name="BackwardCalcEditPrompt">Enter final price in Ukraine,(€):</string>
     <string name="BackwardCalcPreferencesTemplate">Engine range:\n%1$d-%2$d cm³, step %3$d cm³</string>
-    <string name="ChangeIt">Change it</string>
 
     // Engine range preferences
     <string name="erpTitle">Engine range preferences</string>
@@ -67,24 +69,28 @@
     <string name="IceEngine">compression-ignition internal combustion piston engine (diesel or semi-diesel), or with spark-ignition internal combustion piston engine</string>
 
     // Vehicle type
-    <string name="Bus">Bus</string>
-    <string name="Car">Car</string>
-    <string name="Caravan">Caravan</string>
+    <string name="Car">Passenger cars</string>
+    <string name="CarDescription">Motor cars and other motor vehicles principally designed for the transport of persons, including station wagons and racing cars</string>
+    <string name="Caravan">Motorhome</string>
     <string name="SpecialPurposeLine1">This vehicle has a special design</string>
-    <string name="SpecialPurposeLine2">(Caravan / snowmobile / golf car / etc.)</string>
+    <string name="SpecialPurposeLine2">(Motorhome / snowmobile / golf car / etc.)</string>
     <string name="SpecialPurposeSnowGolf">Snowmobile, Golf car or etc.</string>
-    <string name="SpecialPurposeCaravan">Caravan</string>
+    <string name="SpecialPurposeCaravan">Motorhome</string>
     <string name="SpecialPurposePrompt">Select vehicle purpose</string>
-    <string name="Clear">Clear</string>
-    <string name="Truck">Truck</string>
-    <string name="Dumper">Dumper intended for off-road usage</string>
-    <string name="Motorcycle">Motorcycle</string>
 
-    // Vehicle type description
-    <string name="BusDescription">BusDescription</string>
-    <string name="CarDescription">CarDescription</string>
-    <string name="TruckDescription">TruckDescription</string>
-    <string name="MotorcycleDescription">MotorcycleDescription</string>
+    <string name="Bus">Bus</string>
+    <string name="BusDescription">Motor vehicles for the transport of ten or more persons, including the driver</string>
+
+
+    <string name="Truck">Trucks</string>
+    <string name="TruckDescription">Motor vehicles for the transport of goods</string>
+    <string name="Dumper">Dumper intended for off-road usage</string>
+
+    <string name="Motorcycle">Motorcycle</string>
+    <string name="MotorcycleDescription">Motorcycles (including mopeds) and cycles fitted with an auxiliary motor, with or without side-cars</string>
+
+    <string name="Clear">Clear</string>
+
 
     // Backward calculation motorcycle
     <string name="FcMotorcycleRegularEngineDescription">Motorcycles (including mopeds) and cycles fitted with an auxiliary motor. Code: 8711 10 ~ 8711 50</string>

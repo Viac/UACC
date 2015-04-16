@@ -26,8 +26,6 @@ public class BackwardCalcUi extends LinearLayout {
 
     private VehicleType vehicleType;
 
-    TextView tvHeader;
-    TextView tvInfo;
     TextView tvPreferences;
     ImageButton btEditPreferences;
     NumberEdit ed;
@@ -56,15 +54,7 @@ public class BackwardCalcUi extends LinearLayout {
         llBase.setOrientation(VERTICAL);
         this.addView(llBase);
 
-        tvHeader = new TextView(context);
-        tvHeader.setText(context.getString(R.string.BackwardCalcHeader));
-        tvHeader.setTextAppearance(context, R.style.flat_list_header);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-        lp.setMargins(0, 16, 0, 8);
-        llBase.addView(tvHeader, lp);
-
-        tvInfo = new TextView(context);
+        TextView tvInfo = new TextView(context);
         tvInfo.setTextAppearance(context, R.style.flat_list_item);
         tvInfo.setText(R.string.BackwardCalcInfo);
         llBase.addView(tvInfo);
@@ -73,6 +63,7 @@ public class BackwardCalcUi extends LinearLayout {
                 context.getResources().getColor(R.color.aqua_gray), 0, 8, 0, 8);
 
         LinearLayout llPreferences = CustomControlsBuilder.createHorizontalLayout(context);
+        llPreferences.setPadding(0, 8, 0, 0);
 
         tvPreferences = new TextView(context);
 
@@ -104,7 +95,6 @@ public class BackwardCalcUi extends LinearLayout {
                 Constants.DEFAULT_PRICE,
                 Constants.PRICE_MIN_BOUND,
                 Constants.PRICE_MAX_BOUND);
-        ed.setEditAppearance(R.style.flat_list_item);
         llBase.addView(ed);
 
         setVehicleType(vehicleType);

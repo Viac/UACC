@@ -19,9 +19,9 @@ public class CustomControlsBuilder {
     /**
      * Creates flat list
      *
-     * @param context
-     * @param items
-     * @param title
+     * @param context control context
+     * @param items list of the items in the list
+     * @param title list title
      * @return flat list
      */
     public static FlatListPicker createFlatListPicker(Context context, String[] items,

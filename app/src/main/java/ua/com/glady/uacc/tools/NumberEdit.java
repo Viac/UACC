@@ -3,7 +3,6 @@ package ua.com.glady.uacc.tools;
 import android.content.Context;
 import android.text.InputFilter;
 import android.text.InputType;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -60,9 +59,9 @@ public class NumberEdit extends LinearLayout {
         if (removeUnderline){
             int sdk = android.os.Build.VERSION.SDK_INT;
 
-            // todo: suppress sdk check
-
             if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                // Of course, it's deprecated... this is why do we have this check above
+                //noinspection deprecation
                 ed.setBackgroundDrawable(null);
             } else {
                 ed.setBackground(null);

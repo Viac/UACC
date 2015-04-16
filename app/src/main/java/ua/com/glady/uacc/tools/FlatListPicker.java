@@ -21,7 +21,7 @@ public class FlatListPicker extends LinearLayout implements View.OnClickListener
         public void doOnChange(FlatListPicker source);
     }
 
-    public enum Orientation { Horizontal, Vertical };
+    public enum Orientation { Horizontal, Vertical }
 
     private List<TextView> items;
 

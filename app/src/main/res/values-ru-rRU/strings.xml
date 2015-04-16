@@ -4,6 +4,9 @@
     <string name="app_name">Таможня.UA</string>
     <string name="action_settings">Настройки</string>
 
+    <string name="ForwardCalcTitle">Расчет по конкретному автомобилю</string>
+    <string name="BackwardCalcTitle">Расчет по стоимости в Украине</string>
+
     // Backward calculation UI
     <string name="BackwardCalcHeader">Обратный расчет</string>
     <string name="BackwardCalcInfo">Вы можете оценить максимальную цену покупки ТС за рубежом, задав нужную конечную сумму растаможенного ТС в Украине</string>
@@ -65,13 +68,28 @@
     <string name="IceEngine">Двигатель с зажиганием от сжатия (дизель или полудизель), или двигатель с искровым зажиганием</string>
 
     // Vehicle type
-    <string name="Bus">Автобус</string>
-    <string name="Car">Легковая</string>
-    <string name="Caravan">Кемпер</string>
-    <string name="SpecialDesign">Снегоход и пр.</string>
-    <string name="Truck">Грузовик</string>
+
+    <string name="Car">Легковые автомобили</string>
+    <string name="CarDescription">Легковые автомобили и другие моторные ТС, предназначенные главным образом для перевозки людей, включая грузопассажирские автомобили-фургоны и гоночные автомобили</string>
+    <string name="Caravan">Оборудован для временного проживания людей</string>
+
+    <string name="SpecialPurposeLine1">Автомобиль особого назначения</string>
+    <string name="SpecialPurposeLine2">(для проживания / снегоход / гольф-кар / др.)</string>
+    <string name="SpecialPurposeSnowGolf">Снегоход, гольф-кар и др.</string>
+    <string name="SpecialPurposeCaravan">Оборудован для временного проживания людей</string>
+    <string name="SpecialPurposePrompt">Выберите назначение автомобиля</string>
+
+    <string name="Bus">Автобусы</string>
+    <string name="BusDescription">Моторные ТС, предназначенные для перевозки 10 человек и больше, включая водителя</string>
+
+    <string name="Truck">Грузовые автомобили</string>
+    <string name="TruckDescription">Моторные транспортные средства для перевозки грузов</string>
     <string name="Dumper">Самосвал для использования на бездорожье</string>
-    <string name="Motorcycle">Мотоцикл</string>
+
+    <string name="Motorcycle">Мотоциклы</string>
+    <string name="MotorcycleDescription">Мотоциклы (включая мопеды) и велосипеды со вспомогательным мотором, с колясками или без них</string>
+
+    <string name="Clear">Очистить</string>
 
     // Backward calculation motorcycle
     <string name="FcMotorcycleRegularEngineDescription">Мотоциклы (включая мопеды) и велосипеды с ДВС. Коды: 8711 10 ~ 8711 50</string>

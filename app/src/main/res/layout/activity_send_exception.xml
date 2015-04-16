@@ -35,7 +35,9 @@
             android:layout_height="wrap_content"
             android:text="@string/ApplicationErrorSendInfo"
             android:id="@+id/cbSendException"
-            android:layout_margin="8dp" />
+            android:layout_margin="8dp"
+            android:textAppearance="@style/flat_list_item"
+             />
 
         <Button
             android:layout_width="wrap_content"
@@ -44,10 +46,13 @@
             android:id="@+id/btCloseApplication"
             android:onClick="onClick"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/blue_button"
             style="@style/button_text"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="0dp"
+            android:background="@color/aqua_medium"
+            android:textColor="@color/aqua_white"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp" />
 
     </LinearLayout>
 

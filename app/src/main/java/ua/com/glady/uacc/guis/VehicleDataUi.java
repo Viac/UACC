@@ -1,7 +1,6 @@
 package ua.com.glady.uacc.guis;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.widget.LinearLayout;
 
 import ua.com.glady.uacc.R;
@@ -14,7 +13,6 @@ import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.model.vehicle.AVehicle;
 import ua.com.glady.uacc.tools.FlatListPicker;
 import ua.com.glady.uacc.tools.NumberEdit;
-import ua.com.glady.uacc.tools.ToolsView;
 
 /**
  * This UI defines interface for the vehicle data
@@ -62,6 +60,7 @@ public abstract class VehicleDataUi extends LinearLayout {
         llBase.addView(flAge);
     }
 
+
     protected final void addVolumeAndPrice(){
 
         LinearLayout llVolumePrice = new LinearLayout(context);
@@ -71,9 +70,7 @@ public abstract class VehicleDataUi extends LinearLayout {
         llBase.addView(llVolumePrice);
 
         edVolume = CustomControlsBuilder.createNumberEdit(context,
-                context.getString(R.string.volume_cm3),
-                vehiclePreferences.defaultVolume,
-                0, Constants.ENGINE_MAX_BOUND);
+                context.getString(R.string.volume_cm3), Constants.DEFAULT_PRICE, 0, Constants.ENGINE_MAX_BOUND);
 
         LinearLayout.LayoutParams p1 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
         p1.weight = 0.5f;
@@ -107,9 +104,6 @@ public abstract class VehicleDataUi extends LinearLayout {
         this.excisesRegistry = excisesRegistry;
 
         initializeConcreteVehicle();
-
-        UaccPreferences preferences = new UaccPreferences(context, vehicleType);
-        vehiclePreferences = preferences.getVehiclePreferences();
 
         llBase = new LinearLayout(context);
         llBase.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));

@@ -4,6 +4,9 @@
     <string name="app_name">Митниця.UA</string>
     <string name="action_settings">Налаштування</string>
 
+    <string name="ForwardCalcTitle">Розрахунок за конкретним ТЗ</string>
+    <string name="BackwardCalcTitle">Розрахунок за вартістю в Україні</string>
+
     // Backward calculation UI
     <string name="BackwardCalcHeader">Зворотній розрахунок</string>
     <string name="BackwardCalcInfo">Ви маєте можливість оцінити максимальну ціну купівлі ТЗ за кордоном, задавши кінцеву вартість розмитненого ТЗ в Україні</string>
@@ -65,13 +68,27 @@
     <string name="IceEngine">Двигун із запалюванням від стиснення (дизель або напівдизель) або з іскровим запалюванням</string>
 
     // Vehicle type
-    <string name="Bus">Автобус</string>
-    <string name="Car">Легкова</string>
-    <string name="Caravan">Кемпер</string>
-    <string name="SpecialDesign">Снiгохiд та iн.</string>
-    <string name="Truck">Вантажна</string>
+    <string name="Car">Легковi автомобiлi</string>
+    <string name="CarDescription">Аавтомобілі легкові та інші моторні транспортні засоби, призначені головним чином для перевезення людей, включаючи вантажопасажирські автомобілі-фургони, гоночні автомобілі</string>
+    <string name="Caravan">Обладнаний для тимчасового проживання людей</string>
+
+    <string name="SpecialPurposeLine1">Автомобiль особливого призначення</string>
+    <string name="SpecialPurposeLine2">(для тимчасового проживання / пересування по снiгу / гольф-кар / iн.)</string>
+    <string name="SpecialPurposeSnowGolf">для пересування по снiгу / гольф-кар / iн.</string>
+    <string name="SpecialPurposeCaravan">Обладнаний для тимчасового проживання людей</string>
+    <string name="SpecialPurposePrompt">Оберiть призначення автомобiля</string>
+
+    <string name="Bus">Автобуси</string>
+    <string name="BusDescription">Моторні транспортні засоби, призначені для перевезення 10 осіб i більше, включаючи водія</string>
+
+    <string name="Truck">Вантажнi автомобiлi</string>
+    <string name="TruckDescription">Моторні транспортні засоби для перевезення вантажів</string>
     <string name="Dumper">Самоскид, призначений для використання на бездоріжжі</string>
+
     <string name="Motorcycle">Мотоцикл</string>
+    <string name="MotorcycleDescription">Мотоцикли (включаючи мопеди) та велосипеди з допоміжним мотором, з колясками або без них</string>
+
+    <string name="Clear">Скасувати</string>
 
     // Backward calculation motorcycle
     <string name="FcMotorcycleRegularEngineDescription">Мотоцикли (включаючи мопеди) та велосипеди з двигуном внутрішнього згоряння. Коди: 8711 10 ~ 8711 50</string>
