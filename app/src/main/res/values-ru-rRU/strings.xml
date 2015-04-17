@@ -123,13 +123,17 @@
     <string name="BasicPrice">Базовая цена</string>
     <string name="Impost">Пошлина</string>
     // to have "10% of (1)" finally
-    <string name="ImpostDescription">%1$d%% of (1)</string>
+    <string name="ImpostDescription">%1$d%% от (1)</string>
     <string name="ProtectionImpost">Дополнительный импортный сбор</string>
     <string name="ProtectionImpostDescription">5% от (1)</string>
+
+    <string name="SpecialImpost">Спецпошлина</string>
+    <string name="SpecialImpostDescription" formatted="false">%1$.2f%% от (1)</string>
+
     <string name="Excise">Акциз</string>
     <string name="ExciseDescription">Код по УКТ ВЭД: %1$s</string>
     <string name="VAT">НДС</string>
-    <string name="VATDescription">20% от (1 + 2 + 3 + 4)</string>
+    <string name="VATDescription" formatted="false">20%% от (%1$s)</string>
     <string name="CustomDuties">Всего таможенных платежей</string>
     <string name="TotalPrice">Общая стоимость</string>
     <string name="Multiplier">Увеличение стоимости, %%</string>

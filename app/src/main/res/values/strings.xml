@@ -130,10 +130,13 @@
     <string name="ProtectionImpost">Additional import impost</string>
     <string name="ProtectionImpostDescription">5% of (1)</string>
 
+    <string name="SpecialImpost">Special impost</string>
+    <string name="SpecialImpostDescription" formatted="false">%1$.2f%% of (1)</string>
+
     <string name="ExciseDescription">ETC code: %1$s</string>
 
     <string name="VAT">VAT</string>
-    <string name="VATDescription">20% of (1 + 2 + 3 + 4)</string>
+    <string name="VATDescription" formatted="false">20%% of (%1$s)</string>
 
     <string name="CustomDuties">Total custom duties</string>
     <string name="TotalPrice">Total price</string>

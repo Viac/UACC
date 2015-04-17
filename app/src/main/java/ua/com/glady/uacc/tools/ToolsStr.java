@@ -53,4 +53,28 @@ public class ToolsStr {
         return getMoneyStr(value, "-");
     }
 
+
+    /**
+     * Makes string of a kind "1 + 2 + 3 + 4"
+     *
+     * @param valueFirst first value in the list
+     * @param valueLast last value in the list
+     * @return string like "valueFirst + (valueFirst + 1) + (valueFirst + 2) + ... valueLast"
+     */
+    public static String makePlusList(int valueFirst, int valueLast) {
+        if (valueFirst > valueLast)
+            return "";
+
+        if (valueFirst == valueLast)
+            return String.valueOf(valueFirst);
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = valueFirst; i <= valueLast; i++) {
+            sb.append(i);
+            if (i < valueLast)
+             sb.append(" + ");
+        }
+        return sb.toString();
+    }
+
 }

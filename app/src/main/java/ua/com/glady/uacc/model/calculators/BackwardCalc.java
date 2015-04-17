@@ -58,12 +58,14 @@ public class BackwardCalc {
      *
      * @param finalPrice target final price in Ukraine
      * @param impost double value of impost (%), i.e. 0.1 if impost = 10%
+     * @param specialImpost double value of impost (%), i.e. 0.0253 if impost = 2.53%
      * @param excise rounded excise value
      * @return basic price
      */
-    public int getCalculatedBasicPriceWithProtectionFee(int finalPrice, double impost, int excise) {
+    public int getBasicPrice(int finalPrice, double impost, double specialImpost, int excise) {
         double vatM = Constants.VAT_BASE + 1;
-        double result = (finalPrice / vatM - excise) / (1 + Constants.TEMPORARY_PROTECTION_FEE_BASE + impost);
+        double result = (finalPrice / vatM - excise) /
+                (1 + Constants.TEMPORARY_PROTECTION_FEE_BASE + impost + specialImpost);
         return (int) Math.round(result);
     }
 

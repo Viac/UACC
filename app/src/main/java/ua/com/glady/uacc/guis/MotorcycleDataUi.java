@@ -35,6 +35,8 @@ public class MotorcycleDataUi extends VehicleDataUi {
     protected void initializeConcreteVehicle() {
         vehicleType = VehicleType.Bus;
 
+        defaultVolume = 500;
+
         this.availableEngines = new int[2];
         availableEngines[0] = Constants.ENG_GASOLINE;
         availableEngines[1] = Constants.ENG_DIESEL;

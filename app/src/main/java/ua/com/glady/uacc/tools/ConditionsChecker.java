@@ -66,5 +66,17 @@ public class ConditionsChecker {
             return "";
     }
 
+    /**
+     * Checks conditions and return result depending on Relational operators
+     * (testedValue greater or equal (GE) than value1 and less than (LT) value2)
+     * @param value1 int value
+     * @param value2 int value
+     * @param testedValue value to test
+     * @return true if testedValue greater or equal (GE) than value1 and less than (LT) value2
+     */
+    public static boolean isGE1_LT2(int value1, int value2, int testedValue){
+        return ((testedValue >= value1) && (testedValue < value2));
+    }
+
 
 }

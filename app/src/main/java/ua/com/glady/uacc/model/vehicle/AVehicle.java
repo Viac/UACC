@@ -13,6 +13,7 @@ import ua.com.glady.uacc.model.types.Engine;
 import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.tools.StringTable;
 
+import static ua.com.glady.uacc.tools.ConditionsChecker.isGE1_LT2;
 import static ua.com.glady.uacc.tools.ToolsStr.getMoneyStr;
 
 /**
@@ -57,6 +58,21 @@ public abstract class AVehicle {
         age = new Age();
 
         backwardCalc = new BackwardCalc();
+    }
+
+    /**
+     * By decision of Commission of international trading, new passenger cars with vehicles
+     * 1000-2200 cm has additional 'special impost'
+     *
+     * so for all existing vehicles we establish it as 0.0, if somebody would have own opinion -
+     * it could be implemented in subclasses
+     *
+     * http://www.visnuk.com.ua/ua/pubs/id/6965
+     *
+     * @return special impost base
+     */
+    protected double getSpecialImpost(){
+        return 0.0;
     }
 
     public void setBasicPrice(int basicPrice) {

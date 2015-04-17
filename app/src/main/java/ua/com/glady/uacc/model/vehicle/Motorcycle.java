@@ -88,13 +88,14 @@ public class Motorcycle extends AVehicle {
     @Override
     public int getCalculatedBasicPrice(int finalPrice) {
         int exciseInt = (int) Math.round(this.getExcise());
-        return backwardCalc.getCalculatedBasicPriceWithProtectionFee(finalPrice, getImpost(), exciseInt);
+        return backwardCalc.getBasicPrice(finalPrice, getImpost(), getSpecialImpost(), exciseInt);
     }
 
     @Override
     public String getForwardCalcHtml(String htmlTemplate) {
         ForwardCalc fc = new ForwardCalc();
-        fc.calculate(basicPrice, getExcise(), getImpost(), getEtc(), context.getResources());
+        fc.calculate(basicPrice, getExcise(), getImpost(), getSpecialImpost(),
+                getEtc(), context.getResources());
         return fc.getHtml(context.getResources(), htmlTemplate, basicPrice);
     }
 

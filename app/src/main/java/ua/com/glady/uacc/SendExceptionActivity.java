@@ -15,7 +15,7 @@ import android.widget.CheckBox;
  */
 public class SendExceptionActivity extends ActionBarActivity implements View.OnClickListener {
 
-    private static final String BUGREPORT_COLLECTING_EMAIL = "uacc.project@ukr.net";
+    private static final String BUGREPORT_COLLECTING_EMAIL = "uacc@viac-soft.in.ua";
 
     private String exceptionReport;
 

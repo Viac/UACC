@@ -39,6 +39,8 @@ public abstract class VehicleDataUi extends LinearLayout {
 
     private UaccPreferences.VehiclePreferences vehiclePreferences;
 
+    protected int defaultVolume;
+
     protected final void addEngineList(){
         String[] enginesCaptions = new String[availableEngines.length];
 
@@ -70,7 +72,7 @@ public abstract class VehicleDataUi extends LinearLayout {
         llBase.addView(llVolumePrice);
 
         edVolume = CustomControlsBuilder.createNumberEdit(context,
-                context.getString(R.string.volume_cm3), Constants.DEFAULT_PRICE, 0, Constants.ENGINE_MAX_BOUND);
+                context.getString(R.string.volume_cm3), defaultVolume, 0, Constants.ENGINE_MAX_BOUND);
 
         LinearLayout.LayoutParams p1 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
         p1.weight = 0.5f;

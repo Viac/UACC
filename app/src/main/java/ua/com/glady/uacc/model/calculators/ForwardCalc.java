@@ -8,8 +8,10 @@ import java.util.List;
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.tools.StringTable;
+import ua.com.glady.uacc.tools.ToolsStr;
 import ua.com.glady.uacc.tools.ToolsStringTable;
 
+import static java.lang.Double.compare;
 import static ua.com.glady.uacc.tools.ToolsStr.getMoneyStr;
 
 /**
@@ -60,7 +62,7 @@ public class ForwardCalc {
      * @param etc - Code {@link ua.com.glady.uacc.R.raw definition_of_terms}
      * @param resources - to get localized text
      */
-    public void calculate(int basicPrice, double excise, double impostBase,
+    public void calculate(int basicPrice, double excise, double impostBase, double specialImpostBase,
                                  String etc, Resources resources) {
         String template;
         int impost = (int) Math.round(basicPrice * impostBase);
@@ -72,11 +74,21 @@ public class ForwardCalc {
         template = resources.getString(R.string.ExciseDescription);
         add(resources.getString(R.string.Excise), String.format(template, etc), exciseValue);
 
+        if (compare(specialImpostBase, 0.0) != 0){
+            int specialImpost = (int) Math.round(basicPrice * specialImpostBase);
+            template = resources.getString(R.string.SpecialImpostDescription);
+            double specialImpostPercentage = specialImpostBase * 100;
+            String specialImpostDescription = String.format(template, specialImpostPercentage);
+            add(resources.getString(R.string.SpecialImpost), specialImpostDescription, specialImpost);
+        }
+
         int protectionFee = (int) Math.round(basicPrice * Constants.TEMPORARY_PROTECTION_FEE_BASE);
         add(resources.getString(R.string.ProtectionImpost), resources.getString(R.string.ProtectionImpostDescription), protectionFee);
 
         int vat = (int) Math.round((basicPrice + impost + exciseValue + protectionFee) * Constants.VAT_BASE);
-        add(resources.getString(R.string.VAT), resources.getString(R.string.VATDescription), vat);
+        template = resources.getString(R.string.VATDescription);
+        String vatStr = String.format(template, ToolsStr.makePlusList(1, itemList.size() + 1));
+        add(resources.getString(R.string.VAT), vatStr, vat);
     }
 
     /**

@@ -119,6 +119,8 @@ public class CarDataUi extends VehicleDataUi {
     protected void initializeConcreteVehicle() {
         vehicleType = VehicleType.Car;
 
+        defaultVolume = 2000;
+
         this.availableEngines = new int[4];
         availableEngines[0] = Constants.ENG_GASOLINE;
         availableEngines[1] = Constants.ENG_DIESEL;

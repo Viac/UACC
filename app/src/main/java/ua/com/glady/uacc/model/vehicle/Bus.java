@@ -86,13 +86,14 @@ public class Bus extends AVehicle {
     public int getCalculatedBasicPrice(int finalPrice)
     {
         int exciseInt = (int) Math.round(this.getExcise());
-        return backwardCalc.getCalculatedBasicPriceWithProtectionFee(finalPrice, getImpostBase(), exciseInt);
+        return backwardCalc.getBasicPrice(finalPrice, getImpostBase(), getSpecialImpost(), exciseInt);
     }
 
     @Override
     public String getForwardCalcHtml(String htmlTemplate) {
         ForwardCalc fc = new ForwardCalc();
-        fc.calculate(basicPrice, getExcise(), getImpostBase(), getEtc(), context.getResources());
+        fc.calculate(basicPrice, getExcise(), getImpostBase(), getSpecialImpost(),
+                getEtc(), context.getResources());
         return fc.getHtml(context.getResources(), htmlTemplate, basicPrice);
     }
 

@@ -71,6 +71,8 @@ public class TruckDataUi extends VehicleDataUi {
     protected void initializeConcreteVehicle() {
         vehicleType = VehicleType.Truck;
 
+        defaultVolume = 3500;
+
         this.availableEngines = new int[3];
         availableEngines[0] = Constants.ENG_GASOLINE;
         availableEngines[1] = Constants.ENG_DIESEL;
