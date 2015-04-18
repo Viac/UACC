@@ -61,6 +61,7 @@
     // Data types
 
     // Engine types:
+    <string name="VehicleType">Тип</string>
     <string name="Gasoline">Бензин</string>
     <string name="Diesel">Дизель</string>
     <string name="Electric">Электро</string>
@@ -182,5 +183,9 @@
     <string name="title_activity_send_exception">Обработка ошибок</string>
 
     <string name="hello_world">--------</string>
+
+    <string name="TextStubShort">Короткий текст</string>
+    <string name="TextStubMedium">Средний текст: eкрепление и развитие структуры требуют определения</string>
+    <string name="TextStubLong">Длинный текст: Таким образом укрепление и развитие структуры требуют определения и уточнения системы обучения кадров, соответствует насущным потребностям.</string>
 
 </resources>

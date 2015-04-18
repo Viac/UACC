@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.MailTo;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Checkable;
@@ -78,6 +79,8 @@ public class ToolsView {
 
         WebView wv = new WebView(context);
         wv.loadData(html, "text/html; charset=UTF-8", null);
+        WebSettings settings = wv.getSettings();
+        settings.setDefaultFontSize(12);
         wv.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

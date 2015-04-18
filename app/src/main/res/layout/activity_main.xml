@@ -14,7 +14,7 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/aqua_red"
+            android:background="@color/aqua_medium"
             android:padding="8dp"
             android:id="@+id/panVehicleTypeMenu">
 
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Calculate"
                     android:id="@+id/btCalculate"
-                    android:background="@color/aqua_red"
+                    android:background="@color/aqua_medium"
                     android:textColor="@color/aqua_white"
                     android:clickable="true"
                     android:onClick="onClick"

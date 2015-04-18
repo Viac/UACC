@@ -168,7 +168,6 @@
     <string name="CaravanConflictsToSpecialDesign">Custom product list does not contain such combination, conflict removed</string>
     <string name="TruckEngineTypeConflict">This type of engine could be assigned for off-road use dumber only</string>
 
-
     // Age categories:
     <string name="Age">Age</string>
     <string name="AgeNew">New</string>

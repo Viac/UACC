@@ -57,7 +57,9 @@ public class BackwardCalcUi extends LinearLayout {
         TextView tvInfo = new TextView(context);
         tvInfo.setTextAppearance(context, R.style.flat_list_item);
         tvInfo.setText(R.string.BackwardCalcInfo);
-        llBase.addView(tvInfo);
+        LinearLayout.LayoutParams tvInfoParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        tvInfoParams.setMargins(0, 16, 0, 0);
+        llBase.addView(tvInfo, tvInfoParams);
 
         ToolsView.addSeparatorLine(context, llBase, 2,
                 context.getResources().getColor(R.color.aqua_gray), 0, 8, 0, 8);

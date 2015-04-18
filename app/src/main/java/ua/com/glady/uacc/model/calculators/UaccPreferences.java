@@ -3,6 +3,7 @@ package ua.com.glady.uacc.model.calculators;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.types.VehicleType;
 
 /**
@@ -11,6 +12,8 @@ import ua.com.glady.uacc.model.types.VehicleType;
  * Created by Slava on 09.04.2015.
  */
 public class UaccPreferences {
+
+    private static final String DEFAULT_ACTIVE_PAGE = "DefaultActivePage";
 
     public class VehiclePreferences{
         public int lowVolume;
@@ -23,9 +26,13 @@ public class UaccPreferences {
     private String[] keys;
     private int[] defaults;
 
-    public UaccPreferences(Context context, VehicleType vehicleType){
-        this.sharedPreferences = context.getSharedPreferences(
+    private static SharedPreferences getSharedPreferences(Context context){
+        return context.getSharedPreferences(
                 context.getPackageName() + "_preferences", Context.MODE_PRIVATE);
+    }
+
+    public UaccPreferences(Context context, VehicleType vehicleType){
+        this.sharedPreferences = getSharedPreferences(context);
 
         String[] carKeys = {"RcCarLowVolume", "RcCarHighVolume", "RcCarStepVolume"};
         int[] carDefaults = {800, 4200, 100};
@@ -74,5 +81,28 @@ public class UaccPreferences {
         edit.putInt(keys[2], stepVolume);
         edit.apply();
     }
+
+    /**
+     * Saves value of active index
+     * @param context context to retrieve preferences
+     * @param activePageIndex new value
+     */
+    public static void setActivePage(Context context, int activePageIndex){
+        SharedPreferences sharedPreferences = getSharedPreferences(context);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putInt(DEFAULT_ACTIVE_PAGE, activePageIndex);
+        edit.apply();
+    }
+
+    /**
+     * Returns value of active page stored in preferences
+     * @param context context to retrieve preferences
+     * @param defaultValue obvious, isn't it?
+     * @return value stored in preferences
+     */
+    public static int getActivePage(Context context, int defaultValue){
+        return getSharedPreferences(context).getInt(DEFAULT_ACTIVE_PAGE, defaultValue);
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package ua.com.glady.uacc;
 
+import android.animation.ObjectAnimator;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -20,13 +22,12 @@ import ua.com.glady.uacc.guis.BackwardCalcUi;
 import ua.com.glady.uacc.guis.BusDataUi;
 import ua.com.glady.uacc.guis.CarDataUi;
 import ua.com.glady.uacc.guis.MotorcycleDataUi;
-import ua.com.glady.uacc.guis.PreferencesDialog;
 import ua.com.glady.uacc.guis.TruckDataUi;
 import ua.com.glady.uacc.guis.VehicleDataUi;
 import ua.com.glady.uacc.main_menu.IMenuItemSelectedListener;
 import ua.com.glady.uacc.main_menu.MainMenu;
 import ua.com.glady.uacc.model.ExcisesRegistry;
-import ua.com.glady.uacc.model.INotifyEvent;
+import ua.com.glady.uacc.model.calculators.UaccPreferences;
 import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.model.vehicle.AVehicle;
 import ua.com.glady.uacc.model.vehicle.Bus;
@@ -60,6 +61,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private WebView webResult;
     private ViewGroup panVehicleData;
+    private Button btCalculate;
 
     // defines mode
     private boolean isForwardCalculation;
@@ -102,10 +104,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         
         setContentView(R.layout.activity_main);
 
-        // be default we show cars
-        activePageIndex = 0;
-
         isForwardCalculation = true;
+
+        activePageIndex = UaccPreferences.getActivePage(this, 0);
 
         if (savedInstanceState != null) {
             activePageIndex = savedInstanceState.getInt(STATE_ACTIVE_INDEX, 0);
@@ -117,6 +118,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         createExcises();
 
         backwardCalcUi = new BackwardCalcUi(this, getCurrentVehicleType());
+        btCalculate = (Button) this.findViewById(R.id.btCalculate);
 
         initializeVehiclePages();
 
@@ -344,6 +346,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         lp.setMargins(4, 12, 4, 0);
         panScroll.addView(webResult, lp);
+
+        ScrollView scroll = (ScrollView) findViewById(R.id.scrollView);
+
+        // 24 is a top/bottom margins o details UI / button and so on
+        int deltaY = panVehicleData.getHeight() + btCalculate.getHeight() + 24;
+
+        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(scroll, "scrollY", 0, deltaY).setDuration(500);
+        objectAnimator.start();
     }
 
     /**
@@ -371,6 +381,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         if (vehicle.getBasicPrice() <= 0)
             return res.getString(R.string.errPriceCannotBeZero);
         return vehicle.getForwardCalcHtml(htmlTemplate);
+    }
+
+    @Override
+    public void onStop(){
+        UaccPreferences.setActivePage(this, activePageIndex);
+        super.onStop();
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import ua.com.glady.uacc.R;
@@ -59,12 +60,12 @@ public class CarDataUi extends VehicleDataUi {
                         switch (which) {
                             case 0:
                                 isCaravan = true;
-                                cbIsSpecialDesign.setTextAppearance(context, R.style.flat_list_active_item);
+                                cbIsSpecialDesign.setTextAppearance(context, R.style.combo_item_active);
                                 cbIsSpecialDesign.setText(caravanCaption);
                                 break;
                             case 1:
                                 isSnowGolf = true;
-                                cbIsSpecialDesign.setTextAppearance(context, R.style.flat_list_active_item);
+                                cbIsSpecialDesign.setTextAppearance(context, R.style.combo_item_active);
                                 cbIsSpecialDesign.setText(snowGolfCaption);
                                 break;
                             default:
@@ -85,7 +86,7 @@ public class CarDataUi extends VehicleDataUi {
         isSnowGolf = false;
         isCaravan = false;
         cbIsSpecialDesign.setChecked(false);
-        cbIsSpecialDesign.setTextAppearance(context, R.style.flat_list_item);
+        cbIsSpecialDesign.setTextAppearance(context, R.style.combo_item);
         cbIsSpecialDesign.setText(defaultCaption);
     }
 
@@ -106,6 +107,10 @@ public class CarDataUi extends VehicleDataUi {
                 context.getResources().getColor(R.color.aqua_gray), 0, 0, 0, 0);
 
         cbIsSpecialDesign = new CheckBox(context);
+
+        cbIsSpecialDesign.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        cbIsSpecialDesign.setTextScaleX(0.8f);
+
         cbIsSpecialDesign.setScaleX(0.75f);
         cbIsSpecialDesign.setScaleY(0.75f);
 
