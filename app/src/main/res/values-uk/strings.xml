@@ -21,6 +21,7 @@
     <string name="erpMax">Максимальний об’єм:</string>
     <string name="erpStep">Поступ:</string>
     <string name="erpDefault">Типове значення</string>
+    <string name="erpWarningWrongValues">Будь ласка, вкажіть коректні значення</string>
     <string name="erpWarningWrongRange">Будь ласка, вкажіть максимальній об’єм більш ніж мінімальний</string>
     <string name="erpWarningWrongStep">Будь ласка, вкажіть поступ</string>
     <string name="erpWarningEngineVolumeTooLarge">Об’єм двигуна завеликий, максимальне значення 20000</string>
@@ -52,7 +53,7 @@
     <string name="errPriceCannotBeZero">Вартість не може дорівнювати 0</string>
     <string name="errUnknownVehicleType">Невідомий тип ТЗ</string>
     <string name="errFinalPriceUndefined">Будь ласка, вкажіть кінцеву вартіть ТЗ в Україні</string>
-    <string name="errCanNotRunCalculation">Невожливо розрахувати</string>
+    <string name="errCanNotRunCalculation">Неможливо розрахувати</string>
 
     // Asserts
     <string name="assVehicleNotValid">Помилка в даних ТЗ</string>

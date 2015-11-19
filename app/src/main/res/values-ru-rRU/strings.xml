@@ -21,6 +21,7 @@
     <string name="erpMax">Максимальный объем</string>
     <string name="erpStep">Шаг</string>
     <string name="erpDefault">Значение по умолчанию</string>
+    <string name="erpWarningWrongValues">Пожалуйста, укажите корректные значения</string>
     <string name="erpWarningWrongRange">Пожалуйста, укажите максимальный объем больше минимального</string>
     <string name="erpWarningWrongStep">Пожалуйста, укажите шаг</string>
     <string name="erpWarningEngineVolumeTooLarge">Объем двигателя слишком большой, максимальное значение 20000</string>

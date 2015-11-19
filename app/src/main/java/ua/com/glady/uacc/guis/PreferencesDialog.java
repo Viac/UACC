@@ -108,6 +108,11 @@ public class PreferencesDialog {
         int high = edHigh.getValue();
         int step = edStep.getValue();
 
+        if ((low == 0) || (high == 0) || (step == 0)){
+            Toast.makeText(context, R.string.erpWarningWrongValues, Toast.LENGTH_LONG).show();
+            return;
+        }
+
         // UI data sanity check
         if (low > high) {
             Toast.makeText(context, R.string.erpWarningWrongRange, Toast.LENGTH_LONG).show();

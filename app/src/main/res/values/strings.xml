@@ -21,6 +21,7 @@
     <string name="erpMax">Max engine</string>
     <string name="erpStep">Step</string>
     <string name="erpDefault">Default</string>
+    <string name="erpWarningWrongValues">Please define correct values</string>
     <string name="erpWarningWrongRange">Please set max value greater than min value</string>
     <string name="erpWarningWrongStep">Please define engine step value</string>
     <string name="erpWarningEngineVolumeTooLarge">Engine volume too large, upper limit is 20000</string>

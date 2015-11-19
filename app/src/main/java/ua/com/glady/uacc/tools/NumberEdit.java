@@ -66,7 +66,6 @@ public class NumberEdit extends LinearLayout {
             } else {
                 ed.setBackground(null);
             }
-
         }
 
         llBase.addView(ed);
@@ -74,8 +73,23 @@ public class NumberEdit extends LinearLayout {
         return this;
     }
 
+    private boolean isNumber(String value){
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     public int getValue() {
-        return Integer.valueOf(ed.getText().toString());
+        String value = ed.getText().toString();
+        if (isNumber(value)) {
+            return Integer.valueOf(value);
+        }
+        else {
+            return 0; // as default value
+        }
     }
 
     public void setValue(int value) {

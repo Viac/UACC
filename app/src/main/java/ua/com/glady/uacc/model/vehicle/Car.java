@@ -263,28 +263,4 @@ public class Car extends AVehicle {
     }
 
 
-    /**
-     * By decision of Commission of international trading, new cars with vehicles 1000-2200 cm
-     * has additional 'special impost'
-     * http://www.visnuk.com.ua/ua/pubs/id/6965
-     *
-     * @return special impost base
-     */
-    @Override
-    protected double getSpecialImpost(){
-
-        // this impost established only for 2 etc codes
-        double result = super.getSpecialImpost();
-
-        String etc = this.getEtc();
-
-        if (etc.contentEquals("8703 22 10 00") && isGE1_LT2(1000, 1500, engine.getVolume()))
-            result = 0.0215;
-
-        if (etc.contentEquals("8703 23 19 10") && isGE1_LT2(1500, 2200, engine.getVolume()))
-            result = 0.0432;
-
-        return result;
-    }
-
 }
