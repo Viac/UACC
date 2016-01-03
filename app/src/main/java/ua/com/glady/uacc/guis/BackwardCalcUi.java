@@ -3,6 +3,7 @@ package ua.com.glady.uacc.guis;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ public class BackwardCalcUi extends LinearLayout {
     private VehicleType vehicleType;
 
     TextView tvPreferences;
-    ImageButton btEditPreferences;
+    ImageView btEditPreferences;
     NumberEdit ed;
 
     OnClickListener onClick = new OnClickListener() {
@@ -78,8 +79,8 @@ public class BackwardCalcUi extends LinearLayout {
         tvPreferences.setOnClickListener(onClick);
         llPreferences.addView(tvPreferences, tvParams);
 
-        btEditPreferences = new ImageButton(context);
-        btEditPreferences.setImageResource(android.R.drawable.ic_menu_edit);
+        btEditPreferences = new ImageView(context);
+        btEditPreferences.setImageResource(R.drawable.ic_action_tweaker);
         LinearLayout.LayoutParams btParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         tvParams.weight = 0.3f;
         btEditPreferences.setClickable(true);

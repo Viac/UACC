@@ -81,6 +81,16 @@
     <string name="SpecialPurposeCaravan">Оборудован для временного проживания людей</string>
     <string name="SpecialPurposePrompt">Выберите назначение автомобиля</string>
 
+    <string name="CompensationImpost">Компенсационная пошлина</string>
+    <string name="CompensationImpostDescription">Применяется к легковым автомобилям производства РФ (%1$.2f%% от (1) для данного производителя)</string>
+    <string name="MadeInRussiaPrompt">Пожалуйста, укажите производителя</string>
+    <string name="MadeInRussia">Автомобиль производства РФ</string>
+    <string name="MadeInRussiaSollers">ООО "Соллерс - Дальний Восток"</string>
+    <string name="MadeInRussiaAutoVAZ">ОАО "АвтоВАЗ"</string>
+    <string name="MadeInRussiaOther">Другой производитель РФ</string>
+    <string name="MadeInRussiaUndefined">Нет сертификата происхождения</string>
+    <string name="MadeInRussiaCancel">Очистить</string>
+
     <string name="Bus">Автобусы</string>
     <string name="BusDescription">Моторные ТС, предназначенные для перевозки 10 человек и больше, включая водителя</string>
 
@@ -188,5 +198,11 @@
     <string name="TextStubShort">Короткий текст</string>
     <string name="TextStubMedium">Средний текст: eкрепление и развитие структуры требуют определения</string>
     <string name="TextStubLong">Длинный текст: Таким образом укрепление и развитие структуры требуют определения и уточнения системы обучения кадров, соответствует насущным потребностям.</string>
+
+    // 3251 act
+    <string name="Act_3251_Caption">Предварительный расчет по законопроекту №3251</string>
+    <string name="Act_3251_Explanation">Существующий законопроект №3251 подразумевает радикальное снижение акцизов на легковые автомобили б/у. Фактически, акциз на двигатели б/у автомобилей может быть приравнен к акцизу новых автомобилей. На текущий момент (01.12.2015) законопроект включен в рассмотрение на следующей сессии ВРУ. В случае, если этот законопроект будет принят "как есть", стоимость растаможки данного ТС составила бы:</string>
+    <string name="Act_3251_Resume">Разница для конечной цены в Украине составит: %1$d€ (-%2$d%%)</string>
+    <string name="Act_3251_Link">Полная таблица со сравнением</string>
 
 </resources>

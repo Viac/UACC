@@ -93,7 +93,7 @@ public class Bus extends AVehicle {
     public String getForwardCalcHtml(String htmlTemplate) {
         ForwardCalc fc = new ForwardCalc();
         fc.calculate(basicPrice, getExcise(), getImpostBase(), getSpecialImpost(),
-                getEtc(), context.getResources());
+                this.vehicleSpecificImposts, getEtc(), context.getResources());
         return fc.getHtml(context.getResources(), htmlTemplate, basicPrice);
     }
 

@@ -95,7 +95,7 @@ public class Motorcycle extends AVehicle {
     public String getForwardCalcHtml(String htmlTemplate) {
         ForwardCalc fc = new ForwardCalc();
         fc.calculate(basicPrice, getExcise(), getImpost(), getSpecialImpost(),
-                getEtc(), context.getResources());
+                this.vehicleSpecificImposts, getEtc(), context.getResources());
         return fc.getHtml(context.getResources(), htmlTemplate, basicPrice);
     }
 

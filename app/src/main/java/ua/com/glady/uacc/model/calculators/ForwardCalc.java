@@ -7,6 +7,7 @@ import java.util.List;
 
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
+import ua.com.glady.uacc.model.types.VehicleSpecificImpost;
 import ua.com.glady.uacc.tools.StringTable;
 import ua.com.glady.uacc.tools.ToolsStr;
 import ua.com.glady.uacc.tools.ToolsStringTable;
@@ -20,6 +21,10 @@ import static ua.com.glady.uacc.tools.ToolsStr.getMoneyStr;
  * Created by vgl on 19.03.2015.
  */
 public class ForwardCalc {
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
 
     // Means basic price with all custom duties
     private int totalPrice = Constants.UNDEFINED;
@@ -63,7 +68,10 @@ public class ForwardCalc {
      * @param resources - to get localized text
      */
     public void calculate(int basicPrice, double excise, double impostBase, double specialImpostBase,
-                                 String etc, Resources resources) {
+                          List<VehicleSpecificImpost> vehicleSpecificImpostList,
+                          String etc, Resources resources) {
+        totalPrice = basicPrice;
+
         String template;
         int impost = (int) Math.round(basicPrice * impostBase);
         template = resources.getString(R.string.ImpostDescription);
@@ -73,6 +81,7 @@ public class ForwardCalc {
         int exciseValue = (int) Math.round(excise);
         template = resources.getString(R.string.ExciseDescription);
         add(resources.getString(R.string.Excise), String.format(template, etc), exciseValue);
+        totalPrice += exciseValue;
 
         if (compare(specialImpostBase, 0.0) != 0){
             int specialImpost = (int) Math.round(basicPrice * specialImpostBase);
@@ -80,15 +89,25 @@ public class ForwardCalc {
             double specialImpostPercentage = specialImpostBase * 100;
             String specialImpostDescription = String.format(template, specialImpostPercentage);
             add(resources.getString(R.string.SpecialImpost), specialImpostDescription, specialImpost);
+            totalPrice += exciseValue;
         }
 
-        int protectionFee = (int) Math.round(basicPrice * Constants.TEMPORARY_PROTECTION_FEE_BASE);
-        add(resources.getString(R.string.ProtectionImpost), resources.getString(R.string.ProtectionImpostDescription), protectionFee);
+        if (vehicleSpecificImpostList.size() > 0){
+            for (VehicleSpecificImpost vehicleSpecificImpost : vehicleSpecificImpostList ){
+                if (compare(vehicleSpecificImpost.value, 0.0) != 0) {
+                    int value = (int) Math.round(basicPrice * vehicleSpecificImpost.value / 100);
+                    add(vehicleSpecificImpost.header, vehicleSpecificImpost.description, value);
+                    totalPrice += value;
+                }
+            }
+        }
 
-        int vat = (int) Math.round((basicPrice + impost + exciseValue + protectionFee) * Constants.VAT_BASE);
+        int vat = (int) Math.round((totalPrice) * Constants.VAT_BASE);
         template = resources.getString(R.string.VATDescription);
         String vatStr = String.format(template, ToolsStr.makePlusList(1, itemList.size() + 1));
         add(resources.getString(R.string.VAT), vatStr, vat);
+
+        totalPrice += vat;
     }
 
     /**

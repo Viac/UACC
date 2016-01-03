@@ -80,6 +80,16 @@
     <string name="SpecialPurposeCaravan">Обладнаний для тимчасового проживання людей</string>
     <string name="SpecialPurposePrompt">Оберiть призначення автомобiля</string>
 
+    <string name="CompensationImpost">Компенсаційне мито</string>
+    <string name="CompensationImpostDescription">Застосовується до легкових авто виробництва РФ (%1$.2f%% від (1) для даного виробника)</string>
+    <string name="MadeInRussiaPrompt">Вкажіть виробника, будь ласка</string>
+    <string name="MadeInRussia">Автомобіль виробництва РФ</string>
+    <string name="MadeInRussiaSollers">ТОВ "Соллерс - Далекий Схід"</string>
+    <string name="MadeInRussiaAutoVAZ">ВАТ "АвтоВАЗ"</string>
+    <string name="MadeInRussiaOther">Інший виробник РФ</string>
+    <string name="MadeInRussiaUndefined">Відсутній сертифікат походження</string>
+    <string name="MadeInRussiaCancel">Очистити</string>
+
     <string name="Bus">Автобуси</string>
     <string name="BusDescription">Моторні транспортні засоби, призначені для перевезення 10 осіб i більше, включаючи водія</string>
 
@@ -190,5 +200,11 @@
     <string name="TextStubShort">Короткий текст</string>
     <string name="TextStubMedium">Средний текст: eкрепление и развитие структуры требуют определения</string>
     <string name="TextStubLong">Длинный текст: Таким образом укрепление и развитие структуры требуют определения и уточнения системы обучения кадров, соответствует насущным потребностям.</string>
+
+    // 3251 act
+    <string name="Act_3251_Caption">Попередній розрахунок щодо законопроекту №3251</string>
+    <string name="Act_3251_Explanation">Існуючий законопроект №3251 передбачає радикальне зниження акцизів на легкові автомобілі б/в. Фактично, акциз на двигуни б/в автомобілів може бути прирівняний до акцизу нових. На даний момент (01.12.2015) законопроект включено до порядку денного наступної сесії ВРУ. У разі якщо цей законопроект буде прийнятий "як є", вартість розмитнення даного ТЗ складала б:</string>
+    <string name="Act_3251_Resume">Різниця для кінцевої ціни в Україні: %1$d€ (-%2$d%%)</string>
+    <string name="Act_3251_Link">Повна таблиця з порівнянням</string>
 
 </resources>

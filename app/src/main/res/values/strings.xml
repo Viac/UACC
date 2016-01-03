@@ -79,6 +79,16 @@
     <string name="SpecialPurposeCaravan">Motorhome</string>
     <string name="SpecialPurposePrompt">Select vehicle purpose</string>
 
+    <string name="CompensationImpost">Compensation impost</string>
+    <string name="CompensationImpostDescription">Applied for passenger cars made in Russia (%1$.2f%% of (1) for this manufacturer)</string>
+    <string name="MadeInRussiaPrompt">Please define manufacturer</string>
+    <string name="MadeInRussia">Made in Russia</string>
+    <string name="MadeInRussiaSollers">Sollers - Far East JSC</string>
+    <string name="MadeInRussiaAutoVAZ">AutoVAZ JSC</string>
+    <string name="MadeInRussiaOther">Other manufacturer</string>
+    <string name="MadeInRussiaUndefined">No certificate of origin</string>
+    <string name="MadeInRussiaCancel">Clear</string>
+
     <string name="Bus">Bus</string>
     <string name="BusDescription">Motor vehicles for the transport of ten or more persons, including the driver</string>
 
@@ -192,5 +202,12 @@
     <string name="TextStubShort">Some short text</string>
     <string name="TextStubMedium">Some long text: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="TextStubLong">Some long text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id tortor in lorem dictum auctor quis a enim.</string>
+
+    // 3251 act
+    <string name="Act_3251_Caption">A preliminary calculation according to regulatory act 3251</string>
+    <string name="Act_3251_Explanation">There is a law project №3251 exists, that implies a strong reduction of the used cars excises. In fact, the excise on user cars motor can be equated to the new cars excise. Currently (01/12/2015), this act is included in the next session of the UA Parlament. If this act will be accepted "as is", the cost of customs clearance of the vehicle would be:</string>
+    <string name="Act_3251_Resume">Difference for the final price in UA will be %1$d€ (-%2$d%%)</string>
+    <string name="Act_3251_Link">Overview table with all changes</string>
+
 
 </resources>

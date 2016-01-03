@@ -65,7 +65,7 @@ public class BackwardCalc {
     public int getBasicPrice(int finalPrice, double impost, double specialImpost, int excise) {
         double vatM = Constants.VAT_BASE + 1;
         double result = (finalPrice / vatM - excise) /
-                (1 + Constants.TEMPORARY_PROTECTION_FEE_BASE + impost + specialImpost);
+                (1 + impost + specialImpost);
         return (int) Math.round(result);
     }
 

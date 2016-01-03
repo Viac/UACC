@@ -2,6 +2,9 @@ package ua.com.glady.uacc.model.vehicle;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.calculators.BackwardCalc;
@@ -10,6 +13,7 @@ import ua.com.glady.uacc.model.ExcisesRegistry;
 import ua.com.glady.uacc.model.calculators.UaccPreferences;
 import ua.com.glady.uacc.model.types.Age;
 import ua.com.glady.uacc.model.types.Engine;
+import ua.com.glady.uacc.model.types.VehicleSpecificImpost;
 import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.tools.StringTable;
 
@@ -31,18 +35,22 @@ public abstract class AVehicle {
     final ExcisesRegistry excisesRegistry;
 
     // Own object fields
-
     protected VehicleType vehicleType;
 
     // See definition of terms
     int basicPrice;
+
     // Assumption is - ANY vehicle has an engine
     final Engine engine;
+
     // Not required, for instance motorcycles doesn't depends on age at all
     final Age age;
 
     // Calculators and preferences (See definition of terms)
     final BackwardCalc backwardCalc;
+
+
+    protected List<VehicleSpecificImpost> vehicleSpecificImposts;
 
     /**
      * Abstract class constructor.
@@ -53,23 +61,20 @@ public abstract class AVehicle {
         this.context = context;
         this.excisesRegistry = excisesRegistry;
 
+        vehicleSpecificImposts = new ArrayList<VehicleSpecificImpost>();
+
         engine = new Engine();
         age = new Age();
 
         backwardCalc = new BackwardCalc();
     }
 
-    /**
-     * There was additional import toll for some vehicles:
-     * http://www.visnuk.com.ua/ua/pubs/id/6965
-     *
-     * Now it's cancelled
-     * http://goo.gl/30zmMP
-     *
-     * so for all existing vehicles we establish it as 0.0, if somebody would have own opinion -
-     * it could be implemented in subclasses
-     *
+    protected void updateVehicleSpecificImpost(){
+        vehicleSpecificImposts.clear();
+    }
 
+    /**
+     * Returns special impost base, see business_logic#020116-slava-2
      *
      * @return special impost base
      */

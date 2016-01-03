@@ -2,8 +2,8 @@ package ua.com.glady.uacc;
 
 import android.animation.ObjectAnimator;
 import android.content.res.Resources;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -289,6 +289,93 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     };
 
+
+
+    /**
+     *
+     * This code used to quickly get data to test application and to see the difference between
+     * current state (01.12.2015) and probable state if act #3251 will be voted in parlament
+     * So it's a kind of debug code, some dirty, of course.
+     *
+     * Example: http://viac-soft.in.ua/uacc/uacc_compare.html
+     *
+     *
+     *
+     private static double roundToScale(double number, int scale) {
+     int pow = (int) Math.pow(10, scale);
+     double tmp = number * pow;
+     return (double) (int) ((tmp - (int) tmp) >= 0.5f ? tmp + 1 : tmp) / pow;
+     }
+
+
+    private String getGlobalTable(){
+        StringBuilder sb = new StringBuilder();
+
+        Car car = new Car(this, this.excisesRegistry);
+        Car car3251 = new Car(this, this.excisesRegistry3251);
+
+        car.getEngine().setType(Constants.ENG_GASOLINE);
+        car3251.getEngine().setType(Constants.ENG_GASOLINE);
+
+
+        double totalPrice = 0;
+        double totalPrice3251 = 0;
+        double percentageD = 0.0;
+        long percOut = 0;
+
+        sb.append("<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\"></head><body><table>");
+
+        // Table header
+        sb.append("<tr><td>Двигатель</td><td>Возраст</td>");
+        for (int i = 500; i <= 15000; i+= 500) {
+            sb.append("<td>").append(i).append("</td>");
+        }
+        sb.append("</tr>");
+
+        for (int i = 799; i < 3200; i+=100) {
+            car.getEngine().setVolume(i); // 1 volume
+            car3251.getEngine().setVolume(i); // 1 volume
+
+            sb.append("<tr><td>").append(i + 1).append("</td>");
+            car.setAge(12);  // 2 age
+            car3251.setAge(12);  // 2 age
+            sb.append("<td>до 5 лет</td>");
+            for (int j = 500; j <= 15000; j+=500){
+                car.setBasicPrice(j);
+                car3251.setBasicPrice(j);
+                totalPrice = roundToScale((car.getTotalPrice() / 1000.0), 1);
+                totalPrice3251 = roundToScale((car3251.getTotalPrice()/1000.0), 1);
+                percentageD = 100.0 * totalPrice3251 / totalPrice;
+                percOut = 100 - Math.round(percentageD);
+                sb.append("<td>").append(totalPrice).append("→").append(totalPrice3251);
+                sb.append("</br><span class=\"percentage" + String.valueOf(percOut / 10) + "\">-").append(percOut).append("%</span>").append("</td>");
+            }
+            sb.append("</tr>");
+
+
+            sb.append("<tr><td>").append(i + 1).append("</td>");
+            car.setAge(65);  // 2 age
+            car3251.setAge(65);  // 2 age
+            sb.append("<td>старше 5</td>");
+            for (int j = 500; j <= 15000; j+=500){
+                car.setBasicPrice(j);
+                car3251.setBasicPrice(j);
+                totalPrice = roundToScale((car.getTotalPrice()/1000.0), 1);
+
+                totalPrice3251 = roundToScale((car3251.getTotalPrice()/1000.0), 1);
+                percentageD = 100.0 * totalPrice3251 / totalPrice;
+                percOut = 100 - Math.round(percentageD);
+                sb.append("<td>").append(totalPrice).append("→").append(totalPrice3251);
+                sb.append("</br><span class=\"percentage" + String.valueOf(percOut / 10) + "\">-").append(percOut).append("%</span>").append("</td>");
+            }
+            sb.append("</tr>");
+
+        }
+        sb.append("</table></body></html>");
+        return sb.toString();
+    }
+     */
+
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btCalculate){
@@ -301,7 +388,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             return;
         }
         if ((v.getId() == R.id.btVehicleType) || (v.getId() == R.id.llVehicleTitle) ||
-                (v.getId() == R.id.tvVehicleType) || (v.getId() == R.id.tvCalculationDescription)){
+                (v.getId() == R.id.tvVehicleType) || (v.getId() == R.id.tvCalculationDescription)) {
             MainMenu menu = new MainMenu();
             menu.show(this, onMenuItemSelected);
         }

@@ -11,6 +11,7 @@ import ua.com.glady.uacc.R;
 import ua.com.glady.uacc.model.Constants;
 import ua.com.glady.uacc.model.ExcisesRegistry;
 import ua.com.glady.uacc.model.types.Age;
+import ua.com.glady.uacc.model.types.RussianMfParams;
 import ua.com.glady.uacc.model.types.VehicleType;
 import ua.com.glady.uacc.model.vehicle.AVehicle;
 import ua.com.glady.uacc.model.vehicle.Car;
@@ -25,8 +26,11 @@ public class CarDataUi extends VehicleDataUi {
 
     private boolean isSnowGolf;
     private boolean isCaravan;
+    private RussianMfParams russianMfParams;
 
     private CheckBox cbIsSpecialDesign;
+
+    private CheckBox cbMadeInRussia;
 
     OnClickListener onSpecialDesignClick = new OnClickListener() {
         @Override
@@ -43,7 +47,7 @@ public class CarDataUi extends VehicleDataUi {
                 resetSpecialDesignCombo();
             }
             else {
-                CharSequence colors[] = new CharSequence[] {
+                CharSequence options[] = new CharSequence[] {
                         context.getString(R.string.SpecialPurposeCaravan),
                         context.getString(R.string.SpecialPurposeSnowGolf),
                         context.getString(R.string.Clear),
@@ -54,7 +58,7 @@ public class CarDataUi extends VehicleDataUi {
                 builder.setCancelable(false);
 
                 builder.setTitle(context.getString(R.string.SpecialPurposePrompt));
-                builder.setItems(colors, new DialogInterface.OnClickListener() {
+                builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
@@ -80,6 +84,79 @@ public class CarDataUi extends VehicleDataUi {
         }
     };
 
+
+    OnClickListener onMadeInRussiaClick = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            if (russianMfParams != RussianMfParams.rus_None) {
+                resetMadeInRussiaCombo();
+                return;
+            }
+
+            CharSequence options[] = new CharSequence[]{
+                    context.getString(R.string.MadeInRussiaAutoVAZ),
+                    context.getString(R.string.MadeInRussiaSollers),
+                    context.getString(R.string.MadeInRussiaOther),
+                    context.getString(R.string.MadeInRussiaUndefined),
+                    context.getString(R.string.MadeInRussiaCancel)
+            };
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+            builder.setCancelable(false);
+
+            builder.setTitle(context.getString(R.string.MadeInRussiaPrompt));
+            builder.setItems(options, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String caption;
+
+                    switch (which) {
+                        case 0:
+                            russianMfParams = RussianMfParams.rus_AutoVAZ;
+                            cbMadeInRussia.setTextAppearance(context, R.style.combo_item_active);
+                            caption = context.getString(R.string.MadeInRussia) + ": " + context.getString(R.string.MadeInRussiaAutoVAZ);
+                            cbMadeInRussia.setText(caption);
+                            break;
+
+                        case 1:
+                            russianMfParams = RussianMfParams.rus_Sollers;
+                            cbMadeInRussia.setTextAppearance(context, R.style.combo_item_active);
+                            caption = context.getString(R.string.MadeInRussia) + ": " + context.getString(R.string.MadeInRussiaSollers);
+                            cbMadeInRussia.setText(caption);
+                            break;
+
+                        case 2:
+                            russianMfParams = RussianMfParams.rus_Other;
+                            cbMadeInRussia.setTextAppearance(context, R.style.combo_item_active);
+                            caption = context.getString(R.string.MadeInRussia) + ": " + context.getString(R.string.MadeInRussiaOther);
+                            cbMadeInRussia.setText(caption);
+                            break;
+
+                        case 3:
+                            russianMfParams = RussianMfParams.rus_Undefined;
+                            cbMadeInRussia.setTextAppearance(context, R.style.combo_item_active);
+                            caption = context.getString(R.string.MadeInRussia) + ": " + context.getString(R.string.MadeInRussiaUndefined);
+                            cbMadeInRussia.setText(caption);
+                            break;
+
+                        case 4:
+                            resetMadeInRussiaCombo();
+                            break;
+
+                        default:
+                            resetMadeInRussiaCombo();
+                            break;
+                    }
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+        }
+
+    };
+
     private void resetSpecialDesignCombo(){
         final String defaultCaption = context.getString(R.string.SpecialPurposeLine1) +
                 Constants.sLineBreak + context.getString(R.string.SpecialPurposeLine2);
@@ -88,6 +165,20 @@ public class CarDataUi extends VehicleDataUi {
         cbIsSpecialDesign.setChecked(false);
         cbIsSpecialDesign.setTextAppearance(context, R.style.combo_item);
         cbIsSpecialDesign.setText(defaultCaption);
+    }
+
+    private void resetMadeInRussiaCombo(){
+        russianMfParams = RussianMfParams.rus_None;
+        cbMadeInRussia.setChecked(false);
+        cbMadeInRussia.setTextAppearance(context, R.style.combo_item);
+        cbMadeInRussia.setText(context.getString(R.string.MadeInRussia));
+    }
+
+    private void prepareCheckBox(CheckBox cb){
+        cb.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        cb.setTextScaleX(0.8f);
+        cb.setScaleX(0.75f);
+        cb.setScaleY(0.75f);
     }
 
     public CarDataUi(Context context, ExcisesRegistry excisesRegistry) {
@@ -107,17 +198,16 @@ public class CarDataUi extends VehicleDataUi {
                 context.getResources().getColor(R.color.aqua_gray), 0, 0, 0, 0);
 
         cbIsSpecialDesign = new CheckBox(context);
-
-        cbIsSpecialDesign.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        cbIsSpecialDesign.setTextScaleX(0.8f);
-
-        cbIsSpecialDesign.setScaleX(0.75f);
-        cbIsSpecialDesign.setScaleY(0.75f);
-
+        prepareCheckBox(cbIsSpecialDesign);
         resetSpecialDesignCombo();
         cbIsSpecialDesign.setOnClickListener(onSpecialDesignClick);
-
         llBase.addView(cbIsSpecialDesign);
+
+        cbMadeInRussia = new CheckBox(context);
+        prepareCheckBox(cbMadeInRussia);
+        resetMadeInRussiaCombo();
+        cbMadeInRussia.setOnClickListener(onMadeInRussiaClick);
+        llBase.addView(cbMadeInRussia);
     }
 
     @Override
@@ -152,6 +242,7 @@ public class CarDataUi extends VehicleDataUi {
         result.getEngine().setVolume(this.getVolume());
 
         result.setAge(this.getAge());
+        result.setRussianMfParams(this.russianMfParams);
 
         // defining price
         result.setBasicPrice(this.getPrice());

@@ -34,9 +34,6 @@ public class Constants {
     // VAT ( Value-added tax )
     public static final double VAT_BASE = 0.2; // 20%
 
-    // Temp fee (1-year protection fee)
-    public static final double TEMPORARY_PROTECTION_FEE_BASE = 0.05; // 5%
-
     public static final String LAYOUT_ID_TAG = "layoutId";
 
 }
